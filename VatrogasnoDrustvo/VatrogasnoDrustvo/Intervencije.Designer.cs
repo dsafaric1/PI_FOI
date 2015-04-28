@@ -41,11 +41,8 @@
             this.btnIntervencijeDodaj = new System.Windows.Forms.Button();
             this.txtIntervencijeSearch = new System.Windows.Forms.TextBox();
             this.lblIntervencijeSearch = new System.Windows.Forms.Label();
-            this.lblIntervencijeShow = new System.Windows.Forms.Label();
-            this.numIntervencijeShow = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIntervencije)).BeginInit();
             this.tlstrpIntervencije.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numIntervencijeShow)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvIntervencije
@@ -148,31 +145,12 @@
             this.lblIntervencijeSearch.TabIndex = 4;
             this.lblIntervencijeSearch.Text = "Search:";
             // 
-            // lblIntervencijeShow
-            // 
-            this.lblIntervencijeShow.AutoSize = true;
-            this.lblIntervencijeShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIntervencijeShow.Location = new System.Drawing.Point(137, 98);
-            this.lblIntervencijeShow.Name = "lblIntervencijeShow";
-            this.lblIntervencijeShow.Size = new System.Drawing.Size(51, 17);
-            this.lblIntervencijeShow.TabIndex = 5;
-            this.lblIntervencijeShow.Text = "Show:";
-            // 
-            // numIntervencijeShow
-            // 
-            this.numIntervencijeShow.Location = new System.Drawing.Point(212, 93);
-            this.numIntervencijeShow.Name = "numIntervencijeShow";
-            this.numIntervencijeShow.Size = new System.Drawing.Size(48, 20);
-            this.numIntervencijeShow.TabIndex = 6;
-            // 
             // frmIntervencije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Firebrick;
             this.ClientSize = new System.Drawing.Size(1362, 719);
-            this.Controls.Add(this.numIntervencijeShow);
-            this.Controls.Add(this.lblIntervencijeShow);
             this.Controls.Add(this.lblIntervencijeSearch);
             this.Controls.Add(this.txtIntervencijeSearch);
             this.Controls.Add(this.btnIntervencijeDodaj);
@@ -186,7 +164,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvIntervencije)).EndInit();
             this.tlstrpIntervencije.ResumeLayout(false);
             this.tlstrpIntervencije.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numIntervencijeShow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,7 +183,5 @@
         private System.Windows.Forms.Button btnIntervencijeDodaj;
         private System.Windows.Forms.TextBox txtIntervencijeSearch;
         private System.Windows.Forms.Label lblIntervencijeSearch;
-        private System.Windows.Forms.Label lblIntervencijeShow;
-        private System.Windows.Forms.NumericUpDown numIntervencijeShow;
     }
 }

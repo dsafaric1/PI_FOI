@@ -74,6 +74,12 @@
     <Compile Include="Oprema.Designer.cs">
       <DependentUpon>Oprema.cs</DependentUpon>
     </Compile>
+    <Compile Include="PodaciClana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PodaciClana.Designer.cs">
+      <DependentUpon>PodaciClana.cs</DependentUpon>
+    </Compile>
     <Compile Include="Prijava.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Oprema.resx">
       <DependentUpon>Oprema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PodaciClana.resx">
+      <DependentUpon>PodaciClana.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prijava.resx">
       <DependentUpon>Prijava.cs</DependentUpon>

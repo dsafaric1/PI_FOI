@@ -38,15 +38,12 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tlstrplblNatjecanjaOprema = new System.Windows.Forms.ToolStripLabel();
             this.dgvNatjecanja = new System.Windows.Forms.DataGridView();
-            this.lblNatjecanjaShow = new System.Windows.Forms.Label();
-            this.numNatjecanjaShow = new System.Windows.Forms.NumericUpDown();
             this.lblNatjecanjaSearch = new System.Windows.Forms.Label();
             this.txtNatjecanjaSearch = new System.Windows.Forms.TextBox();
             this.btnNatjecanjaDodaj = new System.Windows.Forms.Button();
             this.btnNatjecanjePrijava = new System.Windows.Forms.Button();
             this.tlstrpNatjecanja.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNatjecanja)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numNatjecanjaShow)).BeginInit();
             this.SuspendLayout();
             // 
             // tlstrpNatjecanja
@@ -117,24 +114,6 @@
             this.dgvNatjecanja.Size = new System.Drawing.Size(1253, 473);
             this.dgvNatjecanja.TabIndex = 1;
             // 
-            // lblNatjecanjaShow
-            // 
-            this.lblNatjecanjaShow.AutoSize = true;
-            this.lblNatjecanjaShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNatjecanjaShow.ForeColor = System.Drawing.Color.White;
-            this.lblNatjecanjaShow.Location = new System.Drawing.Point(137, 98);
-            this.lblNatjecanjaShow.Name = "lblNatjecanjaShow";
-            this.lblNatjecanjaShow.Size = new System.Drawing.Size(51, 17);
-            this.lblNatjecanjaShow.TabIndex = 2;
-            this.lblNatjecanjaShow.Text = "Show:";
-            // 
-            // numNatjecanjaShow
-            // 
-            this.numNatjecanjaShow.Location = new System.Drawing.Point(212, 93);
-            this.numNatjecanjaShow.Name = "numNatjecanjaShow";
-            this.numNatjecanjaShow.Size = new System.Drawing.Size(48, 20);
-            this.numNatjecanjaShow.TabIndex = 3;
-            // 
             // lblNatjecanjaSearch
             // 
             this.lblNatjecanjaSearch.AutoSize = true;
@@ -181,8 +160,6 @@
             this.Controls.Add(this.btnNatjecanjaDodaj);
             this.Controls.Add(this.txtNatjecanjaSearch);
             this.Controls.Add(this.lblNatjecanjaSearch);
-            this.Controls.Add(this.numNatjecanjaShow);
-            this.Controls.Add(this.lblNatjecanjaShow);
             this.Controls.Add(this.dgvNatjecanja);
             this.Controls.Add(this.tlstrpNatjecanja);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -192,7 +169,6 @@
             this.tlstrpNatjecanja.ResumeLayout(false);
             this.tlstrpNatjecanja.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNatjecanja)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numNatjecanjaShow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,8 +185,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel tlstrplblNatjecanjaOprema;
         private System.Windows.Forms.DataGridView dgvNatjecanja;
-        private System.Windows.Forms.Label lblNatjecanjaShow;
-        private System.Windows.Forms.NumericUpDown numNatjecanjaShow;
         private System.Windows.Forms.Label lblNatjecanjaSearch;
         private System.Windows.Forms.TextBox txtNatjecanjaSearch;
         private System.Windows.Forms.Button btnNatjecanjaDodaj;

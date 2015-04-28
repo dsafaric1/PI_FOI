@@ -38,15 +38,12 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tlstrplblOpremaNatjecanja = new System.Windows.Forms.ToolStripLabel();
             this.dgvOprema = new System.Windows.Forms.DataGridView();
-            this.lblOpremaShow = new System.Windows.Forms.Label();
-            this.numOpremaShow = new System.Windows.Forms.NumericUpDown();
             this.lblOpremaSearch = new System.Windows.Forms.Label();
             this.txtOpremaSsearch = new System.Windows.Forms.TextBox();
             this.btnOpremaDodaj = new System.Windows.Forms.Button();
             this.btnOpremaNarudzba = new System.Windows.Forms.Button();
             this.tlstrpOprema.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOprema)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numOpremaShow)).BeginInit();
             this.SuspendLayout();
             // 
             // tlstrpOprema
@@ -117,24 +114,6 @@
             this.dgvOprema.Size = new System.Drawing.Size(1253, 473);
             this.dgvOprema.TabIndex = 1;
             // 
-            // lblOpremaShow
-            // 
-            this.lblOpremaShow.AutoSize = true;
-            this.lblOpremaShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOpremaShow.ForeColor = System.Drawing.Color.White;
-            this.lblOpremaShow.Location = new System.Drawing.Point(137, 98);
-            this.lblOpremaShow.Name = "lblOpremaShow";
-            this.lblOpremaShow.Size = new System.Drawing.Size(51, 17);
-            this.lblOpremaShow.TabIndex = 2;
-            this.lblOpremaShow.Text = "Show:";
-            // 
-            // numOpremaShow
-            // 
-            this.numOpremaShow.Location = new System.Drawing.Point(212, 93);
-            this.numOpremaShow.Name = "numOpremaShow";
-            this.numOpremaShow.Size = new System.Drawing.Size(48, 20);
-            this.numOpremaShow.TabIndex = 3;
-            // 
             // lblOpremaSearch
             // 
             this.lblOpremaSearch.AutoSize = true;
@@ -181,8 +160,6 @@
             this.Controls.Add(this.btnOpremaDodaj);
             this.Controls.Add(this.txtOpremaSsearch);
             this.Controls.Add(this.lblOpremaSearch);
-            this.Controls.Add(this.numOpremaShow);
-            this.Controls.Add(this.lblOpremaShow);
             this.Controls.Add(this.dgvOprema);
             this.Controls.Add(this.tlstrpOprema);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -192,7 +169,6 @@
             this.tlstrpOprema.ResumeLayout(false);
             this.tlstrpOprema.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOprema)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numOpremaShow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,8 +185,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel tlstrplblOpremaNatjecanja;
         private System.Windows.Forms.DataGridView dgvOprema;
-        private System.Windows.Forms.Label lblOpremaShow;
-        private System.Windows.Forms.NumericUpDown numOpremaShow;
         private System.Windows.Forms.Label lblOpremaSearch;
         private System.Windows.Forms.TextBox txtOpremaSsearch;
         private System.Windows.Forms.Button btnOpremaDodaj;

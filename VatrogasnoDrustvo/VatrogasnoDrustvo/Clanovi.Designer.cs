@@ -40,12 +40,9 @@
             this.dgvClanovi = new System.Windows.Forms.DataGridView();
             this.txtClanoviSearch = new System.Windows.Forms.TextBox();
             this.lblClanoviSearch = new System.Windows.Forms.Label();
-            this.lblClanoviShow = new System.Windows.Forms.Label();
-            this.numClanoviShow = new System.Windows.Forms.NumericUpDown();
             this.btnClanoviDodaj = new System.Windows.Forms.Button();
             this.tlstrpClanovi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanovi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numClanoviShow)).BeginInit();
             this.SuspendLayout();
             // 
             // tlstrpClanovi
@@ -138,25 +135,6 @@
             this.lblClanoviSearch.TabIndex = 3;
             this.lblClanoviSearch.Text = "Search:";
             // 
-            // lblClanoviShow
-            // 
-            this.lblClanoviShow.AutoSize = true;
-            this.lblClanoviShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClanoviShow.ForeColor = System.Drawing.Color.White;
-            this.lblClanoviShow.Location = new System.Drawing.Point(137, 98);
-            this.lblClanoviShow.Name = "lblClanoviShow";
-            this.lblClanoviShow.Size = new System.Drawing.Size(51, 17);
-            this.lblClanoviShow.TabIndex = 4;
-            this.lblClanoviShow.Text = "Show:";
-            this.lblClanoviShow.Click += new System.EventHandler(this.lblClanoviShow_Click);
-            // 
-            // numClanoviShow
-            // 
-            this.numClanoviShow.Location = new System.Drawing.Point(212, 93);
-            this.numClanoviShow.Name = "numClanoviShow";
-            this.numClanoviShow.Size = new System.Drawing.Size(48, 20);
-            this.numClanoviShow.TabIndex = 5;
-            // 
             // btnClanoviDodaj
             // 
             this.btnClanoviDodaj.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -166,6 +144,7 @@
             this.btnClanoviDodaj.TabIndex = 6;
             this.btnClanoviDodaj.Text = "Dodaj člana";
             this.btnClanoviDodaj.UseVisualStyleBackColor = true;
+            this.btnClanoviDodaj.Click += new System.EventHandler(this.btnClanoviDodaj_Click);
             // 
             // frmClanovi
             // 
@@ -174,8 +153,6 @@
             this.BackColor = System.Drawing.Color.Firebrick;
             this.ClientSize = new System.Drawing.Size(1362, 719);
             this.Controls.Add(this.btnClanoviDodaj);
-            this.Controls.Add(this.numClanoviShow);
-            this.Controls.Add(this.lblClanoviShow);
             this.Controls.Add(this.lblClanoviSearch);
             this.Controls.Add(this.txtClanoviSearch);
             this.Controls.Add(this.dgvClanovi);
@@ -187,7 +164,6 @@
             this.tlstrpClanovi.ResumeLayout(false);
             this.tlstrpClanovi.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanovi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numClanoviShow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,8 +182,6 @@
         private System.Windows.Forms.DataGridView dgvClanovi;
         private System.Windows.Forms.TextBox txtClanoviSearch;
         private System.Windows.Forms.Label lblClanoviSearch;
-        private System.Windows.Forms.Label lblClanoviShow;
-        private System.Windows.Forms.NumericUpDown numClanoviShow;
         private System.Windows.Forms.Button btnClanoviDodaj;
     }
 }

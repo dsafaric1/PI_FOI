@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo
 {
-    public partial class frmClanovi : Form
+    public partial class frmOprema : Form
     {
-        public frmClanovi()
+        public frmOprema()
         {
             InitializeComponent();
-        }
-
-        private void lblClanoviShow_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tlstrplblClanoviIntervencije_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

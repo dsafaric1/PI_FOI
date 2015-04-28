@@ -83,6 +83,7 @@
             this.tlstrplblClanoviIntervencije.Name = "tlstrplblClanoviIntervencije";
             this.tlstrplblClanoviIntervencije.Size = new System.Drawing.Size(68, 20);
             this.tlstrplblClanoviIntervencije.Text = "Intervencije";
+            this.tlstrplblClanoviIntervencije.Click += new System.EventHandler(this.tlstrplblClanoviIntervencije_Click);
             // 
             // toolStripSeparator2
             // 

@@ -26,5 +26,11 @@ namespace VatrogasnoDrustvo
         {
 
         }
+
+        private void tlstrplblClanovi_Click(object sender, EventArgs e)
+        {
+            frmClanovi clanovi = new frmClanovi();
+            clanovi.Show();
+        }
     }
 }

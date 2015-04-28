@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clanovi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clanovi.Designer.cs">
+      <DependentUpon>Clanovi.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlavnaForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Clanovi.resx">
+      <DependentUpon>Clanovi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GlavnaForma.resx">
       <DependentUpon>GlavnaForma.cs</DependentUpon>
     </EmbeddedResource>

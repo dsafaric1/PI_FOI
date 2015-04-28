@@ -97,6 +97,7 @@
             this.tlstrplblOprema.Name = "tlstrplblOprema";
             this.tlstrplblOprema.Size = new System.Drawing.Size(50, 20);
             this.tlstrplblOprema.Text = "Oprema";
+            this.tlstrplblOprema.Click += new System.EventHandler(this.tlstrplblOprema_Click);
             // 
             // tlstrpsprtTreci
             // 
@@ -109,6 +110,7 @@
             this.tlstrplblNatjecanja.Name = "tlstrplblNatjecanja";
             this.tlstrplblNatjecanja.Size = new System.Drawing.Size(63, 20);
             this.tlstrplblNatjecanja.Text = "Natjecanja";
+            this.tlstrplblNatjecanja.Click += new System.EventHandler(this.tlstrplblNatjecanja_Click);
             // 
             // lblPrijavljenIme
             // 

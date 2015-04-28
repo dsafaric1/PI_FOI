@@ -62,6 +62,18 @@
     <Compile Include="Intervencije.Designer.cs">
       <DependentUpon>Intervencije.cs</DependentUpon>
     </Compile>
+    <Compile Include="Natjecanja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Natjecanja.Designer.cs">
+      <DependentUpon>Natjecanja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Oprema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oprema.Designer.cs">
+      <DependentUpon>Oprema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Prijava.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +90,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Intervencije.resx">
       <DependentUpon>Intervencije.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Natjecanja.resx">
+      <DependentUpon>Natjecanja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oprema.resx">
+      <DependentUpon>Oprema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prijava.resx">
       <DependentUpon>Prijava.cs</DependentUpon>

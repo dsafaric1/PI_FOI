@@ -38,5 +38,17 @@ namespace VatrogasnoDrustvo
             frmIntervencije intervencije = new frmIntervencije();
             intervencije.Show();
         }
+
+        private void tlstrplblOprema_Click(object sender, EventArgs e)
+        {
+            frmOprema oprema = new frmOprema();
+            oprema.Show();
+        }
+
+        private void tlstrplblNatjecanja_Click(object sender, EventArgs e)
+        {
+            frmNatjecanja natjecanja = new frmNatjecanja();
+            natjecanja.Show();
+        }
     }
 }

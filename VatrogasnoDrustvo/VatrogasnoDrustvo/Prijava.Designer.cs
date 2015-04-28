@@ -66,6 +66,7 @@
             this.txtLozinka.TabIndex = 2;
             this.txtLozinka.Text = "Lozinka";
             this.txtLozinka.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtLozinka.UseSystemPasswordChar = true;
             // 
             // btnPrijaviSe
             // 
@@ -75,6 +76,7 @@
             this.btnPrijaviSe.TabIndex = 3;
             this.btnPrijaviSe.Text = "Prijavi se";
             this.btnPrijaviSe.UseVisualStyleBackColor = true;
+            this.btnPrijaviSe.Click += new System.EventHandler(this.btnPrijaviSe_Click);
             // 
             // lblDobrovoljnoVatrogasnoDrustvo
             // 

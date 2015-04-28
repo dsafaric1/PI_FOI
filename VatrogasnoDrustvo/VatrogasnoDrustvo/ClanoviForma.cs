@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo
 {
-    public partial class frmOprema : Form
+    public partial class ClanoviForma : VatrogasnoDrustvo.BaseDataGridForma
     {
-        public frmOprema()
+        public ClanoviForma()
         {
             InitializeComponent();
         }

@@ -3,23 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo
 {
-    public partial class frmPodaciIntervencije : Form
+    public partial class IntervencijeForma : VatrogasnoDrustvo.BaseDataGridForma
     {
-        public frmPodaciIntervencije()
+        public IntervencijeForma()
         {
             InitializeComponent();
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

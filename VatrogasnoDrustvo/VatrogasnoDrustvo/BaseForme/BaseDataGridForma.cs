@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo
 {
-    public partial class frmNatjecanja : Form
+    public partial class BaseDataGridForma : BaseToolStripForma
     {
-        public frmNatjecanja()
+        public BaseDataGridForma()
         {
             InitializeComponent();
         }

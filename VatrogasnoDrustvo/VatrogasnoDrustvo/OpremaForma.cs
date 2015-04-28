@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo
 {
-    public partial class GlavnaForma : VatrogasnoDrustvo.BaseToolStripForma
+    public partial class OpremaForma : VatrogasnoDrustvo.BaseDataGridForma
     {
-        public GlavnaForma()
+        public OpremaForma()
         {
             InitializeComponent();
         }

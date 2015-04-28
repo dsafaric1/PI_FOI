@@ -19,9 +19,9 @@ namespace VatrogasnoDrustvo
 
         private void btnPrijaviSe_Click(object sender, EventArgs e)
         {
-            frmGlavnaForma prijava = new frmGlavnaForma();
-
-            prijava.Show();
+            GlavnaForma frmGlavna = new GlavnaForma();
+            frmGlavna.Show();
+            this.Hide();
         }
     }
 }

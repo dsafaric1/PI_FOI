@@ -44,11 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clanovi.cs">
+    <Compile Include="BaseForme\BaseDataGridForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Clanovi.Designer.cs">
-      <DependentUpon>Clanovi.cs</DependentUpon>
+    <Compile Include="BaseForme\BaseDataGridForma.Designer.cs">
+      <DependentUpon>BaseDataGridForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForme\BaseToolStripForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForme\BaseToolStripForma.Designer.cs">
+      <DependentUpon>BaseToolStripForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClanoviForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClanoviForma.Designer.cs">
+      <DependentUpon>ClanoviForma.cs</DependentUpon>
     </Compile>
     <Compile Include="GlavnaForma.cs">
       <SubType>Form</SubType>
@@ -56,35 +68,23 @@
     <Compile Include="GlavnaForma.Designer.cs">
       <DependentUpon>GlavnaForma.cs</DependentUpon>
     </Compile>
-    <Compile Include="Intervencije.cs">
+    <Compile Include="IntervencijeForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Intervencije.Designer.cs">
-      <DependentUpon>Intervencije.cs</DependentUpon>
+    <Compile Include="IntervencijeForma.Designer.cs">
+      <DependentUpon>IntervencijeForma.cs</DependentUpon>
     </Compile>
-    <Compile Include="Natjecanja.cs">
+    <Compile Include="NatjecanjaForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Natjecanja.Designer.cs">
-      <DependentUpon>Natjecanja.cs</DependentUpon>
+    <Compile Include="NatjecanjaForma.Designer.cs">
+      <DependentUpon>NatjecanjaForma.cs</DependentUpon>
     </Compile>
-    <Compile Include="Oprema.cs">
+    <Compile Include="OpremaForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Oprema.Designer.cs">
-      <DependentUpon>Oprema.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PodaciClana.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PodaciClana.Designer.cs">
-      <DependentUpon>PodaciClana.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PodaciIntervencije.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PodaciIntervencije.Designer.cs">
-      <DependentUpon>PodaciIntervencije.cs</DependentUpon>
+    <Compile Include="OpremaForma.Designer.cs">
+      <DependentUpon>OpremaForma.cs</DependentUpon>
     </Compile>
     <Compile Include="Prijava.cs">
       <SubType>Form</SubType>
@@ -94,26 +94,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Clanovi.resx">
-      <DependentUpon>Clanovi.cs</DependentUpon>
+    <EmbeddedResource Include="BaseForme\BaseDataGridForma.resx">
+      <DependentUpon>BaseDataGridForma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GlavnaForma.resx">
-      <DependentUpon>GlavnaForma.cs</DependentUpon>
+    <EmbeddedResource Include="BaseForme\BaseToolStripForma.resx">
+      <DependentUpon>BaseToolStripForma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Intervencije.resx">
-      <DependentUpon>Intervencije.cs</DependentUpon>
+    <EmbeddedResource Include="NatjecanjaForma.resx">
+      <DependentUpon>NatjecanjaForma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Natjecanja.resx">
-      <DependentUpon>Natjecanja.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Oprema.resx">
-      <DependentUpon>Oprema.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PodaciClana.resx">
-      <DependentUpon>PodaciClana.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PodaciIntervencije.resx">
-      <DependentUpon>PodaciIntervencije.cs</DependentUpon>
+    <EmbeddedResource Include="OpremaForma.resx">
+      <DependentUpon>OpremaForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prijava.resx">
       <DependentUpon>Prijava.cs</DependentUpon>

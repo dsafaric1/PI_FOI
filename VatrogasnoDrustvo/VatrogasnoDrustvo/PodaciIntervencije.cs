@@ -10,17 +10,16 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo
 {
-    public partial class frmIntervencije : Form
+    public partial class frmPodaciIntervencije : Form
     {
-        public frmIntervencije()
+        public frmPodaciIntervencije()
         {
             InitializeComponent();
         }
 
-        private void btnIntervencijeDodaj_Click(object sender, EventArgs e)
+        private void label8_Click(object sender, EventArgs e)
         {
-            frmPodaciIntervencije unos_intervencije = new frmPodaciIntervencije();
-            unos_intervencije.Show();
+
         }
     }
 }

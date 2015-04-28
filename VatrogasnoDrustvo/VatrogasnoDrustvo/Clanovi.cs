@@ -26,5 +26,11 @@ namespace VatrogasnoDrustvo
         {
 
         }
+
+        private void btnClanoviDodaj_Click(object sender, EventArgs e)
+        {
+            frmPodaciClana novi_clan = new frmPodaciClana();
+            novi_clan.Show();
+        }
     }
 }

@@ -126,6 +126,7 @@
             this.btnIntervencijeDodaj.TabIndex = 2;
             this.btnIntervencijeDodaj.Text = "Dodaj intervenciju";
             this.btnIntervencijeDodaj.UseVisualStyleBackColor = true;
+            this.btnIntervencijeDodaj.Click += new System.EventHandler(this.btnIntervencijeDodaj_Click);
             // 
             // txtIntervencijeSearch
             // 

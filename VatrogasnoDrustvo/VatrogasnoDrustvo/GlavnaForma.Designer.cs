@@ -39,8 +39,8 @@
             this.tlstrplblNatjecanja = new System.Windows.Forms.ToolStripLabel();
             this.lblPrijavljenIme = new System.Windows.Forms.Label();
             this.lblPrijavljenZvanje = new System.Windows.Forms.Label();
-            this.picGlavnaLogo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.picGlavnaLogo = new System.Windows.Forms.PictureBox();
             this.tlstrpGlavnaForma.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picGlavnaLogo)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +84,7 @@
             this.tlstrplblIntervencije.Name = "tlstrplblIntervencije";
             this.tlstrplblIntervencije.Size = new System.Drawing.Size(68, 20);
             this.tlstrplblIntervencije.Text = "Intervencije";
+            this.tlstrplblIntervencije.Click += new System.EventHandler(this.tlstrplblIntervencije_Click);
             // 
             // tlstrpsprtDrugi
             // 
@@ -130,6 +131,16 @@
             this.lblPrijavljenZvanje.TabIndex = 3;
             this.lblPrijavljenZvanje.Text = "Zvanje: Casnik";
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 50F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(58, 344);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(440, 99);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Dobro došli!";
+            // 
             // picGlavnaLogo
             // 
             this.picGlavnaLogo.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -140,16 +151,6 @@
             this.picGlavnaLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picGlavnaLogo.TabIndex = 1;
             this.picGlavnaLogo.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 50F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(58, 344);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(440, 99);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Dobro došli!";
             // 
             // frmGlavnaForma
             // 

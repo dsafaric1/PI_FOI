@@ -32,5 +32,11 @@ namespace VatrogasnoDrustvo
             frmClanovi clanovi = new frmClanovi();
             clanovi.Show();
         }
+
+        private void tlstrplblIntervencije_Click(object sender, EventArgs e)
+        {
+            frmIntervencije intervencije = new frmIntervencije();
+            intervencije.Show();
+        }
     }
 }

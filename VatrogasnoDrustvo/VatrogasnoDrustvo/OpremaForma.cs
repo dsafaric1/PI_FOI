@@ -14,5 +14,13 @@ namespace VatrogasnoDrustvo
         {
             InitializeComponent();
         }
+
+        private void btnOpremaNarudzba_Click(object sender, EventArgs e)
+        {
+            NarudzbeForma frmNarudzba = new NarudzbeForma();
+            frmNarudzba.Show();
+            frmNarudzba.TopMost = true;
+            frmNarudzba.TopLevel = true;
+        }
     }
 }

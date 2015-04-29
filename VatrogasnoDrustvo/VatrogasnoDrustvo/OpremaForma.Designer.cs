@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.btnOpremaNarudzba = new System.Windows.Forms.Button();
-            this.lblBaseNaslov.Text = "Oprema";
             this.SuspendLayout();
             // 
             // btnDodaj
             // 
             this.btnDodaj.Size = new System.Drawing.Size(105, 35);
+            // 
+            // lblBaseNaslov
+            // 
+            this.lblBaseNaslov.Size = new System.Drawing.Size(191, 49);
+            this.lblBaseNaslov.Text = "Oprema";
             // 
             // btnOpremaNarudzba
             // 
@@ -44,6 +48,7 @@
             this.btnOpremaNarudzba.TabIndex = 7;
             this.btnOpremaNarudzba.Text = "Ispiši narudžbe";
             this.btnOpremaNarudzba.UseVisualStyleBackColor = true;
+            this.btnOpremaNarudzba.Click += new System.EventHandler(this.btnOpremaNarudzba_Click);
             // 
             // OpremaForma
             // 
@@ -51,6 +56,7 @@
             this.ClientSize = new System.Drawing.Size(1362, 719);
             this.Controls.Add(this.btnOpremaNarudzba);
             this.Name = "OpremaForma";
+            this.Controls.SetChildIndex(this.lblBaseNaslov, 0);
             this.Controls.SetChildIndex(this.btnOpremaNarudzba, 0);
             this.Controls.SetChildIndex(this.btnDodaj, 0);
             this.Controls.SetChildIndex(this.lblBaseSearch, 0);

@@ -50,6 +50,12 @@
     <Compile Include="BaseForme\BaseDataGridForma.Designer.cs">
       <DependentUpon>BaseDataGridForma.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseForme\BaseListDataForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForme\BaseListDataForma.Designer.cs">
+      <DependentUpon>BaseListDataForma.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseForme\BaseToolStripForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,12 @@
     <Compile Include="ClanoviForma.Designer.cs">
       <DependentUpon>ClanoviForma.cs</DependentUpon>
     </Compile>
+    <Compile Include="DobavljaciForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DobavljaciForma.Designer.cs">
+      <DependentUpon>DobavljaciForma.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlavnaForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +85,12 @@
     </Compile>
     <Compile Include="IntervencijeForma.Designer.cs">
       <DependentUpon>IntervencijeForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NarudzbeForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NarudzbeForma.Designer.cs">
+      <DependentUpon>NarudzbeForma.cs</DependentUpon>
     </Compile>
     <Compile Include="NatjecanjaForma.cs">
       <SubType>Form</SubType>
@@ -117,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IntervencijeForma.resx">
       <DependentUpon>IntervencijeForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NarudzbeForma.resx">
+      <DependentUpon>NarudzbeForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NatjecanjaForma.resx">
       <DependentUpon>NatjecanjaForma.cs</DependentUpon>

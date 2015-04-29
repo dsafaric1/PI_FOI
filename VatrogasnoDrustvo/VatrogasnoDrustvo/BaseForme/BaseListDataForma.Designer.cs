@@ -1,6 +1,6 @@
-﻿namespace VatrogasnoDrustvo
+﻿namespace VatrogasnoDrustvo.BaseForme
 {
-    partial class BaseDataGridForma
+    partial class BaseListDataForma
     {
         /// <summary>
         /// Required designer variable.
@@ -115,6 +115,5 @@
         protected System.Windows.Forms.Label lblBaseSearch;
         protected System.Windows.Forms.TextBox txtBaseSearch;
         protected System.Windows.Forms.Label lblBaseNaslov;
-
     }
 }

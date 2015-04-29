@@ -44,108 +44,108 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseForme\BaseDataGridForma.cs">
+    <Compile Include="Controls\MainPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MainPanel.Designer.cs">
+      <DependentUpon>MainPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputForms\PodaciDobavljaca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseForme\BaseDataGridForma.Designer.cs">
-      <DependentUpon>BaseDataGridForma.cs</DependentUpon>
+    <Compile Include="InputForms\PodaciDobavljaca.Designer.cs">
+      <DependentUpon>PodaciDobavljaca.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseForme\BaseListDataForma.cs">
+    <Compile Include="InputForms\PodaciNatjecanje.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseForme\BaseListDataForma.Designer.cs">
-      <DependentUpon>BaseListDataForma.cs</DependentUpon>
+    <Compile Include="InputForms\PodaciNatjecanje.Designer.cs">
+      <DependentUpon>PodaciNatjecanje.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseForme\BaseToolStripForma.cs">
+    <Compile Include="InputForms\PodaciOpreme.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseForme\BaseToolStripForma.Designer.cs">
-      <DependentUpon>BaseToolStripForma.cs</DependentUpon>
+    <Compile Include="InputForms\PodaciOpreme.Designer.cs">
+      <DependentUpon>PodaciOpreme.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClanoviForma.cs">
+    <Compile Include="InputForms\PodaciPrijava.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClanoviForma.Designer.cs">
-      <DependentUpon>ClanoviForma.cs</DependentUpon>
+    <Compile Include="InputForms\PodaciPrijava.Designer.cs">
+      <DependentUpon>PodaciPrijava.cs</DependentUpon>
     </Compile>
-    <Compile Include="DobavljaciForma.cs">
+    <Compile Include="TableForms\DobavljaciForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DobavljaciForma.Designer.cs">
+    <Compile Include="TableForms\DobavljaciForma.Designer.cs">
       <DependentUpon>DobavljaciForma.cs</DependentUpon>
     </Compile>
-    <Compile Include="GlavnaForma.cs">
+    <Compile Include="TableForms\GlavnaForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GlavnaForma.Designer.cs">
+    <Compile Include="TableForms\GlavnaForma.Designer.cs">
       <DependentUpon>GlavnaForma.cs</DependentUpon>
     </Compile>
-    <Compile Include="IntervencijeForma.cs">
+    <Compile Include="TableForms\NarudzbeForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IntervencijeForma.Designer.cs">
-      <DependentUpon>IntervencijeForma.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NarudzbeForma.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NarudzbeForma.Designer.cs">
+    <Compile Include="TableForms\NarudzbeForma.Designer.cs">
       <DependentUpon>NarudzbeForma.cs</DependentUpon>
     </Compile>
-    <Compile Include="NatjecanjaForma.cs">
+    <Compile Include="Controls\TablePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TablePanel.Designer.cs">
+      <DependentUpon>TablePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputForms\PodaciClana.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NatjecanjaForma.Designer.cs">
-      <DependentUpon>NatjecanjaForma.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OpremaForma.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OpremaForma.Designer.cs">
-      <DependentUpon>OpremaForma.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PodaciClana.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PodaciClana.Designer.cs">
+    <Compile Include="InputForms\PodaciClana.Designer.cs">
       <DependentUpon>PodaciClana.cs</DependentUpon>
     </Compile>
-    <Compile Include="PodaciIntervencije.cs">
+    <Compile Include="InputForms\PodaciIntervencije.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PodaciIntervencije.Designer.cs">
+    <Compile Include="InputForms\PodaciIntervencije.Designer.cs">
       <DependentUpon>PodaciIntervencije.cs</DependentUpon>
     </Compile>
-    <Compile Include="Prijava.cs">
+    <Compile Include="TableForms\Prijava.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Prijava.Designer.cs">
+    <Compile Include="TableForms\Prijava.Designer.cs">
       <DependentUpon>Prijava.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BaseForme\BaseDataGridForma.resx">
-      <DependentUpon>BaseDataGridForma.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\MainPanel.resx">
+      <DependentUpon>MainPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaseForme\BaseToolStripForma.resx">
-      <DependentUpon>BaseToolStripForma.cs</DependentUpon>
+    <EmbeddedResource Include="InputForms\PodaciDobavljaca.resx">
+      <DependentUpon>PodaciDobavljaca.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClanoviForma.resx">
-      <DependentUpon>ClanoviForma.cs</DependentUpon>
+    <EmbeddedResource Include="InputForms\PodaciNatjecanje.resx">
+      <DependentUpon>PodaciNatjecanje.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IntervencijeForma.resx">
-      <DependentUpon>IntervencijeForma.cs</DependentUpon>
+    <EmbeddedResource Include="InputForms\PodaciOpreme.resx">
+      <DependentUpon>PodaciOpreme.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NarudzbeForma.resx">
+    <EmbeddedResource Include="InputForms\PodaciPrijava.resx">
+      <DependentUpon>PodaciPrijava.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableForms\DobavljaciForma.resx">
+      <DependentUpon>DobavljaciForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableForms\GlavnaForma.resx">
+      <DependentUpon>GlavnaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableForms\NarudzbeForma.resx">
       <DependentUpon>NarudzbeForma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NatjecanjaForma.resx">
-      <DependentUpon>NatjecanjaForma.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\TablePanel.resx">
+      <DependentUpon>TablePanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OpremaForma.resx">
-      <DependentUpon>OpremaForma.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prijava.resx">
+    <EmbeddedResource Include="TableForms\Prijava.resx">
       <DependentUpon>Prijava.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VatrogasnoDrustvo.BaseForme
+namespace VatrogasnoDrustvo.InputForms
 {
-    public partial class BaseListDataForma : Form
+    public partial class PodaciNatjecanje : Form
     {
-        public BaseListDataForma()
+        public PodaciNatjecanje()
         {
             InitializeComponent();
         }

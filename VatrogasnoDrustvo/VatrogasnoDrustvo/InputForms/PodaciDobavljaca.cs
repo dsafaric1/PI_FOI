@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VatrogasnoDrustvo
+namespace VatrogasnoDrustvo.InputForms
 {
-    public partial class GlavnaForma : VatrogasnoDrustvo.BaseToolStripForma
+    public partial class PodaciDobavljaca : Form
     {
-        public GlavnaForma()
+        public PodaciDobavljaca()
         {
             InitializeComponent();
         }

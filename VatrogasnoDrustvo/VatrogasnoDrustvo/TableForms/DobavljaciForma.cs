@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VatrogasnoDrustvo
+namespace VatrogasnoDrustvo.Forme
 {
-    public partial class BaseDataGridForma : BaseToolStripForma
+    public partial class DobavljaciForma : Form
     {
-        public BaseDataGridForma()
+        public DobavljaciForma()
         {
             InitializeComponent();
+            pnlDobavljaci.refresh("Dobavljači");
         }
     }
 }

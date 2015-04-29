@@ -1,6 +1,6 @@
-﻿namespace VatrogasnoDrustvo
+﻿namespace VatrogasnoDrustvo.Forme
 {
-    partial class ClanoviForma
+    partial class DobavljaciForma
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pnlDobavljaci = new VatrogasnoDrustvo.TablePanel();
             this.SuspendLayout();
             // 
-            // btnDodaj
+            // pnlDobavljaci
             // 
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            this.pnlDobavljaci.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlDobavljaci.BackColor = System.Drawing.Color.Firebrick;
+            this.pnlDobavljaci.Location = new System.Drawing.Point(-1, 0);
+            this.pnlDobavljaci.Name = "pnlDobavljaci";
+            this.pnlDobavljaci.Size = new System.Drawing.Size(985, 522);
+            this.pnlDobavljaci.TabIndex = 0;
             // 
-            // lblBaseNaslov
-            // 
-            this.lblBaseNaslov.Size = new System.Drawing.Size(179, 49);
-            this.lblBaseNaslov.Text = "Članovi";
-            // 
-            // ClanoviForma
+            // DobavljaciForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Firebrick;
-            this.ClientSize = new System.Drawing.Size(1362, 719);
-            this.Name = "ClanoviForma";
-            this.Text = "Članovi";
+            this.ClientSize = new System.Drawing.Size(986, 522);
+            this.Controls.Add(this.pnlDobavljaci);
+            this.Name = "DobavljaciForma";
+            this.Text = "DobavljaciForme";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
+
+        private TablePanel pnlDobavljaci;
     }
 }

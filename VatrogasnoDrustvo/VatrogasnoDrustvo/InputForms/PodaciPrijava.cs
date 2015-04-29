@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VatrogasnoDrustvo
+namespace VatrogasnoDrustvo.InputForms
 {
-    public partial class NatjecanjaForma : VatrogasnoDrustvo.BaseDataGridForma
+    public partial class PodaciPrijava : Form
     {
-        public NatjecanjaForma()
+        public PodaciPrijava()
         {
             InitializeComponent();
         }

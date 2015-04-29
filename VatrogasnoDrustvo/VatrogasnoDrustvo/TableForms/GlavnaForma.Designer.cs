@@ -1,6 +1,6 @@
-﻿namespace VatrogasnoDrustvo
+﻿namespace VatrogasnoDrustvo.Forme
 {
-    partial class BaseToolStripForma
+    partial class GlavnaForma
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tlstrpGlavnaForma = new System.Windows.Forms.ToolStrip();
             this.tlstrplblPocetna = new System.Windows.Forms.ToolStripLabel();
             this.tlstrpsprtPrvi = new System.Windows.Forms.ToolStripSeparator();
             this.tlstrplblIntervencije = new System.Windows.Forms.ToolStripLabel();
@@ -37,29 +36,13 @@
             this.tlstrpsprtTreci = new System.Windows.Forms.ToolStripSeparator();
             this.tlstrplblNatjecanja = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.tlstrplblClanovi = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tlstrplblClanovi = new System.Windows.Forms.ToolStripLabel();
+            this.tlstrpGlavnaForma = new System.Windows.Forms.ToolStrip();
+            this.pnlGlavna = new VatrogasnoDrustvo.Controls.MainPanel();
+            this.pnlTable = new VatrogasnoDrustvo.TablePanel();
             this.tlstrpGlavnaForma.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tlstrpGlavnaForma
-            // 
-            this.tlstrpGlavnaForma.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlstrplblPocetna,
-            this.tlstrpsprtPrvi,
-            this.tlstrplblIntervencije,
-            this.tlstrpsprtDrugi,
-            this.tlstrplblOprema,
-            this.tlstrpsprtTreci,
-            this.tlstrplblNatjecanja,
-            this.toolStripLabel1,
-            this.toolStripSeparator1,
-            this.tlstrplblClanovi});
-            this.tlstrpGlavnaForma.Location = new System.Drawing.Point(0, 0);
-            this.tlstrpGlavnaForma.Name = "tlstrpGlavnaForma";
-            this.tlstrpGlavnaForma.Padding = new System.Windows.Forms.Padding(0, 5, 1, 5);
-            this.tlstrpGlavnaForma.Size = new System.Drawing.Size(553, 33);
-            this.tlstrpGlavnaForma.TabIndex = 0;
             // 
             // tlstrplblPocetna
             // 
@@ -116,6 +99,11 @@
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(0, 20);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
+            // 
             // tlstrplblClanovi
             // 
             this.tlstrplblClanovi.Name = "tlstrplblClanovi";
@@ -123,31 +111,69 @@
             this.tlstrplblClanovi.Text = "Članovi";
             this.tlstrplblClanovi.Click += new System.EventHandler(this.tlstrplblClanovi_Click);
             // 
-            // toolStripSeparator1
+            // tlstrpGlavnaForma
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
+            this.tlstrpGlavnaForma.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlstrplblPocetna,
+            this.tlstrpsprtPrvi,
+            this.tlstrplblIntervencije,
+            this.tlstrpsprtDrugi,
+            this.tlstrplblOprema,
+            this.tlstrpsprtTreci,
+            this.tlstrplblNatjecanja,
+            this.toolStripLabel1,
+            this.toolStripSeparator1,
+            this.tlstrplblClanovi});
+            this.tlstrpGlavnaForma.Location = new System.Drawing.Point(0, 0);
+            this.tlstrpGlavnaForma.Name = "tlstrpGlavnaForma";
+            this.tlstrpGlavnaForma.Padding = new System.Windows.Forms.Padding(0, 5, 1, 5);
+            this.tlstrpGlavnaForma.Size = new System.Drawing.Size(997, 33);
+            this.tlstrpGlavnaForma.TabIndex = 0;
             // 
-            // BaseToolStripForma
-            //  
+            // pnlGlavna
+            // 
+            this.pnlGlavna.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlGlavna.BackColor = System.Drawing.Color.Firebrick;
+            this.pnlGlavna.Location = new System.Drawing.Point(0, 36);
+            this.pnlGlavna.Name = "pnlGlavna";
+            this.pnlGlavna.Size = new System.Drawing.Size(997, 441);
+            this.pnlGlavna.TabIndex = 1;
+            // 
+            // pnlTable
+            // 
+            this.pnlTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlTable.BackColor = System.Drawing.Color.Firebrick;
+            this.pnlTable.Location = new System.Drawing.Point(0, 36);
+            this.pnlTable.Name = "pnlTable";
+            this.pnlTable.Size = new System.Drawing.Size(997, 441);
+            this.pnlTable.TabIndex = 3;
+            // 
+            // GlavnaForma
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Firebrick;
-            this.ClientSize = new System.Drawing.Size(553, 578);
+            this.ClientSize = new System.Drawing.Size(997, 481);
             this.Controls.Add(this.tlstrpGlavnaForma);
-            this.Name = "BaseToolStripForma";
+            this.Controls.Add(this.pnlTable);
+            this.Controls.Add(this.pnlGlavna);
+            this.Name = "GlavnaForma";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tlstrpGlavnaForma.ResumeLayout(false);
             this.tlstrpGlavnaForma.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
-        
+
 
         #endregion
 
-        protected System.Windows.Forms.ToolStrip tlstrpGlavnaForma;
         protected System.Windows.Forms.ToolStripLabel tlstrplblPocetna;
         protected System.Windows.Forms.ToolStripSeparator tlstrpsprtPrvi;
         protected System.Windows.Forms.ToolStripLabel tlstrplblIntervencije;
@@ -156,7 +182,10 @@
         protected System.Windows.Forms.ToolStripSeparator tlstrpsprtTreci;
         protected System.Windows.Forms.ToolStripLabel tlstrplblNatjecanja;
         protected System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        protected System.Windows.Forms.ToolStripLabel tlstrplblClanovi;
         protected System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        protected System.Windows.Forms.ToolStripLabel tlstrplblClanovi;
+        protected System.Windows.Forms.ToolStrip tlstrpGlavnaForma;
+        private Controls.MainPanel pnlGlavna;
+        private TablePanel pnlTable;
     }
 }

@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        protected void InitializeComponents()
+        new protected void InitializeComponent()
         {
             this.tlstrpGlavnaForma = new System.Windows.Forms.ToolStrip();
             this.tlstrplblPocetna = new System.Windows.Forms.ToolStripLabel();
@@ -129,7 +129,7 @@
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
             // 
             // BaseToolStripForma
-            // 
+            //  
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Firebrick;
@@ -141,7 +141,6 @@
             this.tlstrpGlavnaForma.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         

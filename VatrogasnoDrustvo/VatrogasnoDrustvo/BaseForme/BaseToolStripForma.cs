@@ -14,7 +14,7 @@ namespace VatrogasnoDrustvo
     {
         public BaseToolStripForma()
         {
-            InitializeComponents();
+            InitializeComponent();
         }
         protected void lblPrijavljenIme_Click(object sender, EventArgs e)
         {

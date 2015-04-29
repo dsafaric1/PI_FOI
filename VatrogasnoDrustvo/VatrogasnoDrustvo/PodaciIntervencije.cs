@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo
 {
-    public partial class frmPrijava : Form
+    public partial class PodaciIntervencije : Form
     {
-        public frmPrijava()
+        public PodaciIntervencije()
         {
             InitializeComponent();
-        }
-
-        private void btnPrijaviSe_Click(object sender, EventArgs e)
-        {
-            GlavnaForma frmGlavna = new GlavnaForma();
-            frmGlavna.Show();
         }
     }
 }

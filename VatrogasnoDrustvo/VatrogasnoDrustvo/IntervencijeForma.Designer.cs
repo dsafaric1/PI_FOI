@@ -28,8 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // lblBaseNaslov
+            // 
+            this.lblBaseNaslov.Size = new System.Drawing.Size(271, 49);
             this.lblBaseNaslov.Text = "Intervencije";
+            // 
+            // IntervencijeForma
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(1362, 719);
+            this.Name = "IntervencijeForma";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

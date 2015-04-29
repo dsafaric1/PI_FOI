@@ -14,5 +14,11 @@ namespace VatrogasnoDrustvo
         {
             InitializeComponent();
         }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            PodaciClana frmPodaciClana = new PodaciClana();
+            frmPodaciClana.Show();
+        }
     }
 }

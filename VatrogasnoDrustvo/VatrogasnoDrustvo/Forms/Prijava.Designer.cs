@@ -1,5 +1,8 @@
 ﻿namespace VatrogasnoDrustvo
 {
+    /**
+     * Forma za prijavu korisnika u sustav.
+     */
     partial class frmPrijava
     {
         /// <summary>

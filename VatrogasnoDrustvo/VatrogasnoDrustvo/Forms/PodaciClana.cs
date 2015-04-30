@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo
 {
+    /**
+     * Forma za unos novog člana društva. Ne misli se na registraciju.
+     */
     public partial class PodaciClana : Form
     {
         public PodaciClana()

@@ -1,5 +1,8 @@
 ﻿namespace VatrogasnoDrustvo.Controls
 {
+    /**
+     * Kontrola za panel pri ulasku korisnika u sustav.
+     */
     partial class MainPanel
     {
         /// <summary> 

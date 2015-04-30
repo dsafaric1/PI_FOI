@@ -1,5 +1,8 @@
 ﻿namespace VatrogasnoDrustvo
 {
+    /**
+     * User kontrola za tablični prikaz formi.
+     */
     partial class TablePanel
     {
         /// <summary> 

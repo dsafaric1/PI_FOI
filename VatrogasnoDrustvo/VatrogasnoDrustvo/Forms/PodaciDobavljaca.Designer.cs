@@ -1,5 +1,8 @@
 ﻿namespace VatrogasnoDrustvo.InputForms
 {
+    /**
+     * Forme za unos podataka o dobavljaču.
+     */
     partial class PodaciDobavljaca
     {
         /// <summary>

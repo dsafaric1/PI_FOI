@@ -1,5 +1,8 @@
 ﻿namespace VatrogasnoDrustvo.InputForms
 {
+    /**
+     * Forma za unos novog natjecanja.
+     */
     partial class PodaciNatjecanje
     {
         /// <summary>

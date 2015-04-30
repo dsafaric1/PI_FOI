@@ -1,5 +1,9 @@
 ﻿namespace VatrogasnoDrustvo.Forme
 {
+    /**
+     * Forma koja otvara skočni prozor sa tabličnim prikazom dobavljača.
+     * Skok se desi pritiskom na gumb Dobavljači u formi Narudžbe.
+     */
     partial class DobavljaciForma
     {
         /// <summary>

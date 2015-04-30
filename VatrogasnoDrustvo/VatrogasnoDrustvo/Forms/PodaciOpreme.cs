@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo.InputForms
 {
+    /**
+     * Forma za unos nove opreme.
+     */
     public partial class PodaciOpreme : Form
     {
         public PodaciOpreme()

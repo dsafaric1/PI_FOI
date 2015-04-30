@@ -11,6 +11,9 @@ using VatrogasnoDrustvo.Forme;
 
 namespace VatrogasnoDrustvo
 {
+    /**
+     * Forma za prijavu korisnika u sustav.
+     */
     public partial class frmPrijava : Form
     {
         public frmPrijava()
@@ -18,6 +21,11 @@ namespace VatrogasnoDrustvo
             InitializeComponent();
         }
 
+        /**
+         * Metoda koja obrađuje OnClick event na gumbić Prijavi se. Zasad se otvara
+         * samo glavna forma radi testiranja, al treba dodati logiku za obradu status koji
+         * će vratiti poslužitelj
+         */
         private void btnPrijaviSe_Click(object sender, EventArgs e)
         {
             GlavnaForma frmGlavna = new GlavnaForma();

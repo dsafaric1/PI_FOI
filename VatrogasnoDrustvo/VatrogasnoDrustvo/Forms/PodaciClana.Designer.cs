@@ -1,5 +1,8 @@
 ﻿namespace VatrogasnoDrustvo
 {
+    /**
+     * Forma za unos novog člana društva. Ne misli se na registriranje.
+     */
     partial class PodaciClana
     {
         /// <summary>

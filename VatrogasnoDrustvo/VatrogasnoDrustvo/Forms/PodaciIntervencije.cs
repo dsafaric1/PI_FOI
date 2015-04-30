@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo
 {
+    /**
+     * Forma za unos nove intervencije.
+     */
     public partial class PodaciIntervencije : Form
     {
         public PodaciIntervencije()

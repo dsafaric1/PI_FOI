@@ -1,5 +1,8 @@
 ﻿namespace VatrogasnoDrustvo
 {
+    /**
+     * Forma za unos nove intervencije.
+     */
     partial class PodaciIntervencije
     {
         /// <summary>

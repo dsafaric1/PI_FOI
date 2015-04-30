@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo.InputForms
 {
+    /**
+     * Forma za prijavu na natjecanje (unos).
+     */
     public partial class PodaciPrijava : Form
     {
         public PodaciPrijava()

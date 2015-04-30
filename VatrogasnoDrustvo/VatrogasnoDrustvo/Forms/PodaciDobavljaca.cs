@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo.InputForms
 {
+    /**
+     * Forma za unos novog dobavljača.
+     */
     public partial class PodaciDobavljaca : Form
     {
         public PodaciDobavljaca()

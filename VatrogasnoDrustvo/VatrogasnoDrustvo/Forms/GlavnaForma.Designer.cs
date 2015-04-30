@@ -1,5 +1,9 @@
 ﻿namespace VatrogasnoDrustvo.Forme
 {
+    /**
+     * Glavna forma koja se otvara nakon prijave. Ima na vrhu
+     * ToolStrip objekt s poveznicama za promjenu prikaza panela.
+     */
     partial class GlavnaForma
     {
         /// <summary>

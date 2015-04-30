@@ -1,5 +1,9 @@
 ﻿namespace VatrogasnoDrustvo.Forme
 {
+    /**
+     * Tablični prikaz narudžbi van glavne forme. 
+     * Skočni prozor na klik gumba Prikaži narudžbe u panelu Oprema.
+     */
     partial class NarudzbeForma
     {
         /// <summary>

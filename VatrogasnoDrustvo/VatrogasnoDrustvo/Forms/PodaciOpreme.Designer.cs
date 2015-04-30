@@ -1,5 +1,8 @@
 ﻿namespace VatrogasnoDrustvo.InputForms
 {
+    /**
+     * Forma za unos nove opreme.
+     */
     partial class PodaciOpreme
     {
         /// <summary>

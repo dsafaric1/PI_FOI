@@ -39,8 +39,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tlstrplblClanovi = new System.Windows.Forms.ToolStripLabel();
             this.tlstrpGlavnaForma = new System.Windows.Forms.ToolStrip();
-            this.pnlGlavna = new VatrogasnoDrustvo.Controls.MainPanel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tlstrpLabelRegistracija = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tlstrplblIzvjestaji = new System.Windows.Forms.ToolStripLabel();
             this.pnlTable = new VatrogasnoDrustvo.TablePanel();
+            this.pnlGlavna = new VatrogasnoDrustvo.Controls.MainPanel();
             this.tlstrpGlavnaForma.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,6 +110,7 @@
             // 
             // tlstrplblClanovi
             // 
+            this.tlstrplblClanovi.Margin = new System.Windows.Forms.Padding(10, 1, 10, 2);
             this.tlstrplblClanovi.Name = "tlstrplblClanovi";
             this.tlstrplblClanovi.Size = new System.Drawing.Size(47, 20);
             this.tlstrplblClanovi.Text = "Članovi";
@@ -123,23 +128,40 @@
             this.tlstrplblNatjecanja,
             this.toolStripLabel1,
             this.toolStripSeparator1,
-            this.tlstrplblClanovi});
+            this.tlstrplblClanovi,
+            this.toolStripSeparator2,
+            this.tlstrpLabelRegistracija,
+            this.toolStripSeparator3,
+            this.tlstrplblIzvjestaji});
             this.tlstrpGlavnaForma.Location = new System.Drawing.Point(0, 0);
             this.tlstrpGlavnaForma.Name = "tlstrpGlavnaForma";
             this.tlstrpGlavnaForma.Padding = new System.Windows.Forms.Padding(0, 5, 1, 5);
             this.tlstrpGlavnaForma.Size = new System.Drawing.Size(997, 33);
             this.tlstrpGlavnaForma.TabIndex = 0;
             // 
-            // pnlGlavna
+            // toolStripSeparator2
             // 
-            this.pnlGlavna.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlGlavna.BackColor = System.Drawing.Color.Firebrick;
-            this.pnlGlavna.Location = new System.Drawing.Point(0, 36);
-            this.pnlGlavna.Name = "pnlGlavna";
-            this.pnlGlavna.Size = new System.Drawing.Size(997, 441);
-            this.pnlGlavna.TabIndex = 1;
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 23);
+            // 
+            // tlstrpLabelRegistracija
+            // 
+            this.tlstrpLabelRegistracija.Margin = new System.Windows.Forms.Padding(10, 1, 10, 2);
+            this.tlstrpLabelRegistracija.Name = "tlstrpLabelRegistracija";
+            this.tlstrpLabelRegistracija.Size = new System.Drawing.Size(67, 20);
+            this.tlstrpLabelRegistracija.Text = "Registracija";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
+            // 
+            // tlstrplblIzvjestaji
+            // 
+            this.tlstrplblIzvjestaji.Margin = new System.Windows.Forms.Padding(10, 1, 10, 2);
+            this.tlstrplblIzvjestaji.Name = "tlstrplblIzvjestaji";
+            this.tlstrplblIzvjestaji.Size = new System.Drawing.Size(51, 20);
+            this.tlstrplblIzvjestaji.Text = "Izvještaji";
             // 
             // pnlTable
             // 
@@ -151,6 +173,17 @@
             this.pnlTable.Name = "pnlTable";
             this.pnlTable.Size = new System.Drawing.Size(997, 441);
             this.pnlTable.TabIndex = 3;
+            // 
+            // pnlGlavna
+            // 
+            this.pnlGlavna.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlGlavna.BackColor = System.Drawing.Color.Firebrick;
+            this.pnlGlavna.Location = new System.Drawing.Point(0, 36);
+            this.pnlGlavna.Name = "pnlGlavna";
+            this.pnlGlavna.Size = new System.Drawing.Size(997, 441);
+            this.pnlGlavna.TabIndex = 1;
             // 
             // GlavnaForma
             // 
@@ -187,5 +220,9 @@
         protected System.Windows.Forms.ToolStrip tlstrpGlavnaForma;
         private Controls.MainPanel pnlGlavna;
         private TablePanel pnlTable;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripLabel tlstrpLabelRegistracija;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripLabel tlstrplblIzvjestaji;
     }
 }

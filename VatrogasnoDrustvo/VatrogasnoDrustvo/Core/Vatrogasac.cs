@@ -10,7 +10,7 @@ namespace VatrogasnoDrustvo.Core
 
     #region Enums
 
-    enum Clan
+    public enum Clan
     {
         Operativni,
         Izvrsni,
@@ -20,7 +20,7 @@ namespace VatrogasnoDrustvo.Core
         Pocasni
     }
 
-    enum Duznost 
+    public enum Duznost 
     {
         Predsjednik,
         ZamjenikPredsjednika,
@@ -31,7 +31,7 @@ namespace VatrogasnoDrustvo.Core
         Spremistar
     }
 
-    enum Zvanje
+    public enum Zvanje
     {
         Vatrogasac,
         VatrogasacPrveKlase,
@@ -46,7 +46,7 @@ namespace VatrogasnoDrustvo.Core
 
     #endregion Enums
 
-    class Vatrogasac
+    public class Vatrogasac
     {
         private string oib;
         public string Ime { get; set; }

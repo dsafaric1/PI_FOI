@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VatrogasnoDrustvo.Core;
 
 namespace VatrogasnoDrustvo.Forme
 {
@@ -16,9 +17,16 @@ namespace VatrogasnoDrustvo.Forme
     /// </summary>
     public partial class GlavnaForma : Form
     {
-        public GlavnaForma()
+        public Vatrogasac TrenutniVatrogasac { get; set; }
+
+        public GlavnaForma(Vatrogasac mirko)
         {
             InitializeComponent();
+            TrenutniVatrogasac = mirko;
+            Label vatroIme = pnlGlavna.Controls.Find("lblPrijavljenIme", true).FirstOrDefault() as Label;
+            Label vatroZvanje = pnlGlavna.Controls.Find("lblZvanje", true).FirstOrDefault() as Label;
+            vatroIme.Text = TrenutniVatrogasac.Ime + " " + TrenutniVatrogasac.Prezime;
+            vatroZvanje.Text = TrenutniVatrogasac.Zvanje.ToString();
             this.FormClosed += GlavnaForma_FormClosed; //Glavna forma nije zapravo glavna pa treba gasiti cijelu aplikaciju ručno
             tlstrplblPocetna_Click(null, null); //Potrebno da se na početku prikaže panel s dobrodošlicom
         }

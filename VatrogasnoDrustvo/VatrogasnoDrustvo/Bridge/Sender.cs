@@ -27,7 +27,7 @@ namespace VatrogasnoDrustvo.Bridge
         /// <param name="toSend">Podaci koji se šalju (atributi objekta)</param>
         /// <param name="URI">URL na koji se šalje</param>
         /// <returns>Odgovor servera na POST</returns>
-        public String Send(object toSend, string URI)
+        public string Send(object toSend, string URI)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings() //opcije za konverter
             {
@@ -44,9 +44,9 @@ namespace VatrogasnoDrustvo.Bridge
         /// </summary>
         /// <param name="URI">URL na kojeg se šalje</param>
         /// <returns>Lista objekata konvertirana iz JSON formata</returns>
-        public List<object> Receive(string URI)
+        public string Receive(string URI)
         {
-            return JsonConvert.DeserializeObject<List<object>>(webClient.DownloadString(URI));
+            return webClient.DownloadString(URI);
         }
     }
 }

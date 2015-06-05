@@ -4,6 +4,8 @@
  *
  * @author Tomislav Turek
  */
+require_once 'config.php';
+
 class Baza {
     private $mysqli;
     
@@ -19,13 +21,13 @@ class Baza {
     /**
      * Metoda za upite tipa SELECT
      * @param type upit
-     * @return type podaci u JSON formatu
+     * @return type podaci iz baze
      */
     function selectDB($query) {
         $this->connect();
         $result = $this->mysqli->query($query);
         $this->mysqli->close();
-        return json_encode($result);
+        return $result;
     }
     
     /**

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VatrogasnoDrustvo.Bridge;
+using VatrogasnoDrustvo.Core;
 using VatrogasnoDrustvo.Forme;
 
 namespace VatrogasnoDrustvo
@@ -18,6 +19,7 @@ namespace VatrogasnoDrustvo
     /// </summary>
     public partial class frmPrijava : Form
     {
+
         public frmPrijava()
         {
             InitializeComponent();
@@ -44,16 +46,16 @@ namespace VatrogasnoDrustvo
                     {"password", password} 
                 }; 
 
-                var response = JsonConvert.DeserializeObject<Dictionary<string,string>>(new Sender().Send(userInfo, "https://testerinho.com/vatrogasci/login.php"));
-                if (bool.Parse(response["valid"]))
+                var response = JsonConvert.DeserializeObject<Dictionary<string,object>>(new Sender().Send(userInfo, "https://testerinho.com/vatrogasci/login.php"));
+                if (bool.Parse(response["valid"].ToString()))
                 {
                     this.Visible = false;
-                    GlavnaForma frm = new GlavnaForma();
+                    GlavnaForma frm = new GlavnaForma(JsonConvert.DeserializeObject<Vatrogasac>(response["vatrogasac"].ToString()));
                     frm.Show();
                 }
                 else
                 {
-                    MessageBox.Show(response["text"]);
+                    MessageBox.Show(response["text"].ToString());
                 }
             }
             //nije unesen

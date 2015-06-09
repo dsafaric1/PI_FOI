@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VatrogasnoDrustvo.Bridge;
@@ -34,7 +35,12 @@ namespace VatrogasnoDrustvo
             //parsaj vatrogasca
             mirko = new Vatrogasac(row);
 
+            //gasi OIB
+            this.txtOIB.ReadOnly = true;
+            this.lblOIB.Visible = false;
+
             //puni textboxove
+            this.txtOIB.Text = mirko.OIB;
             this.txtPodaciClanaIme.Text = mirko.Ime;
             this.txtPodaciClanaPrezime.Text = mirko.Prezime;
             this.txtPodaciClanaAdresa.Text = mirko.Adresa;
@@ -45,6 +51,9 @@ namespace VatrogasnoDrustvo
             this.cmbPodaciCLanaZvanje.SelectedIndex = this.cmbPodaciCLanaZvanje.FindString(mirko.Zvanje.ToString());
         }
 
+        /// <summary>
+        /// Metoda za punjenje combobox kontrola sa listom svih pobrojenja.
+        /// </summary>
         private void loadSelect() 
         {
             cmbPodaciClanaDuznost.DataSource = Enum.GetValues(typeof(Duznost)).Cast<Duznost>().ToList();
@@ -52,45 +61,113 @@ namespace VatrogasnoDrustvo
             cmbPodaciCLanaZvanje.DataSource = Enum.GetValues(typeof(Zvanje)).Cast<Zvanje>().ToList();
         }
 
+        /// <summary>
+        /// OnClick na gumb spremi u prozoru s formom podataka člana.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPodaciClanaSpremi_Click(object sender, EventArgs e)
         {
-            if (mirko != null)
+            this.TopMost = false;
+            //ako je sve popunjeno
+            if (txtPodaciClanaAdresa.Text != "" && txtPodaciClanaIme.Text != ""
+                && txtPodaciClanaPrezime.Text != "" && txtOIB.Text != "")
             {
-                this.TopMost = false;
-                mirko.Ime = txtPodaciClanaIme.Text;
-                mirko.Prezime = txtPodaciClanaPrezime.Text;
-                mirko.VrstaClana = (Clan) Enum.Parse(typeof(Clan), cmbPodaciClanaVrsta.Text);
-                mirko.Zvanje = (Zvanje) Enum.Parse(typeof(Zvanje), cmbPodaciCLanaZvanje.Text);
-                mirko.Duznost = (Duznost) Enum.Parse(typeof(Duznost), cmbPodaciClanaDuznost.Text);
-                mirko.Adresa = txtPodaciClanaAdresa.Text;
-                mirko.DatumRodenja = dtpPodaciClanaRodenje.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                mirko.DatumUclanjenja = dtpPodaciClanaUclanjenje.Value.ToString("yyyy-MM-dd HH:mm:ss");
-
-                //update
-                try
+                //ako oib ima 11 brojeva
+                if (new Regex(@"\d{11}").Match(txtOIB.Text).Success)
                 {
-                    var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(mirko, "https://testerinho.com/vatrogasci/updateVatrogasac.php"));
-                    
-                    if (bool.Parse(response["passed"].ToString()))
+                    if (mirko != null)
                     {
-                        MessageBox.Show("Uspješno je ažuriran redak!");
+                        //update
+                        updateVatro(mirko);
                     }
                     else
                     {
-                        MessageBox.Show("Pogreška pri ažuriranju retka!" + Environment.NewLine + response["text"].ToString());
-                    }                    
+                        //create
+                        createVatro();
+                    }
+                    this.Close();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Pogreška u kontaktiranju servera!" + Environment.NewLine + ex.ToString());
+                    MessageBox.Show("OIB mora imati 11 brojeva.");
                 }
             }
             else
             {
-                //CREATE ČLAN
+                MessageBox.Show("Sve vrijednosti moraju biti unesene!");
             }
+            
+        }
 
-            this.Close();
+        private Vatrogasac getData(Vatrogasac mirko = null)
+        {
+            if(mirko == null) mirko = new Vatrogasac();
+            mirko.OIB = txtOIB.Text;
+            mirko.Ime = txtPodaciClanaIme.Text;
+            mirko.Prezime = txtPodaciClanaPrezime.Text;
+            mirko.VrstaClana = (Clan)Enum.Parse(typeof(Clan), cmbPodaciClanaVrsta.Text);
+            mirko.Zvanje = (Zvanje)Enum.Parse(typeof(Zvanje), cmbPodaciCLanaZvanje.Text);
+            mirko.Duznost = (Duznost)Enum.Parse(typeof(Duznost), cmbPodaciClanaDuznost.Text);
+            mirko.Adresa = txtPodaciClanaAdresa.Text;
+            mirko.DatumRodenja = dtpPodaciClanaRodenje.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            mirko.DatumUclanjenja = dtpPodaciClanaUclanjenje.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            return mirko;
+        }
+
+        /// <summary>
+        /// Poziv php skripte za kreiranje novog člana.
+        /// </summary>
+        private void createVatro()
+        {
+            mirko = getData();
+
+            //create
+            try
+            {
+                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(mirko, "https://testerinho.com/vatrogasci/insertVatrogasac.php"));
+
+                if (bool.Parse(response["passed"].ToString()))
+                {
+                    MessageBox.Show("Novi član je uspješno unesen!");
+                }
+                else
+                {
+                    MessageBox.Show(response["text"].ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Pogreška u kontaktiranju servera!" + Environment.NewLine + e.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Poziv php skripte za ažuriranje člana.
+        /// </summary>
+        /// <param name="mirko">Podaci člana kojeg se ažurira</param>
+        private void updateVatro(Vatrogasac mirko)
+        {
+            mirko = getData(mirko);
+
+            //update
+            try
+            {
+                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(mirko, "https://testerinho.com/vatrogasci/updateVatrogasac.php"));
+
+                if (bool.Parse(response["passed"].ToString()))
+                {
+                    MessageBox.Show("Uspješno je ažuriran redak!");
+                }
+                else
+                {
+                    MessageBox.Show(response["text"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Pogreška u kontaktiranju servera!" + Environment.NewLine + ex.ToString());
+            }
         }
     }
 }

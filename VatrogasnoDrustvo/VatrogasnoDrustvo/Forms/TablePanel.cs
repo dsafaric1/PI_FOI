@@ -21,6 +21,9 @@ namespace VatrogasnoDrustvo
     /// </summary>
     public partial class TablePanel : UserControl
     {
+        public bool Admin { get; set; }
+        public string Table { get; set; }
+
         public TablePanel()
         {
             InitializeComponent();
@@ -80,22 +83,35 @@ namespace VatrogasnoDrustvo
         /// niti EventHandlere na gumbićima koji su se tek postavili u vidljive.
         /// </summary>
         /// <param name="keyword">Naziv tablice koja se želi prikazati</param>
-        public void RefreshPanel<T>(String keyword)
+        public void RefreshPanel<T>(String keyword, bool admin = false)
         {
+            this.Admin = admin;
+            this.Table = keyword;
             hideDegrees();
-            if (keyword == "Oprema")
-            { 
-                initButton(btnFirstDegree, "Ispis narudžbi", IspisNarudzbi_Click);
-            }
-            else if (keyword == "Natjecanja")
+            if (Admin)
             {
-                initButton(btnFirstDegree, "Prijavi se", Prijavi_ekipu_natjecanje_Click);
+                //ovisno o tablici, sakrij gumbiće
+                if (keyword == "Oprema")
+                {
+                    initButton(btnFirstDegree, "Ispis narudžbi", IspisNarudzbi_Click);
+                }
+                else if (keyword == "Natjecanja")
+                {
+                    initButton(btnFirstDegree, "Prijavi se", Prijavi_ekipu_natjecanje_Click);
+                }
+                else if (keyword == "Narudžbe")
+                {
+                    initButton(btnFirstDegree, "Generiraj PDF", null);
+                    initButton(btnSecondDegree, "Dobavljači", Dobavljac_Click);
+                }
             }
-            else if (keyword == "Narudžbe")
+            else
             {
-                initButton(btnFirstDegree, "Generiraj PDF", null);
-                initButton(btnSecondDegree, "Dobavljači", Dobavljac_Click);
+                //registrirani se može samo prijaviti na natjecanje
+                if (keyword == "Natjecanja") initButton(btnFirstDegree, "Prijavi se", Prijavi_ekipu_natjecanje_Click);
+                btnDodaj.Visible = false;
             }
+            
             lblBase.Text = keyword;
             refreshDataGrid<T>(keyword);
         }
@@ -108,9 +124,17 @@ namespace VatrogasnoDrustvo
         {
             try
             {
-                dgvDBData.DataSource = JsonConvert.DeserializeObject<List<object>>(new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
-                dgvDBData.KeyDown += dgvDBData_KeyDown;
-                dgvDBData.CellDoubleClick += dgvDBData_CellClick<T>;
+                //za read
+                dgvDBData.DataSource = JsonConvert.DeserializeObject<List<object>>
+                    (new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
+                if (Admin)
+                {
+                    //za update i delete
+                    dgvDBData.KeyDown -= dgvDBData_KeyDown<T>; //prvo prebriši pa dodaj da bude samo jedan handler
+                    dgvDBData.KeyDown += dgvDBData_KeyDown<T>;
+                    dgvDBData.CellDoubleClick -= dgvDBData_CellClick<T>;
+                    dgvDBData.CellDoubleClick += dgvDBData_CellClick<T>;
+                }
             }
             catch (Exception e)
             {
@@ -123,15 +147,41 @@ namespace VatrogasnoDrustvo
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void dgvDBData_KeyDown(object sender, KeyEventArgs e)
+        void dgvDBData_KeyDown<T>(object sender, KeyEventArgs e)
         {
+            //pritisak na tipku delete
             if (e.KeyCode == Keys.Delete)
             {
                 int pos = dgvDBData.SelectedCells[0].RowIndex;
                 string name = dgvDBData.Rows[pos].Cells["Ime"].Value.ToString() + " " + dgvDBData.Rows[pos].Cells["Prezime"].Value.ToString();
                 if (MessageBox.Show("Jeste li sigurni da želite obrisati redak " + name, "Potvrda", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    //zovi php TODO
+                    //instanciranje dinamički
+                    object toDelete = (T)Activator.CreateInstance(typeof(T), dgvDBData.Rows[pos]);
+
+                    try
+                    {
+                        //šalji što se briše
+                        var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
+                            (new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
+
+                        //obradi odgovor
+                        if (bool.Parse(response["passed"].ToString()))
+                        {
+                            MessageBox.Show("Redak je uspješno obrisan!");
+                        }
+                        else
+                        {
+                            MessageBox.Show(response["text"].ToString());
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Pogreška kod kontaktiranja servera! " + Environment.NewLine + ex.ToString());
+                    }
+
+                    //osvježi pogled
+                    this.RefreshPanel<T>(Table, Admin);
                 }
             }
         }
@@ -143,16 +193,15 @@ namespace VatrogasnoDrustvo
         /// <param name="e"></param>
         void dgvDBData_CellClick<T>(object sender, DataGridViewCellEventArgs e)
         {
-            dgvDBData.CellDoubleClick -= dgvDBData_CellClick<T>;
             DataGridViewRow row = dgvDBData.Rows[e.RowIndex];
             
             //parse type Vatrogasac
             if (typeof(T) == typeof(Vatrogasac))
             {
                 new PodaciClana(row).ShowDialog();
-                this.RefreshPanel<Vatrogasac>("Članovi");
             }
-            
+
+            this.RefreshPanel<T>(Table, Admin);
         }
 
         /// <summary>
@@ -197,21 +246,39 @@ namespace VatrogasnoDrustvo
         /// <param name="e"></param>
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            if (lblBase.Text == "Članovi") openForm(new PodaciClana());
-            else if (lblBase.Text == "Intervencije") openForm(new PodaciIntervencije());
-            else if (lblBase.Text == "Oprema") openForm(new PodaciOpreme());
-            else if (lblBase.Text == "Natjecanja") openForm(new PodaciNatjecanje());
-            else if (lblBase.Text == "Dobavljači") openForm(new PodaciDobavljaca());
+            RemoveAllHandlers(btnDodaj);
+            if (lblBase.Text == "Članovi")
+            {
+                openForm(new PodaciClana());
+                RefreshPanel<Vatrogasac>(Table, Admin);
+            }
+            else if (lblBase.Text == "Intervencije")
+            {
+                openForm(new PodaciIntervencije());
+            }
+            else if (lblBase.Text == "Oprema")
+            {
+                openForm(new PodaciOpreme());
+            }
+            else if (lblBase.Text == "Natjecanja")
+            {
+                openForm(new PodaciNatjecanje());
+            }
+            else if (lblBase.Text == "Dobavljači") 
+            { 
+                openForm(new PodaciDobavljaca()); 
+            }
+            btnDodaj.Click += btnDodaj_Click;
         }
 
         /// <summary>
-        /// Metoda koja otvara formu. Zasad ima samo frm.Show(), ali je odvojena zbog mogućih potreba
+        /// Metoda koja otvara formu. Zasad ima samo frm.ShowDialog(), ali je odvojena zbog mogućih potreba
         /// da se ne može preći na parent formu dok je ova TopLevel forma otvorena.
         /// </summary>
         /// <param name="frm">Forma koja se otvara</param>
         private void openForm(Form frm)
         {
-            frm.Show();
+            frm.ShowDialog();
         }
     }
 }

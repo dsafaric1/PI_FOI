@@ -52,7 +52,9 @@ namespace VatrogasnoDrustvo
                 if (bool.Parse(response["valid"].ToString()))
                 {
                     this.Visible = false;
-                    GlavnaForma frm = new GlavnaForma(JsonConvert.DeserializeObject<Vatrogasac>(response["vatrogasac"].ToString()));
+                    Vatrogasac trenutni = JsonConvert.DeserializeObject<Vatrogasac>(response["vatrogasac"].ToString());
+                    bool admin = bool.Parse(response["admin"].ToString());
+                    GlavnaForma frm = new GlavnaForma(trenutni, admin);
                     frm.Show();
                 }
                 else

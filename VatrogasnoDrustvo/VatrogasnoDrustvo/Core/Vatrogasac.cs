@@ -23,14 +23,14 @@ namespace VatrogasnoDrustvo.Core
 
     public enum Duznost 
     {
+        Nema,
         Predsjednik,
         ZamjenikPredsjednika,
         Zapovjednik,
         ZamjenikZapovjednika,
         Tajnik,
         Blagajnik,
-        Spremistar,
-        Nema
+        Spremistar
     }
 
     public enum Zvanje

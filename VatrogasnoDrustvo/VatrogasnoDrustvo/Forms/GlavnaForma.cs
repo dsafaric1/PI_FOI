@@ -18,8 +18,9 @@ namespace VatrogasnoDrustvo.Forme
     public partial class GlavnaForma : Form
     {
         public Vatrogasac TrenutniVatrogasac { get; set; }
+        public bool Admin { get; set; }
 
-        public GlavnaForma(Vatrogasac mirko)
+        public GlavnaForma(Vatrogasac mirko, bool admin)
         {
             InitializeComponent();
 
@@ -29,6 +30,8 @@ namespace VatrogasnoDrustvo.Forme
             Label vatroZvanje = pnlGlavna.Controls.Find("lblZvanje", true).FirstOrDefault() as Label;
             vatroIme.Text = TrenutniVatrogasac.Ime + " " + TrenutniVatrogasac.Prezime;
             vatroZvanje.Text = TrenutniVatrogasac.Zvanje.ToString();
+
+            this.Admin = admin;
 
             //Glavna forma nije zapravo glavna pa treba gasiti cijelu aplikaciju ručno
             this.FormClosed += GlavnaForma_FormClosed;
@@ -101,7 +104,7 @@ namespace VatrogasnoDrustvo.Forme
         private void exchange<T>(string keyword)
         {
             pnlTable.BringToFront();
-            pnlTable.RefreshPanel<T>(keyword);
+            pnlTable.RefreshPanel<T>(keyword, Admin);
             pnlTable.Refresh();
         }
 

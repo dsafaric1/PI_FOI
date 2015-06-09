@@ -49,6 +49,8 @@
             this.cmbPodaciClanaVrsta = new System.Windows.Forms.ComboBox();
             this.cmbPodaciCLanaZvanje = new System.Windows.Forms.ComboBox();
             this.cmbPodaciClanaDuznost = new System.Windows.Forms.ComboBox();
+            this.txtOIB = new System.Windows.Forms.TextBox();
+            this.lblOIB = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblPodaciClanaIme
@@ -219,12 +221,32 @@
             this.cmbPodaciClanaDuznost.Size = new System.Drawing.Size(194, 21);
             this.cmbPodaciClanaDuznost.TabIndex = 20;
             // 
+            // txtOIB
+            // 
+            this.txtOIB.Location = new System.Drawing.Point(246, 169);
+            this.txtOIB.Name = "txtOIB";
+            this.txtOIB.Size = new System.Drawing.Size(194, 20);
+            this.txtOIB.TabIndex = 22;
+            // 
+            // lblOIB
+            // 
+            this.lblOIB.AutoSize = true;
+            this.lblOIB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOIB.ForeColor = System.Drawing.Color.White;
+            this.lblOIB.Location = new System.Drawing.Point(163, 164);
+            this.lblOIB.Name = "lblOIB";
+            this.lblOIB.Size = new System.Drawing.Size(52, 25);
+            this.lblOIB.TabIndex = 21;
+            this.lblOIB.Text = "OIB:";
+            // 
             // PodaciClana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Firebrick;
             this.ClientSize = new System.Drawing.Size(786, 701);
+            this.Controls.Add(this.txtOIB);
+            this.Controls.Add(this.lblOIB);
             this.Controls.Add(this.cmbPodaciClanaDuznost);
             this.Controls.Add(this.cmbPodaciCLanaZvanje);
             this.Controls.Add(this.cmbPodaciClanaVrsta);
@@ -271,5 +293,7 @@
         private System.Windows.Forms.ComboBox cmbPodaciClanaVrsta;
         private System.Windows.Forms.ComboBox cmbPodaciCLanaZvanje;
         private System.Windows.Forms.ComboBox cmbPodaciClanaDuznost;
+        private System.Windows.Forms.TextBox txtOIB;
+        private System.Windows.Forms.Label lblOIB;
     }
 }

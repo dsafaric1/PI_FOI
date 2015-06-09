@@ -7,7 +7,7 @@ require_once './Bridge/DB.class.php';
 
 if(isset($_POST['obj'])) {
     $data = get_object_vars(json_decode(html_entity_decode($_POST['obj'])));
-    echo var_dump($data['Duznost']);
+    
     //build update
     $update = "UPDATE vatrogasci SET ime = '{$data['Ime']}', prezime = '{$data['Prezime']}',"
     . " oib = '{$data['OIB']}', adresa = '{$data['Adresa']}', datum_rodjenja = '{$data['DatumRodenja']}',"

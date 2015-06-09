@@ -65,14 +65,11 @@ namespace VatrogasnoDrustvo
                 mirko.Adresa = txtPodaciClanaAdresa.Text;
                 mirko.DatumRodenja = dtpPodaciClanaRodenje.Value.ToString("yyyy-MM-dd HH:mm:ss");
                 mirko.DatumUclanjenja = dtpPodaciClanaUclanjenje.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                this.Close();
 
                 //update
                 try
                 {
-                    MessageBox.Show(new Sender().Send(mirko, "https://testerinho.com/vatrogasci/updateVatrogasac.php"));
                     var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(mirko, "https://testerinho.com/vatrogasci/updateVatrogasac.php"));
-                    MessageBox.Show(response.ToString());
                     
                     if (bool.Parse(response["passed"].ToString()))
                     {
@@ -81,10 +78,7 @@ namespace VatrogasnoDrustvo
                     else
                     {
                         MessageBox.Show("Pogreška pri ažuriranju retka!" + Environment.NewLine + response["text"].ToString());
-                    }
-
-                    //refresh
-                    
+                    }                    
                 }
                 catch (Exception ex)
                 {
@@ -95,6 +89,8 @@ namespace VatrogasnoDrustvo
             {
                 //CREATE ČLAN
             }
+
+            this.Close();
         }
     }
 }

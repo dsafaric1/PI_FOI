@@ -109,11 +109,30 @@ namespace VatrogasnoDrustvo
             try
             {
                 dgvDBData.DataSource = JsonConvert.DeserializeObject<List<object>>(new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
-                dgvDBData.CellClick += dgvDBData_CellClick<T>;
+                dgvDBData.KeyDown += dgvDBData_KeyDown;
+                dgvDBData.CellDoubleClick += dgvDBData_CellClick<T>;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Pogreška u dohvaćanju podataka! " + Environment.NewLine + e);
+            }
+        }
+
+        /// <summary>
+        /// Handler za OnKeyPress (delete row)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void dgvDBData_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                int pos = dgvDBData.SelectedCells[0].RowIndex;
+                string name = dgvDBData.Rows[pos].Cells["Ime"].Value.ToString() + " " + dgvDBData.Rows[pos].Cells["Prezime"].Value.ToString();
+                if (MessageBox.Show("Jeste li sigurni da želite obrisati redak " + name, "Potvrda", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    //zovi php TODO
+                }
             }
         }
 
@@ -124,13 +143,16 @@ namespace VatrogasnoDrustvo
         /// <param name="e"></param>
         void dgvDBData_CellClick<T>(object sender, DataGridViewCellEventArgs e)
         {
+            dgvDBData.CellDoubleClick -= dgvDBData_CellClick<T>;
             DataGridViewRow row = dgvDBData.Rows[e.RowIndex];
             
-            //parse type Vatrpgasac
+            //parse type Vatrogasac
             if (typeof(T) == typeof(Vatrogasac))
             {
-                new PodaciClana(row).Show();
+                new PodaciClana(row).ShowDialog();
+                this.RefreshPanel<Vatrogasac>("Članovi");
             }
+            
         }
 
         /// <summary>

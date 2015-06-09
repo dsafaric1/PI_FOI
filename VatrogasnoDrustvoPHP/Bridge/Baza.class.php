@@ -8,6 +8,7 @@ require_once 'config.php';
 
 class Baza {
     private $mysqli;
+    private $insertedID;
     
     function __construct() {
         $this->mysqli = new mysqli();

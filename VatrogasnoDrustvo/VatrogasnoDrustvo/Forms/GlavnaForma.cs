@@ -22,13 +22,18 @@ namespace VatrogasnoDrustvo.Forme
         public GlavnaForma(Vatrogasac mirko)
         {
             InitializeComponent();
+
+            //prilagođavanje glavne forme za trenutnog korisnika
             TrenutniVatrogasac = mirko;
             Label vatroIme = pnlGlavna.Controls.Find("lblPrijavljenIme", true).FirstOrDefault() as Label;
             Label vatroZvanje = pnlGlavna.Controls.Find("lblZvanje", true).FirstOrDefault() as Label;
             vatroIme.Text = TrenutniVatrogasac.Ime + " " + TrenutniVatrogasac.Prezime;
             vatroZvanje.Text = TrenutniVatrogasac.Zvanje.ToString();
-            this.FormClosed += GlavnaForma_FormClosed; //Glavna forma nije zapravo glavna pa treba gasiti cijelu aplikaciju ručno
-            tlstrplblPocetna_Click(null, null); //Potrebno da se na početku prikaže panel s dobrodošlicom
+
+            //Glavna forma nije zapravo glavna pa treba gasiti cijelu aplikaciju ručno
+            this.FormClosed += GlavnaForma_FormClosed;
+            //Potrebno da se na početku prikaže panel s dobrodošlicom
+            tlstrplblPocetna_Click(null, null); 
         }
 
         /// <summary>
@@ -60,7 +65,7 @@ namespace VatrogasnoDrustvo.Forme
         /// <param name="e"></param>
         private void tlstrplblIntervencije_Click(object sender, EventArgs e)
         {
-            exchange("Intervencije");   
+            exchange<Intervencija>("Intervencije");   
         }
 
         /// <summary>
@@ -71,7 +76,7 @@ namespace VatrogasnoDrustvo.Forme
         /// <param name="e"></param>
         private void tlstrplblClanovi_Click(object sender, EventArgs e)
         {
-            exchange("Članovi");
+            exchange<Vatrogasac>("Članovi");
         }
 
         /// <summary>
@@ -82,7 +87,7 @@ namespace VatrogasnoDrustvo.Forme
         /// <param name="e"></param>
         private void tlstrplblOprema_Click(object sender, EventArgs e)
         {
-            exchange("Oprema");
+            exchange<Oprema>("Oprema");
         }
 
         /// <summary>
@@ -93,10 +98,10 @@ namespace VatrogasnoDrustvo.Forme
         /// se metoda Refresh implementirana u klasi Control za osvježavanje kontrole.
         /// </summary>
         /// <param name="keyword"></param>
-        private void exchange(string keyword)
+        private void exchange<T>(string keyword)
         {
             pnlTable.BringToFront();
-            pnlTable.refresh(keyword);
+            pnlTable.RefreshPanel<T>(keyword);
             pnlTable.Refresh();
         }
 
@@ -108,7 +113,7 @@ namespace VatrogasnoDrustvo.Forme
         /// <param name="e"></param>
         private void tlstrplblNatjecanja_Click(object sender, EventArgs e)
         {
-            exchange("Natjecanja");
+            exchange<Natjecanje>("Natjecanja");
         }
     }
 }

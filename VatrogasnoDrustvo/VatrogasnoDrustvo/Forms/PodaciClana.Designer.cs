@@ -31,7 +31,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PodaciClana));
             this.lblPodaciClanaIme = new System.Windows.Forms.Label();
             this.lblPodaciClanaPrezime = new System.Windows.Forms.Label();
             this.lblPodaciClanaRoden = new System.Windows.Forms.Label();
@@ -173,6 +172,7 @@
             this.btnPodaciClanaSpremi.TabIndex = 11;
             this.btnPodaciClanaSpremi.Text = "Spremi";
             this.btnPodaciClanaSpremi.UseVisualStyleBackColor = true;
+            this.btnPodaciClanaSpremi.Click += new System.EventHandler(this.btnPodaciClanaSpremi_Click);
             // 
             // txtPodaciClanaIme
             // 
@@ -219,7 +219,7 @@
             this.cmbPodaciClanaDuznost.Size = new System.Drawing.Size(194, 21);
             this.cmbPodaciClanaDuznost.TabIndex = 20;
             // 
-            // frmPodaciClana
+            // PodaciClana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -243,9 +243,9 @@
             this.Controls.Add(this.lblPodaciClanaRoden);
             this.Controls.Add(this.lblPodaciClanaPrezime);
             this.Controls.Add(this.lblPodaciClanaIme);
-            this.TopMost = true;
-            this.Name = "frmPodaciClana";
+            this.Name = "PodaciClana";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

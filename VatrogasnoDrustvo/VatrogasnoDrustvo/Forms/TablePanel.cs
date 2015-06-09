@@ -10,12 +10,15 @@ using System.Windows.Forms;
 using VatrogasnoDrustvo.Forme;
 using VatrogasnoDrustvo.InputForms;
 using System.Reflection;
+using VatrogasnoDrustvo.Bridge;
+using Newtonsoft.Json;
+using VatrogasnoDrustvo.Core;
 
 namespace VatrogasnoDrustvo
 {
-    /**
-     * User kontrola za tablični prikaz kod ostalih formi.
-     */
+    /// <summary>
+    /// User kontrola za tablični prikaz kod ostalih formi.
+    /// </summary>
     public partial class TablePanel : UserControl
     {
         public TablePanel()
@@ -23,10 +26,11 @@ namespace VatrogasnoDrustvo
             InitializeComponent();
         }
 
-        /**
-         * Metoda koja miče sve EventHandlere iz gumbića. Potrebno jer se svakim pozivom
-         * metode initButton kači EventHandler i tada se otvara više istih prozora.
-         */
+        /// <summary>
+        /// Metoda koja miče sve EventHandlere iz gumbića. Potrebno jer se svakim pozivom
+        /// metode initButton kači EventHandler i tada se otvara više istih prozora.
+        /// </summary>
+        /// <param name="btn">Gumb s kojeg se brišu Handleri</param>
         private void RemoveAllHandlers(Button btn)
         {
             FieldInfo f1 = typeof(Control).GetField("EventClick", BindingFlags.Static | BindingFlags.NonPublic);
@@ -36,10 +40,14 @@ namespace VatrogasnoDrustvo
             list.RemoveHandler(obj, list[obj]);
         }
 
-        /**
-         * Metoda za iniciranje gumbića. Neki gumbići su po zadanim postavkama skriveni
-         * pa ih treba prikazati i dodati im ime i EventHandlera za OnClick event.
-         */
+        
+        /// <summary>
+        /// Metoda za iniciranje gumbića. Neki gumbići su po zadanim postavkama skriveni
+        /// pa ih treba prikazati i dodati im ime i EventHandlera za OnClick event.
+        /// </summary>
+        /// <param name="btn">Gumbić kojem se dodaje EventHandler</param>
+        /// <param name="buttonName">Text koji će pisati na gumbiću</param>
+        /// <param name="method">Metoda koja će se pozivat onClick</param>
         private void initButton(Button btn, String buttonName, EventHandler method)
         {
             btn.Text = buttonName;
@@ -48,29 +56,31 @@ namespace VatrogasnoDrustvo
             btn.Click += method;
         }
 
-        /**
-         * Metoda koja skriva gumbiće koji nisu zadani (ona dva koji nisu Dodaj)
-         */
+        /// <summary>
+        /// Metoda koja skriva gumbiće koji nisu zadani (ona dva koji nisu Dodaj)
+        /// </summary>
         private void hideDegrees()
         {
             btnFirstDegree.Visible = false;
             btnSecondDegree.Visible = false;
         }
 
-        /**
-         * Metoda koja ažurira tablicu kod pretrage. TBI
-         */
-        public void updateDataGridView(String searchTerm) 
+        /// <summary>
+        /// Metoda koja ažurira tablicu kod pretrage. TBI
+        /// </summary>
+        /// <param name="searchTerm">Ključna riječ za pretraživanje</param>
+        public void UpdateDataGridView(String searchTerm) 
         { 
 
         }
 
-        /**
-         * Metoda za refresh forme koja sadrži DataGridView. Još bu trebalo dodati da ažurira sadržaj tablice (posebna metoda).
-         * Ovisno o formi koja je otvorena, treba staviti gumbiće da su vidljivi i promjeniti labelu, a ne smijemo zaboraviti
-         * niti EventHandlere na gumbićima koji su se tek postavili u vidljive.
-         */
-        public void refresh(String keyword)
+        /// <summary>
+        /// Metoda za refresh forme koja sadrži DataGridView.
+        /// Ovisno o formi koja je otvorena, treba staviti gumbiće da su vidljivi i promjeniti labelu, a ne smijemo zaboraviti
+        /// niti EventHandlere na gumbićima koji su se tek postavili u vidljive.
+        /// </summary>
+        /// <param name="keyword">Naziv tablice koja se želi prikazati</param>
+        public void RefreshPanel<T>(String keyword)
         {
             hideDegrees();
             if (keyword == "Oprema")
@@ -87,40 +97,82 @@ namespace VatrogasnoDrustvo
                 initButton(btnSecondDegree, "Dobavljači", Dobavljac_Click);
             }
             lblBase.Text = keyword;
+            refreshDataGrid<T>(keyword);
         }
 
-        /**
-         * Otvara se forma s narudžbama kada klikne na gumb Ispis narudžbi u formi za opreme.
-         */
+        /// <summary>
+        /// Metoda za ažuriranje DataGridView
+        /// </summary>
+        /// <param name="keyword">Tablica koja se učitava</param>
+        private void refreshDataGrid<T>(string keyword)
+        {
+            try
+            {
+                dgvDBData.DataSource = JsonConvert.DeserializeObject<List<object>>(new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
+                dgvDBData.CellClick += dgvDBData_CellClick<T>;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Pogreška u dohvaćanju podataka! " + Environment.NewLine + e);
+            }
+        }
+
+        /// <summary>
+        /// Handler za OnClick (update row)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void dgvDBData_CellClick<T>(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvDBData.Rows[e.RowIndex];
+            
+            //parse type Vatrpgasac
+            if (typeof(T) == typeof(Vatrogasac))
+            {
+                new PodaciClana(row).Show();
+            }
+        }
+
+        /// <summary>
+        /// Otvara se forma s narudžbama kada klikne na gumb Ispis narudžbi u formi za opreme.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void IspisNarudzbi_Click(object sender, EventArgs e)
         {
             NarudzbeForma frmNarudzbe = new NarudzbeForma();
             frmNarudzbe.Show();
         }
 
-        /**
-         * Otvara formu s dobavljačima kada klikne na gumb Dobavljači u formi s narudžbama.
-         */
+        /// <summary>
+        /// Otvara formu s dobavljačima kada klikne na gumb Dobavljači u formi s narudžbama.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Dobavljac_Click(object sender, EventArgs e)
         {
             DobavljaciForma frmDobavljaci = new DobavljaciForma();
             frmDobavljaci.Show();
         }
 
-        /**
-         * Otvori prijavu na natjecanje kada klikne na gumb prijavi se u formi za natjecanja.
-         * Treba dodati da mora natjecanje biti odabrano prethodno.
-         */
+        /// <summary>
+        /// Otvori prijavu na natjecanje kada klikne na gumb prijavi se u formi za natjecanja.
+        /// Treba dodati da mora natjecanje biti odabrano prethodno.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Prijavi_ekipu_natjecanje_Click(object sender, EventArgs e)
         {
             PodaciPrijava frmPrijava = new PodaciPrijava();
             frmPrijava.Show();
         }
 
-        /**
-         * Ovo je univerzalni gumbić Dodaj koji se prikazuje na svim formama. Budući da svaka forma
-         * otvara drukčiju formu, onda se parsa labela na vrhu i ovisno o njoj se otvaraju zadane forme.
-         */
+        /// <summary>
+        /// Ovo je univerzalni gumbić Dodaj koji se prikazuje na svim formama. Budući da svaka forma
+        /// otvara drukčiju formu, onda se parsa labela na vrhu i ovisno o njoj se otvaraju zadane forme.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             if (lblBase.Text == "Članovi") openForm(new PodaciClana());
@@ -130,10 +182,11 @@ namespace VatrogasnoDrustvo
             else if (lblBase.Text == "Dobavljači") openForm(new PodaciDobavljaca());
         }
 
-        /**
-         * Metoda koja otvara formu. Zasad ima samo frm.Show(), ali je odvojena zbog mogućih potreba
-         * da se ne može preći na parent formu dok je ova TopLevel forma otvorena.
-         */
+        /// <summary>
+        /// Metoda koja otvara formu. Zasad ima samo frm.Show(), ali je odvojena zbog mogućih potreba
+        /// da se ne može preći na parent formu dok je ova TopLevel forma otvorena.
+        /// </summary>
+        /// <param name="frm">Forma koja se otvara</param>
         private void openForm(Form frm)
         {
             frm.Show();

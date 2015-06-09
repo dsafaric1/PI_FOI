@@ -152,6 +152,9 @@
     <EmbeddedResource Include="Forms\MainPanel.resx">
       <DependentUpon>MainPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PodaciClana.resx">
+      <DependentUpon>PodaciClana.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PodaciDobavljaca.resx">
       <DependentUpon>PodaciDobavljaca.cs</DependentUpon>
     </EmbeddedResource>

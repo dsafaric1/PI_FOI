@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo.Core
 {
@@ -28,7 +29,8 @@ namespace VatrogasnoDrustvo.Core
         ZamjenikZapovjednika,
         Tajnik,
         Blagajnik,
-        Spremistar
+        Spremistar,
+        Nema
     }
 
     public enum Zvanje
@@ -48,7 +50,7 @@ namespace VatrogasnoDrustvo.Core
 
     public class Vatrogasac
     {
-        private string oib;
+        public string OIB { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string DatumRodenja { get; set; }
@@ -60,7 +62,25 @@ namespace VatrogasnoDrustvo.Core
 
         public Vatrogasac() { }
 
-        public Vatrogasac(JObject podaci) { }
+        public Vatrogasac(DataGridViewRow row) 
+        {
+            OIB = row.Cells["OIB"].Value.ToString();
+            Ime = row.Cells["Ime"].Value.ToString();
+            Prezime = row.Cells["Prezime"].Value.ToString();
+            Adresa = row.Cells["Adresa"].Value.ToString();
+            DatumRodenja = row.Cells["Datum rođenja"].Value.ToString();
+            DatumUclanjenja = row.Cells["Datum učlanjenja"].Value.ToString();
+            Zvanje = (Zvanje)Enum.Parse(typeof(Zvanje), row.Cells["Zvanje"].Value.ToString(), true);
+            if (row.Cells["Dužnost"].Value.ToString() == "")
+            {
+                Duznost = Duznost.Nema;
+            }
+            else
+            {
+                Duznost = (Duznost)Enum.Parse(typeof(Duznost), row.Cells["Dužnost"].Value.ToString(), true);
+            }
+            VrstaClana = (Clan)Enum.Parse(typeof(Clan), row.Cells["Vrsta člana"].Value.ToString(), true);
+        }
 
     }
 }

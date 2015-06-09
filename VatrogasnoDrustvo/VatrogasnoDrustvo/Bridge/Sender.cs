@@ -27,7 +27,7 @@ namespace VatrogasnoDrustvo.Bridge
         /// <param name="toSend">Podaci koji se šalju (atributi objekta)</param>
         /// <param name="URI">URL na koji se šalje</param>
         /// <returns>Odgovor servera na POST</returns>
-        public string Send(object toSend, string URI)
+        public string Send(object toSend, string URI, object additionalData = null)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings() //opcije za konverter
             {
@@ -36,7 +36,17 @@ namespace VatrogasnoDrustvo.Bridge
                 }
             };
 
-            return webClient.UploadString(URI, "obj=" + JsonConvert.SerializeObject(toSend, Formatting.None, settings));
+            string response;
+            if (additionalData != null)
+            {
+                response = webClient.UploadString(URI, "additionalData=" + JsonConvert.SerializeObject(additionalData)
+                    + "&obj=" + JsonConvert.SerializeObject(toSend, Formatting.None, settings));
+            } 
+            else 
+            {
+                response = webClient.UploadString(URI, "obj=" + JsonConvert.SerializeObject(toSend, Formatting.None, settings));
+            }
+            return response;
         }
 
         /// <summary>

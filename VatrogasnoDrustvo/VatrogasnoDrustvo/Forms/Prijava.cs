@@ -40,12 +40,14 @@ namespace VatrogasnoDrustvo
                 string username = txtKorIme.Text;
                 string password = txtLozinka.Text;
 
+                //parametre u dict zbog json formata
                 Dictionary<string, string> userInfo = new Dictionary<string, string> 
                 { 
                     {"username", username}, 
                     {"password", password} 
                 }; 
 
+                //šalji json i parsaj odgovor
                 var response = JsonConvert.DeserializeObject<Dictionary<string,object>>(new Sender().Send(userInfo, "https://testerinho.com/vatrogasci/login.php"));
                 if (bool.Parse(response["valid"].ToString()))
                 {

@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace VatrogasnoDrustvo.Core
 {
+    enum VrstaIntervencije
+    {
+        Pozar,
+        Tehnicka,
+        Ostalo
+    }
+
     class Intervencija
     {
         private int brojDojave;
@@ -15,6 +22,7 @@ namespace VatrogasnoDrustvo.Core
         public Decimal VrijemeTrajanja { get; set; }
         public string Opis { get; set; }
         public string Uzrok { get; set; }
+        public VrstaIntervencije Vrsta { get; set; }
 
         public Intervencija()
         {

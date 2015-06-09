@@ -10,6 +10,17 @@ class Vatrogasac {
             $datum_rodjenja, $datum_uclanjenja, 
             $vrsta_clana, $zvanje;
     
+    function __construct($dbPassword) {
+        $this->adresa = $dbPassword['adresa'];
+        $this->datum_rodjenja = $dbPassword['datum_rodjenja'];
+        $this->datum_uclanjenja = $dbPassword['datum_uclanjenja'];
+        $this->ime = $dbPassword['ime'];
+        $this->prezime = $dbPassword['prezime'];
+        $this->oib = $dbPassword['oib'];
+        $this->vrsta_clana = $dbPassword['vrsta_clana'];
+        $this->zvanje = $dbPassword['zvanje'];
+    }
+    
     function getIme() {
         return $this->ime;
     }

@@ -13,6 +13,7 @@ using System.Reflection;
 using VatrogasnoDrustvo.Bridge;
 using Newtonsoft.Json;
 using VatrogasnoDrustvo.Core;
+using System.Diagnostics;
 
 namespace VatrogasnoDrustvo
 {
@@ -34,16 +35,21 @@ namespace VatrogasnoDrustvo
         /// metode initButton kači EventHandler i tada se otvara više istih prozora.
         /// </summary>
         /// <param name="btn">Gumb s kojeg se brišu Handleri</param>
-        private void RemoveAllHandlers(Button btn)
+        private void RemoveAllHandlers(object btn, string eventType = "EventClick")
         {
-            FieldInfo f1 = typeof(Control).GetField("EventClick", BindingFlags.Static | BindingFlags.NonPublic);
+            FieldInfo f1 = typeof(Control).GetField(eventType, BindingFlags.Static | BindingFlags.NonPublic);
             object obj = f1.GetValue(btn);
             PropertyInfo pi = btn.GetType().GetProperty("Events", BindingFlags.NonPublic | BindingFlags.Instance);
             EventHandlerList list = (EventHandlerList)pi.GetValue(btn, null);
             list.RemoveHandler(obj, list[obj]);
         }
 
-        
+        public void RemoveHandlerList(Control c)
+        {
+            EventHandlerList list = (EventHandlerList)typeof(Control).GetProperty("Events", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(c, null);
+            typeof(EventHandlerList).GetMethod("Dispose").Invoke(list, null);
+        }
+
         /// <summary>
         /// Metoda za iniciranje gumbića. Neki gumbići su po zadanim postavkama skriveni
         /// pa ih treba prikazati i dodati im ime i EventHandlera za OnClick event.
@@ -130,10 +136,18 @@ namespace VatrogasnoDrustvo
                 if (Admin)
                 {
                     //za update i delete
-                    dgvDBData.KeyDown -= dgvDBData_KeyDown<T>; //prvo prebriši pa dodaj da bude samo jedan handler
+
+                    /*EventInfo[] info = typeof(DataGridView).GetEvents();
+                    for (int i = 0; i < info.Length; i++)
+                    {
+                        MessageBox.Show(info[i].Name + "\n");
+                    }*/
+
+                    RemoveHandlerList(dgvDBData);
+
                     dgvDBData.KeyDown += dgvDBData_KeyDown<T>;
-                    dgvDBData.CellDoubleClick -= dgvDBData_CellClick<T>;
                     dgvDBData.CellDoubleClick += dgvDBData_CellClick<T>;
+
                 }
             }
             catch (Exception e)
@@ -153,7 +167,7 @@ namespace VatrogasnoDrustvo
             if (e.KeyCode == Keys.Delete)
             {
                 int pos = dgvDBData.SelectedCells[0].RowIndex;
-                string name = dgvDBData.Rows[pos].Cells["Ime"].Value.ToString() + " " + dgvDBData.Rows[pos].Cells["Prezime"].Value.ToString();
+                string name = dgvDBData.Rows[pos].Cells[2].Value.ToString() + " " + dgvDBData.Rows[pos].Cells[3].Value.ToString();
                 if (MessageBox.Show("Jeste li sigurni da želite obrisati redak " + name, "Potvrda", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     //instanciranje dinamički
@@ -161,6 +175,7 @@ namespace VatrogasnoDrustvo
 
                     try
                     {
+                        //MessageBox.Show(new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
                         //šalji što se briše
                         var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
                             (new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));

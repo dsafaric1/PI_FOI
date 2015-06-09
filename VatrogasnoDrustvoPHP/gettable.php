@@ -40,6 +40,10 @@ if(isset($_GET['table'])) {
                 . " ON tip_opreme = id_tip_opreme JOIN tip_vozila ON tip_vozila = id_tip_vozila";
     }
     
+    elseif($table == "NonUsers") {
+        $query = "SELECT oib as OIB, CONCAT(ime, ' ', prezime) as Osoba FROM vatrogasci WHERE korisnicko_ime = 'null'";
+    }
+    
     //izvrši upit
     $Dbase = new DB();
     $results = $Dbase->execute($query);

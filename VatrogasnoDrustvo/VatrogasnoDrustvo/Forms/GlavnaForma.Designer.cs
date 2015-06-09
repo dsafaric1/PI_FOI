@@ -154,6 +154,7 @@
             this.tlstrpLabelRegistracija.Name = "tlstrpLabelRegistracija";
             this.tlstrpLabelRegistracija.Size = new System.Drawing.Size(67, 20);
             this.tlstrpLabelRegistracija.Text = "Registracija";
+            this.tlstrpLabelRegistracija.Click += new System.EventHandler(this.tlstrpLabelRegistracija_Click);
             // 
             // toolStripSeparator3
             // 
@@ -169,6 +170,7 @@
             // 
             // pnlTable
             // 
+            this.pnlTable.Admin = false;
             this.pnlTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -177,6 +179,7 @@
             this.pnlTable.Name = "pnlTable";
             this.pnlTable.Size = new System.Drawing.Size(997, 441);
             this.pnlTable.TabIndex = 3;
+            this.pnlTable.Table = null;
             // 
             // pnlGlavna
             // 

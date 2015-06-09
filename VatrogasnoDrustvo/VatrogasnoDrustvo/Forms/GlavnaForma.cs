@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VatrogasnoDrustvo.Core;
+using VatrogasnoDrustvo.Forms;
 
 namespace VatrogasnoDrustvo.Forme
 {
@@ -31,7 +32,14 @@ namespace VatrogasnoDrustvo.Forme
             vatroIme.Text = TrenutniVatrogasac.Ime + " " + TrenutniVatrogasac.Prezime;
             vatroZvanje.Text = TrenutniVatrogasac.Zvanje.ToString();
 
+            //preuzmi status admina i sakrij Registraciju i Izvještaje, ako je admin
             this.Admin = admin;
+            if (!this.Admin)
+            {
+                tlstrpLabelRegistracija.Visible = false;
+                tlstrplblIzvjestaji.Visible = false;
+                toolStripSeparator3.Visible = false;
+            }
 
             //Glavna forma nije zapravo glavna pa treba gasiti cijelu aplikaciju ručno
             this.FormClosed += GlavnaForma_FormClosed;
@@ -103,9 +111,8 @@ namespace VatrogasnoDrustvo.Forme
         /// <param name="keyword"></param>
         private void exchange<T>(string keyword)
         {
-            pnlTable.BringToFront();
             pnlTable.RefreshPanel<T>(keyword, Admin);
-            pnlTable.Refresh();
+            pnlTable.BringToFront();
         }
 
         /// <summary>
@@ -117,6 +124,12 @@ namespace VatrogasnoDrustvo.Forme
         private void tlstrplblNatjecanja_Click(object sender, EventArgs e)
         {
             exchange<Natjecanje>("Natjecanja");
+        }
+
+        private void tlstrpLabelRegistracija_Click(object sender, EventArgs e)
+        {
+            PodaciRegistracija frmReg = new PodaciRegistracija();
+            if(!frmReg.IsDisposed) frmReg.ShowDialog();
         }
     }
 }

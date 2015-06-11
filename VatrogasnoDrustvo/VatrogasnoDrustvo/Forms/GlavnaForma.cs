@@ -54,7 +54,7 @@ namespace VatrogasnoDrustvo.Forme
         /// <param name="e"></param>
         void GlavnaForma_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Application.Restart();
         }
 
         /// <summary>

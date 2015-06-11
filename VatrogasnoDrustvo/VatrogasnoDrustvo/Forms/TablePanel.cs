@@ -89,6 +89,7 @@ namespace VatrogasnoDrustvo
         /// niti EventHandlere na gumbićima koji su se tek postavili u vidljive.
         /// </summary>
         /// <param name="keyword">Naziv tablice koja se želi prikazati</param>
+        /// <param name="admin">Vrijednost da li je korisnik admin</param>
         public void RefreshPanel<T>(String keyword, bool admin = false)
         {
             this.Admin = admin;
@@ -167,7 +168,10 @@ namespace VatrogasnoDrustvo
             if (e.KeyCode == Keys.Delete)
             {
                 int pos = dgvDBData.SelectedCells[0].RowIndex;
-                string name = dgvDBData.Rows[pos].Cells[2].Value.ToString() + " " + dgvDBData.Rows[pos].Cells[3].Value.ToString();
+                string name = dgvDBData.Rows[pos].Cells[1].Value.ToString() + " "
+                            + dgvDBData.Rows[pos].Cells[2].Value.ToString() + " "
+                            + dgvDBData.Rows[pos].Cells[3].Value.ToString() + " "
+                            + dgvDBData.Rows[pos].Cells[4].Value.ToString();
                 if (MessageBox.Show("Jeste li sigurni da želite obrisati redak " + name, "Potvrda", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     //instanciranje dinamički
@@ -270,18 +274,22 @@ namespace VatrogasnoDrustvo
             else if (lblBase.Text == "Intervencije")
             {
                 openForm(new PodaciIntervencije());
+                RefreshPanel<Intervencija>(Table, Admin);
             }
             else if (lblBase.Text == "Oprema")
             {
                 openForm(new PodaciOpreme());
+                RefreshPanel<Oprema>(Table, Admin);
             }
             else if (lblBase.Text == "Natjecanja")
             {
                 openForm(new PodaciNatjecanje());
+                RefreshPanel<Natjecanje>(Table, Admin);
             }
             else if (lblBase.Text == "Dobavljači") 
             { 
-                openForm(new PodaciDobavljaca()); 
+                openForm(new PodaciDobavljaca());
+                RefreshPanel<Dobavljac>(Table, Admin);
             }
             btnDodaj.Click += btnDodaj_Click;
         }

@@ -47,8 +47,8 @@
             this.tlstrpLabelRegistracija = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tlstrplblIzvjestaji = new System.Windows.Forms.ToolStripLabel();
-            this.pnlTable = new VatrogasnoDrustvo.TablePanel();
             this.pnlGlavna = new VatrogasnoDrustvo.Controls.MainPanel();
+            this.pnlTable = new VatrogasnoDrustvo.TablePanel();
             this.tlstrpGlavnaForma.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -168,6 +168,17 @@
             this.tlstrplblIzvjestaji.Size = new System.Drawing.Size(51, 20);
             this.tlstrplblIzvjestaji.Text = "Izvještaji";
             // 
+            // pnlGlavna
+            // 
+            this.pnlGlavna.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlGlavna.BackColor = System.Drawing.Color.Firebrick;
+            this.pnlGlavna.Location = new System.Drawing.Point(0, 36);
+            this.pnlGlavna.Name = "pnlGlavna";
+            this.pnlGlavna.Size = new System.Drawing.Size(997, 441);
+            this.pnlGlavna.TabIndex = 1;
+            // 
             // pnlTable
             // 
             this.pnlTable.Admin = false;
@@ -181,17 +192,6 @@
             this.pnlTable.TabIndex = 3;
             this.pnlTable.Table = null;
             // 
-            // pnlGlavna
-            // 
-            this.pnlGlavna.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlGlavna.BackColor = System.Drawing.Color.Firebrick;
-            this.pnlGlavna.Location = new System.Drawing.Point(0, 36);
-            this.pnlGlavna.Name = "pnlGlavna";
-            this.pnlGlavna.Size = new System.Drawing.Size(997, 441);
-            this.pnlGlavna.TabIndex = 1;
-            // 
             // GlavnaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,8 +199,8 @@
             this.BackColor = System.Drawing.Color.Firebrick;
             this.ClientSize = new System.Drawing.Size(997, 481);
             this.Controls.Add(this.tlstrpGlavnaForma);
-            this.Controls.Add(this.pnlTable);
             this.Controls.Add(this.pnlGlavna);
+            this.Controls.Add(this.pnlTable);
             this.Name = "GlavnaForma";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tlstrpGlavnaForma.ResumeLayout(false);

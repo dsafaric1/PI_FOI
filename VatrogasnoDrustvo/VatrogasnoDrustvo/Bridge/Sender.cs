@@ -19,6 +19,7 @@ namespace VatrogasnoDrustvo.Bridge
         {
             webClient = new WebClient();
             webClient.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+            webClient.Encoding = UTF8Encoding.UTF8;
         }
 
         /// <summary>

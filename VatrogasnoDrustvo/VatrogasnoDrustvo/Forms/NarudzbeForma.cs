@@ -17,10 +17,10 @@ namespace VatrogasnoDrustvo.Forme
     /// </summary>
     public partial class NarudzbeForma : Form
     {
-        public NarudzbeForma()
+        public NarudzbeForma(bool admin)
         {
             InitializeComponent();
-            pnlNarudzbe.RefreshPanel<Narudzba>("Narudžbe"); //ovo je potrebno da se user kontrola TablePanel prilagodi za narudžbe (labela, gumbići, itd.)
+            pnlNarudzbe.RefreshPanel<Narudzba>("Narudžbe", admin); //ovo je potrebno da se user kontrola TablePanel prilagodi za narudžbe (labela, gumbići, itd.)
         }
     }
 }

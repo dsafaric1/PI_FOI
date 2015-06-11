@@ -21,6 +21,7 @@ namespace VatrogasnoDrustvo.InputForms
     public partial class PodaciNatjecanje : Form
     {
         private Natjecanje natjecanje;
+        private bool admin;
 
         public PodaciNatjecanje()
         {
@@ -29,11 +30,12 @@ namespace VatrogasnoDrustvo.InputForms
             loadSelect();
         }
 
-        public PodaciNatjecanje(DataGridViewRow row)
+        public PodaciNatjecanje(DataGridViewRow row, bool admin)
         {
             InitializeComponent();
             loadSelect();
 
+            this.admin = admin;
             natjecanje = new Natjecanje(row);
 
             //puni textboxove sa podacima
@@ -128,7 +130,7 @@ namespace VatrogasnoDrustvo.InputForms
             natjecanje = getData(natjecanje);
             try
             {
-                MessageBox.Show(new Sender().Send(natjecanje, "https://testerinho.com/vatrogasci/updateNatjecanje.php"));
+                //MessageBox.Show(new Sender().Send(natjecanje, "https://testerinho.com/vatrogasci/updateNatjecanje.php"));
                 var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
                     (new Sender().Send(natjecanje, "https://testerinho.com/vatrogasci/updateNatjecanje.php"));
 
@@ -149,8 +151,7 @@ namespace VatrogasnoDrustvo.InputForms
 
         private void btnEkipe_Click(object sender, EventArgs e)
         {
-            PodaciEkipe ekipa = new PodaciEkipe();
-            ekipa.ShowDialog();
+            new EkipeForma(natjecanje, admin).ShowDialog();
         }
     }
 }

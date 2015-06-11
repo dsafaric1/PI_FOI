@@ -14,6 +14,7 @@ using VatrogasnoDrustvo.Bridge;
 using Newtonsoft.Json;
 using VatrogasnoDrustvo.Core;
 using System.Diagnostics;
+using VatrogasnoDrustvo.Forms;
 
 namespace VatrogasnoDrustvo
 {
@@ -22,8 +23,8 @@ namespace VatrogasnoDrustvo
     /// </summary>
     public partial class TablePanel : UserControl
     {
-        public bool Admin { get; set; }
-        public string Table { get; set; }
+        private bool admin;
+        private string table;
 
         public TablePanel()
         {
@@ -92,10 +93,11 @@ namespace VatrogasnoDrustvo
         /// <param name="admin">Vrijednost da li je korisnik admin</param>
         public void RefreshPanel<T>(String keyword, bool admin = false)
         {
-            this.Admin = admin;
-            this.Table = keyword;
+            this.admin = admin;
+            this.table = keyword;
+            RemoveHandlerList(dgvDBData);
             hideDegrees();
-            if (Admin)
+            if (admin)
             {
                 //ovisno o tablici, sakrij gumbiće
                 if (keyword == "Oprema")
@@ -104,7 +106,7 @@ namespace VatrogasnoDrustvo
                 }
                 else if (keyword == "Natjecanja")
                 {
-                    initButton(btnFirstDegree, "Prijavi se", Prijavi_ekipu_natjecanje_Click);
+                    initButton(btnSecondDegree, "Prijavi se", Prijavi_ekipu_natjecanje_Click);
                 }
                 else if (keyword == "Narudžbe")
                 {
@@ -114,13 +116,27 @@ namespace VatrogasnoDrustvo
             }
             else
             {
-                //registrirani se može samo prijaviti na natjecanje
-                if (keyword == "Natjecanja") initButton(btnFirstDegree, "Prijavi se", Prijavi_ekipu_natjecanje_Click);
+                //registrirani se može samo prijaviti na natjecanje i pogledat stanje
+                if (keyword == "Natjecanja")
+                {
+                    initButton(btnSecondDegree, "Prijavi se", Prijavi_ekipu_natjecanje_Click);
+                    dgvDBData.CellDoubleClick += dgvDBData_SpecialEkipaClick;
+                }
                 btnDodaj.Visible = false;
             }
             
             lblBase.Text = keyword;
             refreshDataGrid<T>(keyword);
+        }
+
+        /// <summary>
+        /// Specijalnih handler za onclick kod registriranog korisnika
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvDBData_SpecialEkipaClick(object sender, DataGridViewCellEventArgs e)
+        {
+            new EkipeForma(new Natjecanje(dgvDBData.Rows[e.RowIndex]), false).ShowDialog();
         }
 
         /// <summary>
@@ -134,7 +150,7 @@ namespace VatrogasnoDrustvo
                 //za read
                 dgvDBData.DataSource = JsonConvert.DeserializeObject<List<object>>
                     (new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
-                if (Admin)
+                if (admin)
                 {
                     //za update i delete
 
@@ -143,8 +159,6 @@ namespace VatrogasnoDrustvo
                     {
                         MessageBox.Show(info[i].Name + "\n");
                     }*/
-
-                    RemoveHandlerList(dgvDBData);
 
                     dgvDBData.KeyDown += dgvDBData_KeyDown<T>;
                     dgvDBData.CellDoubleClick += dgvDBData_CellClick<T>;
@@ -200,7 +214,7 @@ namespace VatrogasnoDrustvo
                     }
 
                     //osvježi pogled
-                    this.RefreshPanel<T>(Table, Admin);
+                    this.RefreshPanel<T>(table, admin);
                 }
             }
         }
@@ -221,14 +235,18 @@ namespace VatrogasnoDrustvo
             }
             else if (typeof(T) == typeof(Natjecanje))
             {
-                new PodaciNatjecanje(row).ShowDialog();
+                new PodaciNatjecanje(row, admin).ShowDialog();
             }
             else if (typeof(T) == typeof(Intervencija))
             {
                 new PodaciIntervencije(row).ShowDialog();
             }
+            else if (typeof(T) == typeof(Ekipa))
+            {
 
-            this.RefreshPanel<T>(Table, Admin);
+            }
+
+            this.RefreshPanel<T>(table, admin);
         }
 
         /// <summary>
@@ -238,7 +256,7 @@ namespace VatrogasnoDrustvo
         /// <param name="e"></param>
         private void IspisNarudzbi_Click(object sender, EventArgs e)
         {
-            NarudzbeForma frmNarudzbe = new NarudzbeForma();
+            NarudzbeForma frmNarudzbe = new NarudzbeForma(admin);
             frmNarudzbe.Show();
         }
 
@@ -249,7 +267,7 @@ namespace VatrogasnoDrustvo
         /// <param name="e"></param>
         private void Dobavljac_Click(object sender, EventArgs e)
         {
-            DobavljaciForma frmDobavljaci = new DobavljaciForma();
+            DobavljaciForma frmDobavljaci = new DobavljaciForma(admin);
             frmDobavljaci.Show();
         }
 
@@ -261,8 +279,12 @@ namespace VatrogasnoDrustvo
         /// <param name="e"></param>
         private void Prijavi_ekipu_natjecanje_Click(object sender, EventArgs e)
         {
-            PodaciPrijava frmPrijava = new PodaciPrijava();
-            frmPrijava.Show();
+            if (dgvDBData.SelectedRows != null)
+            {
+                PodaciPrijava frmPrijava = new PodaciPrijava(new Natjecanje(dgvDBData.Rows[dgvDBData.CurrentCell.RowIndex]));
+                if(!frmPrijava.IsDisposed) frmPrijava.Show();
+            }
+            
         }
 
         /// <summary>
@@ -277,27 +299,27 @@ namespace VatrogasnoDrustvo
             if (lblBase.Text == "Članovi")
             {
                 openForm(new PodaciClana());
-                RefreshPanel<Vatrogasac>(Table, Admin);
+                RefreshPanel<Vatrogasac>(table, admin);
             }
             else if (lblBase.Text == "Intervencije")
             {
                 openForm(new PodaciIntervencije());
-                RefreshPanel<Intervencija>(Table, Admin);
+                RefreshPanel<Intervencija>(table, admin);
             }
             else if (lblBase.Text == "Oprema")
             {
                 openForm(new PodaciOpreme());
-                RefreshPanel<Oprema>(Table, Admin);
+                RefreshPanel<Oprema>(table, admin);
             }
             else if (lblBase.Text == "Natjecanja")
             {
                 openForm(new PodaciNatjecanje());
-                RefreshPanel<Natjecanje>(Table, Admin);
+                RefreshPanel<Natjecanje>(table, admin);
             }
             else if (lblBase.Text == "Dobavljači") 
             { 
                 openForm(new PodaciDobavljaca());
-                RefreshPanel<Dobavljac>(Table, Admin);
+                RefreshPanel<Dobavljac>(table, admin);
             }
             btnDodaj.Click += btnDodaj_Click;
         }

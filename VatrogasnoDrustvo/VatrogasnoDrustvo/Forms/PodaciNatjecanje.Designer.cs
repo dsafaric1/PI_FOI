@@ -169,9 +169,9 @@
             // btnSalji
             // 
             this.btnSalji.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSalji.Location = new System.Drawing.Point(220, 362);
+            this.btnSalji.Location = new System.Drawing.Point(220, 371);
             this.btnSalji.Name = "btnSalji";
-            this.btnSalji.Size = new System.Drawing.Size(75, 23);
+            this.btnSalji.Size = new System.Drawing.Size(75, 26);
             this.btnSalji.TabIndex = 20;
             this.btnSalji.Text = "Šalji";
             this.btnSalji.UseVisualStyleBackColor = true;
@@ -182,7 +182,7 @@
             this.btnEkipe.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEkipe.Location = new System.Drawing.Point(220, 330);
             this.btnEkipe.Name = "btnEkipe";
-            this.btnEkipe.Size = new System.Drawing.Size(75, 23);
+            this.btnEkipe.Size = new System.Drawing.Size(75, 25);
             this.btnEkipe.TabIndex = 21;
             this.btnEkipe.Text = "Ekipe";
             this.btnEkipe.UseVisualStyleBackColor = true;

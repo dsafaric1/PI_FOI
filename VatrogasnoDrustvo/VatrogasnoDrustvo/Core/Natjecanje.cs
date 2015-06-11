@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo.Core
 {
-    enum TipNatjecanja
+    public enum TipNatjecanja
     {
         Opcinsko,
         Gradsko,
@@ -16,7 +16,7 @@ namespace VatrogasnoDrustvo.Core
         SpajanjeUsisnogVoda
     }
 
-    class Natjecanje
+    public class Natjecanje
     {
         public int ID { get; set; }
         public string Naziv { get; set; }

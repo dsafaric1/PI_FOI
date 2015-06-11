@@ -124,6 +124,7 @@
             this.btnPrijavi.TabIndex = 26;
             this.btnPrijavi.Text = "Prijavi se";
             this.btnPrijavi.UseVisualStyleBackColor = true;
+            this.btnPrijavi.Click += new System.EventHandler(this.btnPrijavi_Click);
             // 
             // PodaciPrijava
             // 

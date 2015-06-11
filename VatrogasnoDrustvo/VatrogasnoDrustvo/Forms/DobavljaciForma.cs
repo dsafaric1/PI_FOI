@@ -17,10 +17,10 @@ namespace VatrogasnoDrustvo.Forme
     /// </summary>
     public partial class DobavljaciForma : Form
     {
-        public DobavljaciForma()
+        public DobavljaciForma(bool admin)
         {
             InitializeComponent();
-            pnlDobavljaci.RefreshPanel<Dobavljac>("Dobavljači"); //potrebno da bi se pravilno inicirala TablePanel kontrola (labele, gumbići i sl.)
+            pnlDobavljaci.RefreshPanel<Dobavljac>("Dobavljači", admin); //potrebno da bi se pravilno inicirala TablePanel kontrola (labele, gumbići i sl.)
         }
     }
 }

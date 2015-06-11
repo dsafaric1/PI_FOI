@@ -43,6 +43,7 @@
             this.lblTip = new System.Windows.Forms.Label();
             this.cmbTip = new System.Windows.Forms.ComboBox();
             this.btnSalji = new System.Windows.Forms.Button();
+            this.btnEkipe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numKotizacija)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,7 +122,13 @@
             // numKotizacija
             // 
             this.numKotizacija.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numKotizacija.DecimalPlaces = 2;
             this.numKotizacija.Location = new System.Drawing.Point(220, 252);
+            this.numKotizacija.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.numKotizacija.Name = "numKotizacija";
             this.numKotizacija.Size = new System.Drawing.Size(165, 20);
             this.numKotizacija.TabIndex = 16;
@@ -168,6 +175,18 @@
             this.btnSalji.TabIndex = 20;
             this.btnSalji.Text = "Šalji";
             this.btnSalji.UseVisualStyleBackColor = true;
+            this.btnSalji.Click += new System.EventHandler(this.btnSalji_Click);
+            // 
+            // btnEkipe
+            // 
+            this.btnEkipe.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEkipe.Location = new System.Drawing.Point(220, 330);
+            this.btnEkipe.Name = "btnEkipe";
+            this.btnEkipe.Size = new System.Drawing.Size(75, 23);
+            this.btnEkipe.TabIndex = 21;
+            this.btnEkipe.Text = "Ekipe";
+            this.btnEkipe.UseVisualStyleBackColor = true;
+            this.btnEkipe.Click += new System.EventHandler(this.btnEkipe_Click);
             // 
             // PodaciNatjecanje
             // 
@@ -175,6 +194,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Firebrick;
             this.ClientSize = new System.Drawing.Size(505, 409);
+            this.Controls.Add(this.btnEkipe);
             this.Controls.Add(this.btnSalji);
             this.Controls.Add(this.cmbTip);
             this.Controls.Add(this.lblTip);
@@ -209,5 +229,6 @@
         private System.Windows.Forms.Label lblTip;
         private System.Windows.Forms.ComboBox cmbTip;
         private System.Windows.Forms.Button btnSalji;
+        private System.Windows.Forms.Button btnEkipe;
     }
 }

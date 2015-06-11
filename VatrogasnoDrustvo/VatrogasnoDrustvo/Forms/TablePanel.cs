@@ -219,6 +219,14 @@ namespace VatrogasnoDrustvo
             {
                 new PodaciClana(row).ShowDialog();
             }
+            else if (typeof(T) == typeof(Natjecanje))
+            {
+                new PodaciNatjecanje(row).ShowDialog();
+            }
+            else if (typeof(T) == typeof(Intervencija))
+            {
+                new PodaciIntervencije(row).ShowDialog();
+            }
 
             this.RefreshPanel<T>(Table, Admin);
         }

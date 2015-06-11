@@ -10,7 +10,8 @@ namespace VatrogasnoDrustvo.Core
     {
         Pomladak,
         Mladez,
-        Seniori
+        SenioriA,
+        SenioriB
     }
 
     class Ekipa

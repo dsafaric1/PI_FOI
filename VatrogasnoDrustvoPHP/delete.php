@@ -21,7 +21,11 @@ if(isset($_POST['obj'])) {
             $column = "broj_dojavnice";
             $id = $data['BrojDojave'];
             break;
-        case "Natjecanje": $table = "natjecanja"; break;
+        case "Natjecanje": 
+            $table = "natjecanja"; 
+            $column = "id_natjecanja";
+            $id = $data['ID'];
+            break;
         //i još kaj treba TODO
     }
     

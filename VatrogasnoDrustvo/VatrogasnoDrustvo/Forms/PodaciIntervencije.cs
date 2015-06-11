@@ -10,12 +10,17 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo
 {
-    /**
-     * Forma za unos nove intervencije.
-     */
+    /// <summary>
+    /// Forma za unos novog natjecanja.
+    /// </summary>
     public partial class PodaciIntervencije : Form
     {
         public PodaciIntervencije()
+        {
+            InitializeComponent();
+        }
+
+        public PodaciIntervencije(DataGridViewRow row)
         {
             InitializeComponent();
         }

@@ -18,7 +18,7 @@ namespace VatrogasnoDrustvo.Forme
     /// </summary>
     public partial class GlavnaForma : Form
     {
-        public Vatrogasac TrenutniVatrogasac { get; set; }
+        public static Vatrogasac TrenutniVatrogasac { get; set; }
         public bool Admin { get; set; }
 
         public GlavnaForma(Vatrogasac mirko, bool admin)

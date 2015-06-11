@@ -27,7 +27,7 @@ if(isset($_GET['table'])) {
     }
     
     elseif($table == "Natjecanja") {
-        $query = "SELECT natjecanja.naziv as 'Naziv', mjesto as Mjesto, vrijeme_odrzavanja as"
+        $query = "SELECT id_natjecanja as ID, natjecanja.naziv as 'Naziv', mjesto as Mjesto, vrijeme_odrzavanja as"
                 . " 'Vrijeme održavanja', kotizacija as 'Kotizacija', tip_natjecanja.naziv as"
                 . " 'Tip natjecanja' FROM natjecanja JOIN tip_natjecanja ON tip_natjecanja = id_tip_natjecanja";
     }
@@ -42,6 +42,16 @@ if(isset($_GET['table'])) {
     
     elseif($table == "NonUsers") {
         $query = "SELECT oib as OIB, CONCAT(ime, ' ', prezime) as Osoba FROM vatrogasci WHERE korisnicko_ime = 'null'";
+    }
+    
+    elseif($table == "Dobavljači") {
+        $query = "SELECT id_dobavljaci as 'Redni broj', naziv as 'Naziv', adresa as 'Adresa', kontakt as 'Kontakt broj',"
+                . " 'e-mail' as 'E-mail' FROM dobavljaci";
+    }
+    
+    elseif($table == "Competitors") {
+        $id = $_GET['natjecanje'];
+        $query = "SELECT oib as OIB, CONCAT(ime, ' ', prezime) as Osoba FROM vatrogasci JOIN trenira ON id_vatrogasca = vatrogasac WHERE id_vatrogasca NOT IN (SELECT vatrogasac FROM trenira)";
     }
     
     //izvrši upit

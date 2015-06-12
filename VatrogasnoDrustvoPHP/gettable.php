@@ -75,6 +75,12 @@ if(isset($_GET['table'])) {
                 . " = vatrogasac WHERE ekipa = '$ekipa'";
     }
     
+    elseif($table == "StavkeNarudžbe") {
+        $narudzba = $_GET['narudzba'];
+        $query = "SELECT oprema.naziv, stavke_narudzbe.kolicina, cijena, jedinicna_mjera FROM stavke_narudzbe"
+                . " JOIN oprema ON oprema = id_oprema WHERE narudzba = '$narudzba'";
+    }
+    
     //izvrši upit
     $Dbase = new DB();
     $results = $Dbase->execute($query);

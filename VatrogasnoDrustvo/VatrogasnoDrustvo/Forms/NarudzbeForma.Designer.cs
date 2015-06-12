@@ -33,6 +33,7 @@
         private void InitializeComponent()
         {
             this.pnlNarudzbe = new VatrogasnoDrustvo.TablePanel();
+            this.btnPDF = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlNarudzbe
@@ -46,11 +47,22 @@
             this.pnlNarudzbe.Size = new System.Drawing.Size(1021, 505);
             this.pnlNarudzbe.TabIndex = 0;
             // 
+            // btnPDF
+            // 
+            this.btnPDF.Location = new System.Drawing.Point(730, 463);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(138, 30);
+            this.btnPDF.TabIndex = 1;
+            this.btnPDF.Text = "Generiraj PDF";
+            this.btnPDF.UseVisualStyleBackColor = true;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
+            // 
             // NarudzbeForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1021, 505);
+            this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.pnlNarudzbe);
             this.Name = "NarudzbeForma";
             this.Text = "NarudzbeForma";
@@ -61,5 +73,6 @@
         #endregion
 
         private TablePanel pnlNarudzbe;
+        private System.Windows.Forms.Button btnPDF;
     }
 }

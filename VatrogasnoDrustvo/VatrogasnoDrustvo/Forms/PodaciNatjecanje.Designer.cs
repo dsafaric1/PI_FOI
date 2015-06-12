@@ -169,18 +169,18 @@
             // btnSalji
             // 
             this.btnSalji.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSalji.Location = new System.Drawing.Point(220, 371);
+            this.btnSalji.Location = new System.Drawing.Point(142, 354);
             this.btnSalji.Name = "btnSalji";
-            this.btnSalji.Size = new System.Drawing.Size(75, 26);
+            this.btnSalji.Size = new System.Drawing.Size(106, 26);
             this.btnSalji.TabIndex = 20;
-            this.btnSalji.Text = "Šalji";
+            this.btnSalji.Text = "Kreiraj natjecanje";
             this.btnSalji.UseVisualStyleBackColor = true;
             this.btnSalji.Click += new System.EventHandler(this.btnSalji_Click);
             // 
             // btnEkipe
             // 
             this.btnEkipe.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEkipe.Location = new System.Drawing.Point(220, 330);
+            this.btnEkipe.Location = new System.Drawing.Point(281, 355);
             this.btnEkipe.Name = "btnEkipe";
             this.btnEkipe.Size = new System.Drawing.Size(75, 25);
             this.btnEkipe.TabIndex = 21;

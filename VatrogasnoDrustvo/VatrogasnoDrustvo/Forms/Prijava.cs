@@ -23,6 +23,16 @@ namespace VatrogasnoDrustvo
         public frmPrijava()
         {
             InitializeComponent();
+            txtLozinka.KeyDown += frmPrijava_KeyDown;
+            txtKorIme.KeyDown += frmPrijava_KeyDown;
+        }
+
+        void frmPrijava_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPrijaviSe_Click(null,null);
+            }
         }
 
         /// <summary>

@@ -50,10 +50,11 @@ namespace VatrogasnoDrustvo.Forms
         {
             decimal ocjena = numOcjena.Value;
             decimal rezultat = numRezultat.Value;
-            
-            Dictionary<string, decimal> json = new Dictionary<string,decimal> {
+            string naziv = txtNaziv.Text;
+            Dictionary<string, object> json = new Dictionary<string,object> {
                 { "ocjena", ocjena },
-                { "rezultat", rezultat }
+                { "rezultat", rezultat },
+                { "naziv", naziv }
             };
 
             //create

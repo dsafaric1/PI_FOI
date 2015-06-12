@@ -141,6 +141,7 @@
             this.dgvDBData.Location = new System.Drawing.Point(21, 87);
             this.dgvDBData.MinimumSize = new System.Drawing.Size(100, 0);
             this.dgvDBData.Name = "dgvDBData";
+            this.dgvDBData.ReadOnly = true;
             this.dgvDBData.Size = new System.Drawing.Size(964, 334);
             this.dgvDBData.TabIndex = 1;
             // 

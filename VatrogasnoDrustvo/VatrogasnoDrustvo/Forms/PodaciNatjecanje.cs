@@ -28,6 +28,7 @@ namespace VatrogasnoDrustvo.InputForms
             InitializeComponent();
             btnEkipe.Visible = false;
             loadSelect();
+            btnSalji.Text = "Kreiraj natjecanje";
         }
 
         public PodaciNatjecanje(DataGridViewRow row, bool admin)
@@ -44,6 +45,7 @@ namespace VatrogasnoDrustvo.InputForms
             dtpVrijeme.Value = natjecanje.VrijemeOdrzavanja;
             numKotizacija.Value = natjecanje.Kotizacija;
             cmbTip.SelectedIndex = cmbTip.FindString(natjecanje.Tip.ToString());
+             btnSalji.Text = "Ažuriraj natjecanje";
         }
 
         /// <summary>

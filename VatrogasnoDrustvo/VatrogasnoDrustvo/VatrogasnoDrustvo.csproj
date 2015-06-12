@@ -188,6 +188,9 @@
     <EmbeddedResource Include="Forms\PodaciEkipe.resx">
       <DependentUpon>PodaciEkipe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PodaciIntervencije.resx">
+      <DependentUpon>PodaciIntervencije.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PodaciNarudzbe.resx">
       <DependentUpon>PodaciNarudzbe.cs</DependentUpon>
     </EmbeddedResource>

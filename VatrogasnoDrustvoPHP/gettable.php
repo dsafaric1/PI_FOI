@@ -75,17 +75,16 @@ if(isset($_GET['table'])) {
                 . " = vatrogasac WHERE ekipa = '$ekipa'";
     }
     
-<<<<<<< HEAD
     elseif ($table == "Prisutni") {
         $prijavljeni = $_GET['intervencija'];
         $query = "SELECT v.oib as OIB, v.ime as Ime, v.prezime as Prezime FROM vatrogasci as v JOIN prisutni"
                 . " ON id_vatrogasci = vatrogasac WHERE intervencija = '$prijavljeni'";
-=======
+    }
+    
     elseif($table == "StavkeNarudžbe") {
         $narudzba = $_GET['narudzba'];
         $query = "SELECT oprema.naziv, stavke_narudzbe.kolicina, cijena, jedinicna_mjera FROM stavke_narudzbe"
                 . " JOIN oprema ON oprema = id_oprema WHERE narudzba = '$narudzba'";
->>>>>>> origin/master
     }
     
     //izvrši upit

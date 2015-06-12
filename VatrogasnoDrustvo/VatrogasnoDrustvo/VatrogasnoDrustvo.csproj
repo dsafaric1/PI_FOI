@@ -99,6 +99,12 @@
     <Compile Include="Forms\PodaciEkipe.Designer.cs">
       <DependentUpon>PodaciEkipe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PodaciNarudzbe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PodaciNarudzbe.Designer.cs">
+      <DependentUpon>PodaciNarudzbe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PodaciNatjecanje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PodaciEkipe.resx">
       <DependentUpon>PodaciEkipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PodaciNarudzbe.resx">
+      <DependentUpon>PodaciNarudzbe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PodaciNatjecanje.resx">
       <DependentUpon>PodaciNatjecanje.cs</DependentUpon>

@@ -30,7 +30,7 @@ namespace VatrogasnoDrustvo.InputForms
         /// <param name="e"></param>
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            switch (comboBox1.SelectedValue.ToString())
+            switch (comboBox1.Text)
             {
                 case "Vozilo":
                     lblJacina.Visible = true;
@@ -43,8 +43,22 @@ namespace VatrogasnoDrustvo.InputForms
                     lblFirstDeg.Visible = true;
                     lblSecondDeg.Text = "Zapremnina vode:";
                     lblSecondDeg.Visible = true;
+                    numericUpDown1.Visible = true;
+                    numericUpDown2.Visible = true;
                     break;
                 case "Oprema": 
+                    lblJacina.Visible = false;
+                    lblTezina.Visible = false;
+                    numJacina.Visible = false;
+                    numTezina.Visible = false;
+                    lblTip.Visible = false;
+                    cmbTip.Visible = false;
+                    lblFirstDeg.Visible = false;
+                    lblSecondDeg.Visible = false;
+                    numericUpDown1.Visible = false;
+                    numericUpDown2.Visible = false;
+                    break;
+                case "Pumpa":
                     lblJacina.Visible = true;
                     lblTezina.Visible = true;
                     numJacina.Visible = true;
@@ -53,8 +67,8 @@ namespace VatrogasnoDrustvo.InputForms
                     lblFirstDeg.Visible = true;
                     lblSecondDeg.Text = "Max visina:";
                     lblSecondDeg.Visible = true;
-                    break;
-                case "Pumpa":
+                    numericUpDown1.Visible = true;
+                    numericUpDown2.Visible = true;
                     break;
             }
         }

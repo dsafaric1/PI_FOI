@@ -46,7 +46,7 @@ if(isset($_GET['table'])) {
     
     elseif($table == "Dobavljači") {
         $query = "SELECT id_dobavljaci as 'Redni broj', naziv as 'Naziv', adresa as 'Adresa', kontakt as 'Kontakt broj',"
-                . " 'e-mail' as 'E-mail' FROM dobavljaci";
+                . " email as 'E-mail' FROM dobavljaci";
     }
     
     elseif($table == "Narudžbe") {

@@ -144,6 +144,7 @@
             this.btnSalji.TabIndex = 35;
             this.btnSalji.Text = "Šalji";
             this.btnSalji.UseVisualStyleBackColor = true;
+            this.btnSalji.Click += new System.EventHandler(this.btnSalji_Click);
             // 
             // PodaciDobavljaca
             // 

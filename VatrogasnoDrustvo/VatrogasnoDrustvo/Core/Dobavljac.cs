@@ -10,6 +10,7 @@ namespace VatrogasnoDrustvo.Core
 {
     class Dobavljac
     {
+        public string ID { get; set; }
         public string Naziv { get; set; }
         public string Adresa { get; set; }
         public string Kontakt { get; set; }
@@ -19,6 +20,7 @@ namespace VatrogasnoDrustvo.Core
 
         public Dobavljac(DataGridViewRow row)
         {
+            ID = row.Cells["Redni broj"].Value.ToString();
             Naziv = row.Cells["Naziv"].Value.ToString();
             Adresa = row.Cells["Adresa"].Value.ToString();
             Kontakt = row.Cells["Kontakt broj"].Value.ToString();

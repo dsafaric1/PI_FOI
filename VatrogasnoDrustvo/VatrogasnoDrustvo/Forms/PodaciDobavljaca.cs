@@ -14,9 +14,9 @@ using Newtonsoft.Json;
 using System.Net.Mail;
 namespace VatrogasnoDrustvo.InputForms
 {
-    /**
-     * Forma za unos novog dobavljača.
-     */
+    /// <summary>
+    /// Forma za unos/izmjenu dobavljača
+    /// </summary>
     public partial class PodaciDobavljaca : Form
     {
         Dobavljac tvrtka;
@@ -40,12 +40,22 @@ namespace VatrogasnoDrustvo.InputForms
 
         private void btnSalji_Click(object sender, EventArgs e)
         {
+            //ako je sve uneseno
             if (txtNazivDob.Text != "" && txtKontakt.Text != "" && txtKontakt.Text != "" && txtEmail.Text != "")
             {
+                //ako je email dobrog formata
                 if (new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Match(txtEmail.Text).Success)
                 {
-                    createDobavljac();
-
+                    if (tvrtka != null)
+                    {
+                        //update
+                        updateDobavljac();
+                    }
+                    else
+                    {
+                        //create
+                        createDobavljac();
+                    }
                     this.Close();
                 }
 
@@ -61,6 +71,38 @@ namespace VatrogasnoDrustvo.InputForms
             }
         }
 
+        /// <summary>
+        /// Metoda za update dobavljača
+        /// </summary>
+        private void updateDobavljac()
+        {
+            //dohvat podataka
+            tvrtka = getData(tvrtka);
+            
+            try
+            {
+                //MessageBox.Show(new Sender().Send(tvrtka, "https://testerinho.com/vatrogasci/updateDobavljac.php"));
+                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(tvrtka, "https://testerinho.com/vatrogasci/updateDobavljac.php"));
+                if (bool.Parse(response["passed"].ToString()))
+                {
+                    MessageBox.Show("Dobavljač je ažuriran!");
+                }
+                else
+                {
+                    MessageBox.Show(response["text"].ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Pogreška u kontaktiranju servera!" + Environment.NewLine + e.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Punjenje objekta sa podacima forme
+        /// </summary>
+        /// <param name="tvrtka">Trenutni dobavljač</param>
+        /// <returns>Dobavljač sa ažuriranim podacima</returns>
         private Dobavljac getData(Dobavljac tvrtka = null)
         {
             if (tvrtka == null) tvrtka = new Dobavljac();
@@ -71,6 +113,9 @@ namespace VatrogasnoDrustvo.InputForms
             return tvrtka;
         }
 
+        /// <summary>
+        /// Metoda za kreiranje dobavljača (poziv POST)
+        /// </summary>
         private void createDobavljac()
         {
             tvrtka = getData();

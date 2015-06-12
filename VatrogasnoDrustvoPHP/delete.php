@@ -26,11 +26,16 @@ if(isset($_POST['obj'])) {
             $column = "id_natjecanja";
             $id = $data['ID'];
             break;
+        case "Dobavljac":
+            $table = "dobavljaci";
+            $column = "id_dobavljaci";
+            $id = $data['ID'];
+            break;
         //i još kaj treba TODO
     }
     
     $delete = "DELETE FROM $table WHERE $column = '$id'";
-    
+
     $Dbase = new DB();
     $Dbase->execute($delete);
     

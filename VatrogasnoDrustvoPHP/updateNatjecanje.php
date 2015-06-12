@@ -18,7 +18,7 @@ if(isset($_POST['obj'])) {
     
     $query = "UPDATE natjecanja SET naziv = '$naziv', mjesto = '$mjesto', vrijeme_odrzavanja = '$vrijeme',"
             . " kotizacija = '$kotizacija', tip_natjecanja = $tip WHERE id_natjecanja = '$id'";
-
+    
     //izvrši
     $Dbase = new DB();
     $Dbase->execute($query);

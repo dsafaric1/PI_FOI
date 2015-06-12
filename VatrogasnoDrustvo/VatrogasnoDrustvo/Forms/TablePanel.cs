@@ -45,6 +45,10 @@ namespace VatrogasnoDrustvo
             list.RemoveHandler(obj, list[obj]);
         }
 
+        /// <summary>
+        /// Metoda za brisanje svih handlera u ostalim kontrolama
+        /// </summary>
+        /// <param name="c">Kontrola iz kojeg se brišu handleri</param>
         public void RemoveHandlerList(Control c)
         {
             EventHandlerList list = (EventHandlerList)typeof(Control).GetProperty("Events", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(c, null);
@@ -228,7 +232,7 @@ namespace VatrogasnoDrustvo
         {
             DataGridViewRow row = dgvDBData.Rows[e.RowIndex];
             
-            //parse type Vatrogasac
+            //parse type i otvori formu prema tipu
             if (typeof(T) == typeof(Vatrogasac))
             {
                 new PodaciClana(row).ShowDialog();
@@ -241,9 +245,9 @@ namespace VatrogasnoDrustvo
             {
                 new PodaciIntervencije(row).ShowDialog();
             }
-            else if (typeof(T) == typeof(Ekipa))
+            else if (typeof(T) == typeof(Dobavljac))
             {
-
+                new PodaciDobavljaca(row).ShowDialog();
             }
 
             this.RefreshPanel<T>(table, admin);

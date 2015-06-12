@@ -37,18 +37,20 @@
             this.lblNacinIsporuke = new System.Windows.Forms.Label();
             this.lblPodaciNarudzbeNaslov = new System.Windows.Forms.Label();
             this.dgvStavke = new System.Windows.Forms.DataGridView();
+            this.btnDodajStavke = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStavke)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalji
             // 
             this.btnSalji.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSalji.Location = new System.Drawing.Point(906, 504);
+            this.btnSalji.Location = new System.Drawing.Point(905, 509);
             this.btnSalji.Name = "btnSalji";
-            this.btnSalji.Size = new System.Drawing.Size(106, 26);
+            this.btnSalji.Size = new System.Drawing.Size(106, 27);
             this.btnSalji.TabIndex = 33;
             this.btnSalji.Text = "Kreiraj narudžbu";
             this.btnSalji.UseVisualStyleBackColor = true;
+            this.btnSalji.Click += new System.EventHandler(this.btnSalji_Click);
             // 
             // cmbDobavljac
             // 
@@ -125,11 +127,22 @@
             // 
             // dgvStavke
             // 
+            this.dgvStavke.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStavke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStavke.Location = new System.Drawing.Point(12, 90);
             this.dgvStavke.Name = "dgvStavke";
             this.dgvStavke.Size = new System.Drawing.Size(793, 471);
             this.dgvStavke.TabIndex = 34;
+            // 
+            // btnDodajStavke
+            // 
+            this.btnDodajStavke.Location = new System.Drawing.Point(905, 379);
+            this.btnDodajStavke.Name = "btnDodajStavke";
+            this.btnDodajStavke.Size = new System.Drawing.Size(106, 26);
+            this.btnDodajStavke.TabIndex = 35;
+            this.btnDodajStavke.Text = "Dodaj stavke";
+            this.btnDodajStavke.UseVisualStyleBackColor = true;
+            this.btnDodajStavke.Click += new System.EventHandler(this.btnDodajStavke_Click);
             // 
             // PodaciNarudzbe
             // 
@@ -137,6 +150,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Firebrick;
             this.ClientSize = new System.Drawing.Size(1119, 573);
+            this.Controls.Add(this.btnDodajStavke);
             this.Controls.Add(this.dgvStavke);
             this.Controls.Add(this.btnSalji);
             this.Controls.Add(this.cmbDobavljac);
@@ -165,5 +179,6 @@
         private System.Windows.Forms.Label lblNacinIsporuke;
         private System.Windows.Forms.Label lblPodaciNarudzbeNaslov;
         private System.Windows.Forms.DataGridView dgvStavke;
+        private System.Windows.Forms.Button btnDodajStavke;
     }
 }

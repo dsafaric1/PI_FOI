@@ -27,5 +27,10 @@ namespace VatrogasnoDrustvo.Core
             Email = row.Cells["E-mail"].Value.ToString();
 
         }
+
+        public override string ToString()
+        {
+            return this.Naziv;
+        }
     }
 }

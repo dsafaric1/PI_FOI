@@ -250,7 +250,7 @@ namespace VatrogasnoDrustvo
             }
             else if (typeof(T) == typeof(Narudzba))
             {
-                new PodaciNarudzbe().ShowDialog();
+                new PodaciNarudzbe(row).ShowDialog();
             }
 
             this.RefreshPanel<T>(table, admin);
@@ -327,6 +327,10 @@ namespace VatrogasnoDrustvo
             { 
                 openForm(new PodaciDobavljaca());
                 RefreshPanel<Dobavljac>(table, admin);
+            }
+            else if(lblBase.Text=="Narudžbe"){
+                openForm(new PodaciNarudzbe());
+                RefreshPanel<Narudzba>(table,admin);
             }
             btnDodaj.Click += btnDodaj_Click;
         }

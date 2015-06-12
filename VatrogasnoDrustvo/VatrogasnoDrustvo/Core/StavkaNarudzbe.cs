@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace VatrogasnoDrustvo.Core
 {
-    class StavkaNarudzbe
+    public class StavkaNarudzbe
     {
         public Oprema NarucenaOprema { get; set; }
         public string JedinicaMjera { get; set; }
         public int Kolicina { get; set; }
-        private Decimal cijena;
+        public Decimal Cijena { get; set; }
+
+        public StavkaNarudzbe()
+        {
+
+        }
 
         public Decimal GetUkupnaCijena() 
         {
-            return this.Kolicina * this.cijena;
+            return this.Kolicina * this.Cijena;
         }
     }
 }

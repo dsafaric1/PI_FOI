@@ -38,15 +38,16 @@ namespace VatrogasnoDrustvo.InputForms
 
             this.admin = admin;
             natjecanje = new Natjecanje(row);
-
+            
             //puni textboxove sa podacima
             txtMjesto.Text = natjecanje.Mjesto;
             txtNaziv.Text = natjecanje.Naziv;
             dtpVrijeme.Value = natjecanje.VrijemeOdrzavanja;
             numKotizacija.Value = natjecanje.Kotizacija;
             cmbTip.SelectedIndex = cmbTip.FindString(natjecanje.Tip.ToString());
-             btnSalji.Text = "Ažuriraj natjecanje";
+            btnSalji.Text = "Ažuriraj natjecanje";
         }
+            
 
         /// <summary>
         /// Puni dropdown sa svim vrijednostima pobrojenja tipova

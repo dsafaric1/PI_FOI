@@ -71,7 +71,7 @@ namespace VatrogasnoDrustvo
 
         private void btnPodaciIntevencijeSpremi_Click(object sender, EventArgs e)
         {
-            if (txtPodaciIntevencijeMjesto.Text != "" && txtPodaciIntevencijeAdresa.Text != "" && txtPodaciIntevencijeOpis.Text != "" && txtPodaciIntevencijeUzrok.Text != "" && dtpPocetnoVrijeme.Text != "" && dtpZavrsnoVrijeme.Text != "" && cmbPodaciIntevencijeVrsta.SelectedItem != null)
+            if (chcklPodaciIntevencijeVatrogasci.CheckedItems.Count != 0 && txtPodaciIntevencijeMjesto.Text != "" && txtPodaciIntevencijeAdresa.Text != "" && txtPodaciIntevencijeOpis.Text != "" && txtPodaciIntevencijeUzrok.Text != "" && dtpPocetnoVrijeme.Text != "" && dtpZavrsnoVrijeme.Text != "" && cmbPodaciIntevencijeVrsta.SelectedItem != null)
             {
                 if (nova != null)
                 {
@@ -81,6 +81,7 @@ namespace VatrogasnoDrustvo
                 {
                     createIntervencija();
                 }
+                nova.prisutniVatrogasci = null;
                 this.Close();
             }
             else
@@ -103,6 +104,16 @@ namespace VatrogasnoDrustvo
             nova.PocetnoVrijeme = dtpPocetnoVrijeme.Text;
             nova.ZavrsnoVrijeme = dtpZavrsnoVrijeme.Text;
             nova.Vrsta = (VrstaIntervencije)Enum.Parse(typeof(VrstaIntervencije), cmbPodaciIntevencijeVrsta.Text);
+            nova.prisutniVatrogasci = new List<Vatrogasac>();
+            foreach (var item in chcklPodaciIntevencijeVatrogasci.CheckedItems)
+            {
+                foreach (var p in persons)
+                {
+                    if(p["Osoba"] == item)
+                        nova.AddPrisutniVatrogasac(new Vatrogasac { OIB = p["OIB"] });
+                }  
+            }
+            
             return nova;
         }
 
@@ -134,12 +145,12 @@ namespace VatrogasnoDrustvo
         private void updateIntervencija(Intervencija nova)
         {
             nova = getData(nova);
-            this.TopMost = false;
+            
             try
             {
-                //MessageBox.Show(new Sender().Send(nova, "https://testerinho.com/vatrogasci/insertIntervencija.php"));
-                
-                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(nova, "https://testerinho.com/vatrogasci/insertIntervencija.php"));
+                //MessageBox.Show(new Sender().Send(nova, "https://testerinho.com/vatrogasci/updateIntervencija.php"));
+
+                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(nova, "https://testerinho.com/vatrogasci/updateIntervencija.php"));
 
                 if (bool.Parse(response["passed"].ToString()))
                 {

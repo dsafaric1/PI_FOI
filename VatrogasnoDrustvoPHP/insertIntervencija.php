@@ -16,28 +16,32 @@ if(isset($_POST['obj'])){
     $pocetnoVrijeme = $data["PocetnoVrijeme"];
     $zavrsnoVrijeme = $data["ZavrsnoVrijeme"];
     $vrstaIntervencije = "(SELECT id_vrste_intervencija FROM vrste_intervencija WHERE naziv = '{$data ['Vrsta']}')";
-    $brojDojave = $data["BrojDojave"];
     
-    if(isset($_POST['additionalData'])){
-        $query = "INSERT INTO intervencije values (default, '$mjesto', '$adresa', '$pocetnoVrijeme', '$zavrsnoVrijeme', "
+    $query = "INSERT INTO intervencije values (default, '$mjesto', '$adresa', '$pocetnoVrijeme', '$zavrsnoVrijeme', "
                 . "'$opis', '$uzrok', $vrstaIntervencije)";
-    }
-    else {
-        $query = "UPDATE intervencije set mjesto = '$mjesto', adresa = '$adresa', pocetno_vrijeme = '$pocetnoVrijeme',"
-                . " zavrsno_vrijeme = '$zavrsnoVrijeme', opis = '$opis', uzrok = '$uzrok', vrsta_intervencije ="
-                . " $vrstaIntervencije WHERE broj_dojavnice = '$brojDojave'";
-    } 
     
     $Dbase = new DB();
-    $Dbase->execute($query);
-    
+     $Dbase->execute($query);
+     $id = $Dbase->getInsertedID();
+        $vatrogasci = $data['prisutniVatrogasci'];
+        $prisutni = "INSERT INTO prisutni VALUES ";
+        foreach ($vatrogasci as $atributi){
+            $clan = get_object_vars($atributi);
+            $podupit = "((SELECT id_vatrogasci FROM vatrogasci WHERE oib = '{$clan['OIB']}'), $id), ";
+            $prisutni .=$podupit;
+        }
+        $prisutni = substr($prisutni, 0,-2);
+        
+        $Dbase->execute($prisutni);
+        
     if($Dbase->hasFailed()){
         $response['passed'] = false;
-        $response['text'] = "Pogreška kod unosa nove intervencije!" .$Dbase->getError();
+        $response['text'] = "Pogreška kod unosa nove intervencije!" .$Dbase->getError(). $query;
     } 
     else {
-        $response['passed'] = true;
+        $response['passed'] = TRUE;
     }
+   
     echo json_encode($response);
     
 }

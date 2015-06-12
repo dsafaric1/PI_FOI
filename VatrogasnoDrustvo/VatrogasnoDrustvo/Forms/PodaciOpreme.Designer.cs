@@ -313,6 +313,7 @@
             this.btnSalji.TabIndex = 39;
             this.btnSalji.Text = "Pošalji";
             this.btnSalji.UseVisualStyleBackColor = true;
+            this.btnSalji.Click += new System.EventHandler(this.btnSalji_Click);
             // 
             // PodaciOpreme
             // 

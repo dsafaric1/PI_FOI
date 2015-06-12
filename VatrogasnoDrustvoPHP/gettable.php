@@ -33,11 +33,11 @@ if(isset($_GET['table'])) {
     }
     
     elseif($table == "Oprema") {
-        $query = "SELECT oprema.naziv as Oprema, kolicina as 'Količina', godiste as 'Godište', broj_sjedala"
+        $query = "SELECT id_oprema as 'Šifra', oprema.naziv as Oprema, kolicina as 'Količina', godiste as 'Godište', broj_sjedala"
                 . " as 'Broj sjedala', zapremnina_vode as 'Zapremnina vode', max_protok as 'Max protok',"
                 . " max_visina_pumpanja as 'Max visina pumpanja', jacina as 'Jačina', tezina as 'Težina',"
-                . " tip_opreme.naziv as 'Tip opreme', tip_vozila.naziv as 'Tip vozila' FROM oprema JOIN tip_opreme"
-                . " ON tip_opreme = id_tip_opreme JOIN tip_vozila ON tip_vozila = id_tip_vozila";
+                . " tip_opreme.naziv as 'Tip opreme', tip_vozila.naziv as 'Tip vozila' FROM oprema LEFT JOIN tip_opreme"
+                . " ON tip_opreme = id_tip_opreme LEFT JOIN tip_vozila ON tip_vozila = id_tip_vozila";
     }
     
     elseif($table == "NonUsers") {

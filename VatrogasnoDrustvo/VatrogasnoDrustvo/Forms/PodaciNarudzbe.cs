@@ -81,18 +81,19 @@ namespace VatrogasnoDrustvo.Forms
         {
             foreach(DataGridViewRow Row in dgvStavke.Rows){
                 //validacija za jedinicnu mjeru
-                if(new Regex("@/[w]").Match(Row.Cells[1].Value.ToString()).Success)
+                if(Row.Cells[1].Value == null || new Regex("@/[w]").Match(Row.Cells[1].Value.ToString()).Success)
                 {
                    MessageBox.Show("Jedinicna mjera nije dobro unešena za " + Row.Cells[0].Value.ToString()); 
                    return;
                 }
                 //validacija za kolicinu
-                if(new Regex("@/[d]").Match(Row.Cells[2].Value.ToString()).Success){
+                if(new Regex("@/[d]").Match(Row.Cells[2].Value.ToString()).Success && Row.Cells[2].Value.ToString() == "0"){
                    MessageBox.Show("Kolicina nije dobro unešena za " + Row.Cells[0].Value.ToString()); 
                    return;
                 }
                 //validacija za cijenu
-                if(new Regex("@/[d]").Match(Row.Cells[3].Value.ToString()).Success){
+                if (new Regex("@/[d]").Match(Row.Cells[3].Value.ToString()).Success && Row.Cells[3].Value.ToString() == "0")
+                {
                    MessageBox.Show("Cijena nije dobro unešena za " + Row.Cells[0].Value.ToString()); 
                    return;
                 }
@@ -133,8 +134,9 @@ namespace VatrogasnoDrustvo.Forms
             narudzba = getData(narudzba);
             try
             {
+                //MessageBox.Show(new Sender().Send(narudzba, "https://testerinho.com/vatrogasci/insertNarudzbe.php", GlavnaForma.TrenutniVatrogasac));
                 var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                    (new Sender().Send(narudzba, "https://testerinho.com/vatrogasci/insertNarudzba.php", GlavnaForma.TrenutniVatrogasac));
+                    (new Sender().Send(narudzba, "https://testerinho.com/vatrogasci/insertNarudzbe.php", GlavnaForma.TrenutniVatrogasac));
 
                 if (bool.Parse(response["passed"].ToString()))
                 {

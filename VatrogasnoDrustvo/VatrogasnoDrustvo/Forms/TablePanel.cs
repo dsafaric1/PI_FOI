@@ -197,7 +197,7 @@ namespace VatrogasnoDrustvo
 
                     try
                     {
-                        //MessageBox.Show(new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
+                        MessageBox.Show(new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
                         //šalji što se briše
                         var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
                             (new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));

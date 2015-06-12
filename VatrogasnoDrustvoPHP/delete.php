@@ -31,6 +31,10 @@ if(isset($_POST['obj'])) {
             $column = "id_dobavljaci";
             $id = $data['ID'];
             break;
+        case "Narudzba":
+            $table = "narudzbe";
+            $column = "id_narudzbe";
+            $id = $data['Rbr'];
         //i još kaj treba TODO
     }
     

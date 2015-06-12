@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VatrogasnoDrustvo.Core
 {
-    enum TipVozila
+    public enum TipVozila
     {
         Zapovjedno,
         Navalno,
@@ -17,7 +17,7 @@ namespace VatrogasnoDrustvo.Core
         Specijalno
     }
 
-    class Vozilo:Oprema
+    public class Vozilo:Oprema
     {
         public int Godiste { get; set; }
         public int BrojSjedala { get; set; }

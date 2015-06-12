@@ -114,7 +114,6 @@ namespace VatrogasnoDrustvo
                 }
                 else if (keyword == "Narudžbe")
                 {
-                    initButton(btnFirstDegree, "Generiraj PDF", null);
                     initButton(btnSecondDegree, "Dobavljači", Dobavljac_Click);
                 }
             }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VatrogasnoDrustvo.Bridge;
 using VatrogasnoDrustvo.Core;
 
 namespace VatrogasnoDrustvo.Forme
@@ -21,6 +22,14 @@ namespace VatrogasnoDrustvo.Forme
         {
             InitializeComponent();
             pnlNarudzbe.RefreshPanel<Narudzba>("Narudžbe", admin); //ovo je potrebno da se user kontrola TablePanel prilagodi za narudžbe (labela, gumbići, itd.)
+        }
+
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+            DataGridView dgv = pnlNarudzbe.Controls.Find("dgvDBData", true).FirstOrDefault() as DataGridView;
+            Narudzba selektirana = new Narudzba(dgv.Rows[dgv.CurrentCell.RowIndex]);
+
+            new DocumentGenerator().GenerateDocument(selektirana);
         }
     }
 }

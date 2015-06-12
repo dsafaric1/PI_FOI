@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VatrogasnoDrustvo.Core
 {
-    class Oprema
+    public class Oprema
     {
         public string Naziv { get; set; }
         public int Kolicina { get; set; }

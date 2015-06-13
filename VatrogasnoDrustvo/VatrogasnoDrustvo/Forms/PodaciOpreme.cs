@@ -30,11 +30,16 @@ namespace VatrogasnoDrustvo.InputForms
             cmbTip.DataSource = Enum.GetValues(typeof(TipVozila)).Cast<TipVozila>().ToList();
         }
 
+        /// <summary>
+        /// Konstruktor za update, generira objekte ovisno o tipu
+        /// </summary>
+        /// <param name="row">Redak koji je kliknut</param>
         public PodaciOpreme(DataGridViewRow row)
         {
             InitializeComponent();
             comboBox1.DataSource = new List<string> { "Oprema", "Vozilo", "Pumpa" };
             cmbTip.DataSource = Enum.GetValues(typeof(TipVozila)).Cast<TipVozila>().ToList();
+            comboBox1.Enabled = false;
             comboBox1.SelectedIndex = comboBox1.FindString(row.Cells["Tip opreme"].Value.ToString());
             if(row.Cells["Tip opreme"].Value.ToString() == "Vozilo")
             {
@@ -44,7 +49,7 @@ namespace VatrogasnoDrustvo.InputForms
                 numGodiste.Value = vozilo.Godiste;
                 numericUpDown1.Value = vozilo.BrojSjedala;
                 numericUpDown2.Value= vozilo.ZapremninaVode;
-                cmbTip.SelectedIndex = cmbTip.FindString(vozilo.tipVozila.ToString());
+                cmbTip.SelectedIndex = cmbTip.FindString(vozilo.TipVozila.ToString());
                 numJacina.Value = vozilo.Jacina;
                 numTezina.Value = decimal.Parse(vozilo.Tezina.ToString());
             }
@@ -141,6 +146,11 @@ namespace VatrogasnoDrustvo.InputForms
             }
         }
 
+        /// <summary>
+        /// Kreiranje objekta tipa oprema
+        /// </summary>
+        /// <param name="oprema">Prosljeđena oprema</param>
+        /// <returns>Nova oprema</returns>
         private Oprema getOprema(Oprema oprema)
         {
             if(oprema == null) oprema = new Oprema();
@@ -158,7 +168,9 @@ namespace VatrogasnoDrustvo.InputForms
             vozilo.Godiste = int.Parse(numGodiste.Value.ToString());
             vozilo.BrojSjedala = int.Parse(numericUpDown1.Value.ToString());
             vozilo.ZapremninaVode = int.Parse(numericUpDown2.Value.ToString());
-            cmbTip.SelectedIndex = cmbTip.FindString(vozilo.tipVozila.ToString());
+            vozilo.TipVozila = (TipVozila)Enum.Parse(typeof(TipVozila), cmbTip.Text);
+            vozilo.Jacina = int.Parse(numJacina.Value.ToString());
+            vozilo.Tezina = int.Parse(numTezina.Value.ToString());
             return vozilo;
         }
 
@@ -196,83 +208,62 @@ namespace VatrogasnoDrustvo.InputForms
             }
         }
 
+        /// <summary>
+        /// Povlačenje podataka za redak kako bi se kreirao novi objekt
+        /// </summary>
+        /// <param name="URL">URL na koji se šalje objekt</param>
         private void executeOprema(string URL)
         {
-            if(oprema != null){
+            if(oprema != null || comboBox1.Text == "Oprema"){
                 oprema = getOprema(oprema);
                 Dictionary<string,string> Tip = new Dictionary<string,string>{
                     {"tip","Oprema"}
                 };
-                try
-                {
-                    MessageBox.Show(new Sender().Send(oprema, URL, Tip));
-                    var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                        (new Sender().Send(oprema, URL, Tip));
-
-                    if (bool.Parse(response["passed"].ToString()))
-                    {
-                        MessageBox.Show("Uneseno je novo natjecanje!");
-                    }
-                    else
-                    {
-                        MessageBox.Show(response["text"].ToString());
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Pogreška u kontaktiranju servera " + e.ToString());
-                }
+                sendData(oprema, URL, Tip);
             }
-            else if(vozilo != null){
+            else if(vozilo != null || comboBox1.Text == "Vozilo"){
                 vozilo =getVozilo(vozilo);
                 Dictionary<string,string> Tip = new Dictionary<string,string>{
                     {"tip","Vozilo"}
                 };
-                try
-                {
-                    MessageBox.Show(new Sender().Send(oprema, URL, Tip));
-                    var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                        (new Sender().Send(vozilo, URL, Tip));
-
-                    if (bool.Parse(response["passed"].ToString()))
-                    {
-                        MessageBox.Show("Uneseno je novo natjecanje!");
-                    }
-                    else
-                    {
-                        MessageBox.Show(response["text"].ToString());
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Pogreška u kontaktiranju servera " + e.ToString());
-                }
+                sendData(vozilo, URL, Tip);
             }
-            else if (pumpa != null)
+            else if (pumpa != null || comboBox1.Text == "Pumpa")
             {
                 pumpa = getPumpa(pumpa);
-                Dictionary<string,string> Tip = new Dictionary<string,string>{
+                Dictionary<string, string> Tip = new Dictionary<string, string>{
                     {"tip","Pumpa"}
                 };
-                try
-                {
-                    MessageBox.Show(new Sender().Send(oprema, URL, Tip));
-                    var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                        (new Sender().Send(pumpa, URL, Tip));
+                sendData(pumpa, URL, Tip);
+            }
+        }
 
-                    if (bool.Parse(response["passed"].ToString()))
-                    {
-                        MessageBox.Show("Uneseno je novo natjecanje!");
-                    }
-                    else
-                    {
-                        MessageBox.Show(response["text"].ToString());
-                    }
-                }
-                catch (Exception e)
+        /// <summary>
+        /// Slanje objekta na URL
+        /// </summary>
+        /// <param name="oprema">objekt koji šalje</param>
+        /// <param name="URL">URL na koji šalje</param>
+        /// <param name="Tip">tip opreme koji se šalje</param>
+        private void sendData(object oprema, string URL, Dictionary<string, string> Tip)
+        {
+            try
+            {
+                //MessageBox.Show(new Sender().Send(oprema, URL, Tip));
+                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
+                    (new Sender().Send(oprema, URL, Tip));
+
+                if (bool.Parse(response["passed"].ToString()))
                 {
-                    MessageBox.Show("Pogreška u kontaktiranju servera " + e.ToString());
+                    MessageBox.Show("Uspješan unos opreme!");
                 }
+                else
+                {
+                    MessageBox.Show(response["text"].ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Pogreška u kontaktiranju servera " + e.ToString());
             }
         }
 

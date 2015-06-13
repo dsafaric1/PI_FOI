@@ -1,4 +1,5 @@
 ﻿using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using VatrogasnoDrustvo.Core;
 
 namespace VatrogasnoDrustvo.Bridge
@@ -60,9 +62,105 @@ namespace VatrogasnoDrustvo.Bridge
         {
             Section section = document.Sections[0];
 
-            //body
+            //order title
+            Paragraph orderTitle = section.AddParagraph();
+            orderTitle.Format.Font = VDFonts.TITLE_FONT.Clone();
+            orderTitle.Format.LineSpacing = 20;
+            orderTitle.Format.LineSpacingRule = LineSpacingRule.AtLeast;
+            orderTitle.Format.Alignment = ParagraphAlignment.Center;
+            orderTitle.Format.SpaceBefore = 100;
+            orderTitle.Format.SpaceAfter = 20;
 
-            
+            if (narudzba.Rbr == 0) orderTitle.AddFormattedText("NARUDŽBENICA");
+            else orderTitle.AddFormattedText("NARUDŽBENICA " + narudzba.Rbr);
+
+            Paragraph order = section.AddParagraph();
+            order.Format.LineSpacing = 15;
+            order.Format.LineSpacingRule = LineSpacingRule.AtLeast;
+            order.Format.SpaceBefore = 30;
+            order.AddFormattedText("Dobavljač: " + narudzba.Dobavljac.Naziv);
+            order.AddLineBreak();
+
+            //body
+            //stavke
+            Table orderTable = section.AddTable();
+            orderTable.Style = "orderTable";
+            orderTable.Borders.Width = 0.25;
+
+            //table columns
+            Column orderTableName = orderTable.AddColumn(Unit.FromCentimeter(7));
+            orderTableName.Format.Alignment = ParagraphAlignment.Center;
+
+            Column orderTableQuality = orderTable.AddColumn(Unit.FromCentimeter(4));
+            orderTableQuality.Format.Alignment = ParagraphAlignment.Center;
+
+            Column orderTableQuantity = orderTable.AddColumn(Unit.FromCentimeter(2.5));
+            orderTableQuantity.Format.Alignment = ParagraphAlignment.Center;
+
+            Column orderTablePrice = orderTable.AddColumn(Unit.FromCentimeter(3.5));
+            orderTablePrice.Format.Alignment = ParagraphAlignment.Center;
+
+            //table header
+            Row header = orderTable.AddRow();
+            header.HeadingFormat = true;
+            header.Format.Alignment = ParagraphAlignment.Center;
+            header.Format.Font.Bold = true;
+
+            header.Cells[0].AddParagraph("Oprema");
+            header.Cells[0].Format.Alignment = ParagraphAlignment.Center;
+            header.Cells[0].VerticalAlignment = VerticalAlignment.Center;
+
+            header.Cells[1].AddParagraph("Jedinična mjera");
+            header.Cells[1].Format.Alignment = ParagraphAlignment.Center;
+            header.Cells[1].VerticalAlignment = VerticalAlignment.Center;
+
+            header.Cells[2].AddParagraph("Količina");
+            header.Cells[2].Format.Alignment = ParagraphAlignment.Center;
+            header.Cells[2].VerticalAlignment = VerticalAlignment.Center;
+
+            header.Cells[3].AddParagraph("Cijena");
+            header.Cells[3].Format.Alignment = ParagraphAlignment.Center;
+            header.Cells[3].VerticalAlignment = VerticalAlignment.Center;
+
+            //row data
+            int i=0;
+            decimal baseCostValue = 0;
+            foreach(StavkaNarudzbe stavka in narudzba.Stavke) 
+            {
+                Row row = orderTable.AddRow();
+                row.Cells[i].AddParagraph(stavka.NarucenaOprema.Naziv);
+                row.Cells[i++].Format.Alignment = ParagraphAlignment.Left;
+                row.Cells[i++].AddParagraph(stavka.JedinicaMjera);
+                row.Cells[i++].AddParagraph(stavka.Kolicina.ToString());
+                row.Cells[i].AddParagraph(string.Format("{0:C}", stavka.Cijena));
+                row.Cells[i++].Format.Alignment = ParagraphAlignment.Right;
+                baseCostValue += stavka.GetUkupnaCijena();
+                i=0;
+            }
+
+            //offer summary
+            Row baseCost = orderTable.AddRow();
+            baseCost.Format.Alignment = ParagraphAlignment.Right;
+            baseCost.Cells[0].AddParagraph("Osnovica");
+            baseCost.Cells[0].MergeRight = 2;
+            baseCost.Borders.Top.Width = 1;
+            baseCost.Cells[3].AddParagraph(string.Format("{0:C}", baseCostValue));         //nešto za izmjenu
+
+            Row PDV = orderTable.AddRow();
+            PDV.Format.Alignment = ParagraphAlignment.Right;
+            PDV.Cells[0].AddParagraph("PDV (25.00%)");
+            PDV.Cells[0].MergeRight = 2;
+            PDV.Borders.Top.Width = 1;
+            PDV.Cells[3].AddParagraph(string.Format("{0:C}", (decimal.Parse((0.25).ToString()) * baseCostValue)));
+
+            Row totalCost = orderTable.AddRow();
+            totalCost.Format.Alignment = ParagraphAlignment.Right;
+            totalCost.Cells[0].AddParagraph("Ukupna cijena");
+            totalCost.Cells[0].MergeRight = 2;
+            totalCost.Borders.Top.Width = 1;
+            totalCost.Cells[3].AddParagraph(string.Format("{0:C}", (decimal.Parse((1.25).ToString()) * baseCostValue)));      
+
+            //donji dio narudžbe
             Paragraph orderDetails = section.AddParagraph();
             orderDetails.Format.LineSpacing = 15;
             orderDetails.Format.LineSpacingRule = LineSpacingRule.AtLeast;
@@ -72,7 +170,9 @@ namespace VatrogasnoDrustvo.Bridge
             orderDetails.AddLineBreak();
             orderDetails.AddFormattedText("Način isporuke: " + narudzba.NacinIsporuke);
             orderDetails.AddLineBreak();
-            orderDetails.AddFormattedText("Sastavio: " + narudzba.Upisao.Ime + " " + narudzba.Upisao.Prezime);  
+
+            if (narudzba.Upisao == null) narudzba.Upisao = VatrogasnoDrustvo.Forme.GlavnaForma.TrenutniVatrogasac;
+            orderDetails.AddFormattedText("Sastavio: " + narudzba.Upisao.Ime + " " + narudzba.Upisao.Prezime);
         }
 
         private void generateFooter() 
@@ -87,8 +187,15 @@ namespace VatrogasnoDrustvo.Bridge
             render.RenderDocument();
 
             string filename = "order_VD.pdf";
-            render.PdfDocument.Save(filename);
-            Process.Start(filename);
+            try
+            {
+                render.PdfDocument.Save(filename);
+                Process.Start(filename);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Zatvorite otvorenu PDF datoteku!");
+            }
         }
         public void GenerateDocument(Narudzba narudzba) 
         {

@@ -140,7 +140,10 @@ namespace VatrogasnoDrustvo.Forms
 
                 if (bool.Parse(response["passed"].ToString()))
                 {
-                    MessageBox.Show("Uneseno je nova narudzba!");
+                    if (MessageBox.Show("Unesena je nova narudzba! Želite li generirati PDF?", "Generiranje", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        new DocumentGenerator().GenerateDocument(narudzba);
+                    }
                 }
                 else
                 {

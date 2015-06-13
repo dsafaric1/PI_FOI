@@ -139,9 +139,19 @@
             0,
             0,
             0});
+            this.numKolicina.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numKolicina.Name = "numKolicina";
             this.numKolicina.Size = new System.Drawing.Size(193, 20);
             this.numKolicina.TabIndex = 26;
+            this.numKolicina.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // lblGodiste
             // 
@@ -205,7 +215,7 @@
             this.numGodiste.Size = new System.Drawing.Size(193, 20);
             this.numGodiste.TabIndex = 30;
             this.numGodiste.Value = new decimal(new int[] {
-            1900,
+            2000,
             0,
             0,
             0});
@@ -219,9 +229,19 @@
             0,
             0,
             0});
+            this.numJacina.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numJacina.Name = "numJacina";
             this.numJacina.Size = new System.Drawing.Size(193, 20);
             this.numJacina.TabIndex = 32;
+            this.numJacina.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numJacina.Visible = false;
             // 
             // numTezina
@@ -233,9 +253,19 @@
             0,
             0,
             0});
+            this.numTezina.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numTezina.Name = "numTezina";
             this.numTezina.Size = new System.Drawing.Size(193, 20);
             this.numTezina.TabIndex = 33;
+            this.numTezina.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numTezina.Visible = false;
             // 
             // lblTezina
@@ -260,9 +290,19 @@
             0,
             0,
             0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(193, 20);
             this.numericUpDown1.TabIndex = 35;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown1.Visible = false;
             // 
             // numericUpDown2

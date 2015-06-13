@@ -35,6 +35,12 @@ if(isset($_POST['obj'])) {
             $table = "narudzbe";
             $column = "id_narudzbe";
             $id = $data['Rbr'];
+            break;
+        case "Oprema":
+            $table = "oprema";
+            $column = "id_oprema";
+            $id = $data['ID'];
+            break;
         //i još kaj treba TODO
     }
     
@@ -43,7 +49,7 @@ if(isset($_POST['obj'])) {
     if($table == 'narudzbe') {
         $delete = "UPDATE $table SET storno = 1 WHERE $column = $id";
     }
-
+    
     $Dbase = new DB();
     $Dbase->execute($delete);
     

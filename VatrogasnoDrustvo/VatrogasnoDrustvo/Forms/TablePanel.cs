@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using VatrogasnoDrustvo.Core;
 using System.Diagnostics;
 using VatrogasnoDrustvo.Forms;
+using System.Text.RegularExpressions;
 
 namespace VatrogasnoDrustvo
 {
@@ -84,8 +85,31 @@ namespace VatrogasnoDrustvo
         /// </summary>
         /// <param name="searchTerm">Ključna riječ za pretraživanje</param>
         public void UpdateDataGridView(String searchTerm) 
-        { 
-
+        {
+            this.dgvDBData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in dgvDBData.Rows)
+                {
+                    bool visible = false;
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (new Regex(searchTerm, RegexOptions.IgnoreCase).Match(cell.Value.ToString()).Success)
+                        {
+                            visible = true;
+                            break;
+                        }
+                    }
+                    CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dgvDBData.DataSource];
+                    currencyManager1.SuspendBinding();
+                    row.Visible = visible;
+                    currencyManager1.ResumeBinding();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         /// <summary>
@@ -156,13 +180,7 @@ namespace VatrogasnoDrustvo
                 if (admin)
                 {
                     //za update i delete
-
-                    /*EventInfo[] info = typeof(DataGridView).GetEvents();
-                    for (int i = 0; i < info.Length; i++)
-                    {
-                        MessageBox.Show(info[i].Name + "\n");
-                    }*/
-
+                    
                     dgvDBData.KeyDown += dgvDBData_KeyDown<T>;
                     dgvDBData.CellDoubleClick += dgvDBData_CellClick<T>;
 
@@ -196,7 +214,7 @@ namespace VatrogasnoDrustvo
 
                     try
                     {
-                        MessageBox.Show(new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
+                        //MessageBox.Show(new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
                         //šalji što se briše
                         var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
                             (new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
@@ -229,6 +247,7 @@ namespace VatrogasnoDrustvo
         /// <param name="e"></param>
         void dgvDBData_CellClick<T>(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             DataGridViewRow row = dgvDBData.Rows[e.RowIndex];
             
             //parse type i otvori formu prema tipu
@@ -347,6 +366,16 @@ namespace VatrogasnoDrustvo
         private void openForm(Form frm)
         {
             frm.ShowDialog();
+        }
+
+        /// <summary>
+        /// OnTextChange event okida, a ažurira pogled na datagridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            UpdateDataGridView(txtSearch.Text);
         }
     }
 }

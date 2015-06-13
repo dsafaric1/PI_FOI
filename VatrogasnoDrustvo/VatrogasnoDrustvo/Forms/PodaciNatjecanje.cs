@@ -108,7 +108,7 @@ namespace VatrogasnoDrustvo.InputForms
             try
             {
                 var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                    (new Sender().Send(natjecanje, "https://testerinho.com/vatrogasci/insertNatjecanje.php", GlavnaForma.TrenutniVatrogasac));
+                    (new Sender().Send(natjecanje, "https://testerinho.com/vatrogasci/insertNatjecanja.php", GlavnaForma.TrenutniVatrogasac));
 
                 if (bool.Parse(response["passed"].ToString()))
                 {

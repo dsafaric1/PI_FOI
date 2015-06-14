@@ -56,6 +56,11 @@ namespace VatrogasnoDrustvo.InputForms
 
         private void btnPrijavi_Click(object sender, EventArgs e)
         {
+            if (txtNaziv.Text == "") 
+            {
+                MessageBox.Show("Naziv ekipe mora biti unesen!");
+                return;
+            }
             //stvori ekipu
             Ekipa nova = new Ekipa(txtNaziv.Text, (KategorijaEkipe)Enum.Parse(typeof(KategorijaEkipe), comboBox1.Text), GlavnaForma.TrenutniVatrogasac);
 

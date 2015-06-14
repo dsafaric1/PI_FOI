@@ -30,6 +30,10 @@ namespace VatrogasnoDrustvo
             loadSelect();
         }
 
+        /// <summary>
+        /// Za izvršavanje update retka
+        /// </summary>
+        /// <param name="row">Redak koji se updatea</param>
         public PodaciIntervencije(DataGridViewRow row)
         {
             InitializeComponent();
@@ -37,6 +41,7 @@ namespace VatrogasnoDrustvo
 
             nova = new Intervencija(row);
 
+            //punjenje textboxova
             this.txtPodaciIntevencijeMjesto.Text = nova.Mjesto;
             this.txtPodaciIntevencijeAdresa.Text = nova.Adresa;
             this.dtpPocetnoVrijeme.Text = nova.PocetnoVrijeme;
@@ -56,6 +61,9 @@ namespace VatrogasnoDrustvo
             }
         }
 
+        /// <summary>
+        /// Ispunjavanje padajućih izbornika i checkboxova
+        /// </summary>
         private void loadSelect()
         {
             cmbPodaciIntevencijeVrsta.DataSource = Enum.GetValues(typeof(VrstaIntervencije)).Cast<VrstaIntervencije>().ToList();
@@ -69,10 +77,20 @@ namespace VatrogasnoDrustvo
             }
         }
 
+        /// <summary>
+        /// Validacija i slanje
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPodaciIntevencijeSpremi_Click(object sender, EventArgs e)
         {
             if (chcklPodaciIntevencijeVatrogasci.CheckedItems.Count != 0 && txtPodaciIntevencijeMjesto.Text != "" && txtPodaciIntevencijeAdresa.Text != "" && txtPodaciIntevencijeOpis.Text != "" && txtPodaciIntevencijeUzrok.Text != "" && dtpPocetnoVrijeme.Text != "" && dtpZavrsnoVrijeme.Text != "" && cmbPodaciIntevencijeVrsta.SelectedItem != null)
             {
+                if (!new Regex(@"[A-Z]").Match(txtPodaciIntevencijeAdresa.Text).Success || !new Regex(@"[A-Z]").Match(txtPodaciIntevencijeMjesto.Text).Success)
+                {
+                    MessageBox.Show("Adresa i mjesto moraju imati velikim početnim slovom!");
+                    return;
+                }
                 if (nova != null)
                 {
                     updateIntervencija(nova);
@@ -86,7 +104,7 @@ namespace VatrogasnoDrustvo
             }
             else
             {
-                MessageBox.Show("Sve vrijesnosti moraju biti unesene!");
+                MessageBox.Show("Sve vrijednosti moraju biti unesene!");
             }
         }
 

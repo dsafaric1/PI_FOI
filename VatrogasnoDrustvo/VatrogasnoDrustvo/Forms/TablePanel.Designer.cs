@@ -143,6 +143,7 @@
             this.dgvDBData.MinimumSize = new System.Drawing.Size(100, 0);
             this.dgvDBData.Name = "dgvDBData";
             this.dgvDBData.ReadOnly = true;
+            this.dgvDBData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDBData.Size = new System.Drawing.Size(964, 334);
             this.dgvDBData.TabIndex = 1;
             // 

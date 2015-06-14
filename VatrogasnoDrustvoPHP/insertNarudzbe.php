@@ -32,20 +32,27 @@ if(isset($_POST['obj'])) {
         $id = $Dbase->getInsertedID();
         $stavke = $data['Stavke'];
         $stavkeQuery = "INSERT INTO stavke_narudzbe VALUES ";
+        $trigger = array();
         foreach($stavke as $stavka) {
             $s = get_object_vars($stavka);
             $oprema = get_object_vars($s['NarucenaOprema']);
-            $stavkeQuery .= "($id, (SELECT id_oprema FROM oprema WHERE naziv = '{$oprema['Naziv']}'),"
-                    . " '{$s['Kolicina']}', '{$s['Cijena']}', '{$s['JedinicaMjera']}'), ";
+            $opremaID = "(SELECT id_oprema FROM oprema WHERE naziv = '{$oprema['Naziv']}')";
+            $stavkeQuery .= "($id, $opremaID, '{$s['Kolicina']}', '{$s['Cijena']}',"
+                        . " '{$s['JedinicaMjera']}'), ";
+            $trigger[] = "CALL kolicina_update({$s['Kolicina']}, $opremaID)";
         }
         $stavkeQuery = substr($stavkeQuery, 0, -2);        
         
         $Dbase->execute($stavkeQuery);
         
-         if($Dbase->hasFailed()) {
+        if($Dbase->hasFailed()) {
             $response['passed'] = false;
             $response['text'] = "Pogreška u kreiranju stavki narudžbe! " . $Dbase->getError();
         } else {
+            //izvrši update količine
+            foreach($trigger as $command) {
+                $Dbase->execute($command);
+            }
             $response['passed'] = true;
         }
     }

@@ -75,24 +75,25 @@ namespace VatrogasnoDrustvo.Forms
             PodaciStavkeNarudzbe.ShowDialog();
             stavke = PodaciStavkeNarudzbe.SendChecked();
             dgvStavke.DataSource = stavke;
+            dgvStavke.Columns[0].ReadOnly = true;
         }
 
         private void btnSalji_Click(object sender, EventArgs e)
         {
             foreach(DataGridViewRow Row in dgvStavke.Rows){
                 //validacija za jedinicnu mjeru
-                if(Row.Cells[1].Value == null || new Regex("@/[w]").Match(Row.Cells[1].Value.ToString()).Success)
+                if(Row.Cells[1].Value == null || !new Regex(@"(\w)+").Match(Row.Cells[1].Value.ToString()).Success)
                 {
                    MessageBox.Show("Jedinicna mjera nije dobro unešena za " + Row.Cells[0].Value.ToString()); 
                    return;
                 }
                 //validacija za kolicinu
-                if(new Regex("@/[d]").Match(Row.Cells[2].Value.ToString()).Success && Row.Cells[2].Value.ToString() == "0"){
+                if(!new Regex(@"(\d)+").Match(Row.Cells[2].Value.ToString()).Success || Row.Cells[2].Value.ToString() == "0"){
                    MessageBox.Show("Kolicina nije dobro unešena za " + Row.Cells[0].Value.ToString()); 
                    return;
                 }
                 //validacija za cijenu
-                if (new Regex("@/[d]").Match(Row.Cells[3].Value.ToString()).Success && Row.Cells[3].Value.ToString() == "0")
+                if (!new Regex(@"(\d)+").Match(Row.Cells[3].Value.ToString()).Success || Row.Cells[3].Value.ToString() == "0")
                 {
                    MessageBox.Show("Cijena nije dobro unešena za " + Row.Cells[0].Value.ToString()); 
                    return;
@@ -100,10 +101,17 @@ namespace VatrogasnoDrustvo.Forms
 
             }
             //ako je sve ispunjeno 
-            if (txtNacinIsporuke.Text != "")
+            if (txtNacinIsporuke.Text == "")
             {
-                createNarudzbu();
+                MessageBox.Show("Način isporuke mora biti upisan.");
+                return;
             }
+            if (dgvStavke.Rows.Count == 0)
+            {
+                MessageBox.Show("Narudžba mora imati barem jednu stavku!");
+                return;
+            }
+            createNarudzbu();
         }
 
         private Narudzba getData(Narudzba narudzba)

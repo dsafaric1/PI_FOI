@@ -53,12 +53,15 @@ namespace VatrogasnoDrustvo
 
         /// <summary>
         /// Metoda za punjenje combobox kontrola sa listom svih pobrojenja.
+        /// Dodatno, postavljanje max datuma za datum rođenja
         /// </summary>
         private void loadSelect() 
         {
             cmbPodaciClanaDuznost.DataSource = Enum.GetValues(typeof(Duznost)).Cast<Duznost>().ToList();
             cmbPodaciClanaVrsta.DataSource = Enum.GetValues(typeof(Clan)).Cast<Clan>().ToList();
             cmbPodaciCLanaZvanje.DataSource = Enum.GetValues(typeof(Zvanje)).Cast<Zvanje>().ToList();
+            dtpPodaciClanaRodenje.MaxDate = DateTime.Today.AddYears(-5);
+            dtpPodaciClanaUclanjenje.MaxDate = DateTime.Today;
         }
 
         /// <summary>
@@ -73,25 +76,31 @@ namespace VatrogasnoDrustvo
             if (txtPodaciClanaAdresa.Text != "" && txtPodaciClanaIme.Text != ""
                 && txtPodaciClanaPrezime.Text != "" && txtOIB.Text != "")
             {
+                //validacija
                 //ako oib ima 11 brojeva
-                if (new Regex(@"\d{11}").Match(txtOIB.Text).Success)
+                if (!new Regex(@"\d{11}").Match(txtOIB.Text).Success)
                 {
-                    if (mirko != null)
-                    {
-                        //update
-                        updateVatro(mirko);
-                    }
-                    else
-                    {
-                        //create
-                        createVatro();
-                    }
-                    this.Close();
+                    MessageBox.Show("OIB mora imati 11 brojeva.");
+                    return;
+                }
+                //ime, prezime i adresa veliko slovo
+                if (!new Regex(@"[A-Z]").Match(txtPodaciClanaIme.Text).Success || !new Regex(@"[A-Z]").Match(txtPodaciClanaPrezime.Text).Success
+                    || !new Regex(@"[A-Z]").Match(txtPodaciClanaAdresa.Text).Success)
+                {
+                    MessageBox.Show("Ime, prezime i adresa moraju imati veliko početno slovo!");
+                    return;
+                }
+                if (mirko != null)
+                {
+                    //update
+                    updateVatro(mirko);
                 }
                 else
                 {
-                    MessageBox.Show("OIB mora imati 11 brojeva.");
+                    //create
+                    createVatro();
                 }
+                this.Close();
             }
             else
             {

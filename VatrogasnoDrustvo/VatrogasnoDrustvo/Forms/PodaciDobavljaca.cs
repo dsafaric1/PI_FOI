@@ -41,33 +41,41 @@ namespace VatrogasnoDrustvo.InputForms
         private void btnSalji_Click(object sender, EventArgs e)
         {
             //ako je sve uneseno
-            if (txtNazivDob.Text != "" && txtKontakt.Text != "" && txtKontakt.Text != "" && txtEmail.Text != "")
+            if (txtNazivDob.Text != "" && txtEmail.Text != "")
             {
                 //ako je email dobrog formata
-                if (new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Match(txtEmail.Text).Success)
+                if (!new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Match(txtEmail.Text).Success)
                 {
-                    if (tvrtka != null)
-                    {
-                        //update
-                        updateDobavljac();
-                    }
-                    else
-                    {
-                        //create
-                        createDobavljac();
-                    }
-                    this.Close();
+                    MessageBox.Show("Email nije dobrog formata!");
+                    return;
                 }
-
+                //adresa veliko slovo
+                if (!new Regex(@"[A-Z]").Match(txtAdresa.Text).Success)
+                {
+                    MessageBox.Show("Adresa mora započeti velikim slovom!");
+                    return;
+                }
+                //kontakt
+                if (txtKontakt.Text != "" && !new Regex(@"^00\d{3,}$").Match(txtKontakt.Text).Success)
+                {
+                    MessageBox.Show("Kontakt broj nije pravilnog formata (format: 0038598983423, min 3 broja)");
+                    return;
+                }
+                if (tvrtka != null)
+                {
+                    //update
+                    updateDobavljac();
+                }
                 else
                 {
-                    MessageBox.Show("E-mail adresa nije ispravna");
+                    //create
+                    createDobavljac();
                 }
-
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Sve vrijednosti moraju biti unesene!");
+                MessageBox.Show("Sve vrijednosti osim kontakt broja moraju biti unesene!");
             }
         }
 

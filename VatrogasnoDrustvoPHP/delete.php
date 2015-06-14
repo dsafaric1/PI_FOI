@@ -45,7 +45,7 @@ if(isset($_POST['obj'])) {
     }
     
     $delete = "DELETE FROM $table WHERE $column = '$id'";
-    
+        
     if($table == 'narudzbe') {
         $delete = "UPDATE $table SET storno = 1 WHERE $column = $id";
     }

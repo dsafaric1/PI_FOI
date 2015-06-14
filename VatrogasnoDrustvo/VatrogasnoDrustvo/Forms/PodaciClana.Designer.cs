@@ -155,9 +155,12 @@
             // dtpPodaciClanaRodenje
             // 
             this.dtpPodaciClanaRodenje.Location = new System.Drawing.Point(246, 303);
+            this.dtpPodaciClanaRodenje.MaxDate = new System.DateTime(2015, 6, 14, 0, 0, 0, 0);
+            this.dtpPodaciClanaRodenje.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpPodaciClanaRodenje.Name = "dtpPodaciClanaRodenje";
             this.dtpPodaciClanaRodenje.Size = new System.Drawing.Size(131, 20);
             this.dtpPodaciClanaRodenje.TabIndex = 9;
+            this.dtpPodaciClanaRodenje.Value = new System.DateTime(2015, 6, 14, 0, 0, 0, 0);
             // 
             // dtpPodaciClanaUclanjenje
             // 

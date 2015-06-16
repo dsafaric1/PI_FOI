@@ -180,7 +180,7 @@ namespace VatrogasnoDrustvo.Bridge
             
         }
 
-        private void writeToPdf() 
+        private bool writeToPdf() 
         {
             PdfDocumentRenderer render = new PdfDocumentRenderer(true);
             render.Document = document;
@@ -190,19 +190,20 @@ namespace VatrogasnoDrustvo.Bridge
             try
             {
                 render.PdfDocument.Save(filename);
-                Process.Start(filename);
+                return true;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Zatvorite otvorenu PDF datoteku!");
+                return false;
             }
         }
-        public void GenerateDocument(Narudzba narudzba) 
+        public bool GenerateDocument(Narudzba narudzba) 
         {
             generateHeader();
             generateBody(narudzba);
             generateFooter();
-            writeToPdf();
+            return writeToPdf();
         }
     }
 }

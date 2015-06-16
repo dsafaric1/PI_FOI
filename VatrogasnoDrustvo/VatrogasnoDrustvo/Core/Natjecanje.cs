@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace VatrogasnoDrustvo.Core
             this.Mjesto = row.Cells["Mjesto"].Value.ToString();
             this.VrijemeOdrzavanja = DateTime.Parse(row.Cells["Vrijeme održavanja"].Value.ToString());
             this.Tip = (TipNatjecanja)Enum.Parse(typeof(TipNatjecanja), row.Cells["Tip natjecanja"].Value.ToString());
-            this.Kotizacija = Decimal.Parse(row.Cells["Kotizacija"].Value.ToString());
+            this.Kotizacija = Decimal.Parse(row.Cells["Kotizacija"].Value.ToString(), CultureInfo.InvariantCulture);
         }
     }
 }

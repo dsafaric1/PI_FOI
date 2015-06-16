@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -88,12 +89,12 @@ namespace VatrogasnoDrustvo.Forms
                    return;
                 }
                 //validacija za kolicinu
-                if(!new Regex(@"(\d)+").Match(Row.Cells[2].Value.ToString()).Success || Row.Cells[2].Value.ToString() == "0"){
+                if(!new Regex(@"(\d)+").Match(Row.Cells[2].Value.ToString()).Success || int.Parse(Row.Cells[2].Value.ToString()) <= 0){
                    MessageBox.Show("Kolicina nije dobro unešena za " + Row.Cells[0].Value.ToString()); 
                    return;
                 }
                 //validacija za cijenu
-                if (!new Regex(@"(\d)+").Match(Row.Cells[3].Value.ToString()).Success || Row.Cells[3].Value.ToString() == "0")
+                if (!new Regex(@"(\d)+").Match(Row.Cells[3].Value.ToString()).Success || int.Parse(Row.Cells[3].Value.ToString()) <= 0)
                 {
                    MessageBox.Show("Cijena nije dobro unešena za " + Row.Cells[0].Value.ToString()); 
                    return;
@@ -150,7 +151,14 @@ namespace VatrogasnoDrustvo.Forms
                 {
                     if (MessageBox.Show("Unesena je nova narudzba! Želite li generirati PDF?", "Generiranje", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        new DocumentGenerator().GenerateDocument(narudzba);
+                        if (new DocumentGenerator().GenerateDocument(narudzba))
+                        {
+                            Process.Start("order_VD.pdf");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ne mogu otvoriti datoteku, jeste li ju zatvorili?");
+                        }
                     }
                 }
                 else

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,14 @@ namespace VatrogasnoDrustvo.Forme
             DataGridView dgv = pnlNarudzbe.Controls.Find("dgvDBData", true).FirstOrDefault() as DataGridView;
             Narudzba selektirana = new Narudzba(dgv.Rows[dgv.CurrentCell.RowIndex]);
 
-            new DocumentGenerator().GenerateDocument(selektirana);
+            if (new DocumentGenerator().GenerateDocument(selektirana))
+            {
+                Process.Start("order_VD.pdf");
+            }
+            else
+            {
+                MessageBox.Show("Ne mogu otvoriti datoteku, jeste li ju zatvorili?");
+            }
         }
     }
 }

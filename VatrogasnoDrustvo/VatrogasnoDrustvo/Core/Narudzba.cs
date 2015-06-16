@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace VatrogasnoDrustvo.Core
                 stavke.ForEach(
                     s => Stavke.Add(new StavkaNarudzbe
                     {
-                        Cijena = decimal.Parse(s["cijena"].ToString()),
+                        Cijena = decimal.Parse(s["cijena"].ToString(), CultureInfo.InvariantCulture),
                         JedinicaMjera = s["jedinicna_mjera"].ToString(),
                         NarucenaOprema = new Oprema { Naziv = s["naziv"].ToString() },
                         Kolicina = int.Parse(s["kolicina"].ToString())

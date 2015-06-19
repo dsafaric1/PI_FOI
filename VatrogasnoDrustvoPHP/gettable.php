@@ -104,25 +104,28 @@ if(isset($_GET['table'])) {
                 . " id_ekipe LEFT JOIN natjecanja ON natjecanje = id_natjecanja WHERE ocjena != 0 GROUP BY 1";
     }
     
-    //variranje rezultata za pojedinu osobu
+    //prosječni rezultat za pojedinu osobu
     elseif($table == "Rezultati") {
-        $ime = $_GET['ime'];
-        $prezime = $_GET['prezime'];
-        $query = "SELECT CONCAT(ime, ' ', prezime) as Osoba, rezultat as Rezultat, natjecanja.naziv as Natjecanje"
+        $query = "SELECT CONCAT(ime, ' ', prezime) as Osoba, AVG(rezultat) as Rezultat"
                 . "  FROM trenira LEFT JOIN vatrogasci ON vatrogasac = id_vatrogasci LEFT JOIN ekipe ON ekipa ="
-                . "  id_ekipe LEFT JOIN natjecanja ON natjecanje = id_natjecanja WHERE rezultat != 0 AND ime ="
-                . " '$ime' AND prezime = '$prezime'";
+                . "  id_ekipe LEFT JOIN natjecanja ON natjecanje = id_natjecanja WHERE rezultat != 0 GROUP BY 1";
     }
     
     //intervencije prema mjesecu
     elseif($table == "MjesecIntervencija") {
-        $query = "SELECT MONTH(pocetno_vrijeme), COUNT(*) FROM intervencije GROUP BY 1";
+        $query = "SELECT CASE MONTH(pocetno_vrijeme) WHEN 1 THEN 'Siječanj' WHEN 2 THEN 'Veljača' WHEN 3 THEN 'Ožujak'"
+                . " WHEN 4 THEN 'Travanj' WHEN 5 THEN 'Svibanj' WHEN 6 THEN 'Lipanj' WHEN 7 THEN 'Srpanj' WHEN 8 THEN"
+                . " 'Kolovoz' WHEN 9 THEN 'Rujan' WHEN 10 THEN 'Listopad' WHEN 11 THEN 'Studeni' WHEN 12 THEN 'Prosinac'"
+                . " END as 'Mjesec', COUNT(*) as 'Broj intervencija' FROM intervencije GROUP BY 1";
     }
     
     //potrošnja prema mjesecu
     elseif($table == "MjesecPotrošnje") {
-        $query = "SELECT MONTH(datum_izrade), SUM(kolicina*cijena) FROM stavke_narudzbe JOIN narudzbe ON"
-                . " id_narudzbe = narudzba GROUP BY 1";
+        $query = "SELECT CASE MONTH(datum_izrade) WHEN 1 THEN 'Siječanj' WHEN 2 THEN 'Veljača' WHEN 3 THEN 'Ožujak'"
+                . " WHEN 4 THEN 'Travanj' WHEN 5 THEN 'Svibanj' WHEN 6 THEN 'Lipanj' WHEN 7 THEN 'Srpanj' WHEN 8 THEN"
+                . " 'Kolovoz' WHEN 9 THEN 'Rujan' WHEN 10 THEN 'Listopad' WHEN 11 THEN 'Studeni' WHEN 12 THEN 'Prosinac'"
+                . " END as Mjesec, SUM(kolicina*cijena) as 'Potrošnja' FROM stavke_narudzbe"
+                . " JOIN narudzbe ON id_narudzbe = narudzba WHERE storno != 1 GROUP BY 1";
     }
     
     //izvrši upit

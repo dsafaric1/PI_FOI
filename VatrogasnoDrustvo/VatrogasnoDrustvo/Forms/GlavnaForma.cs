@@ -43,8 +43,23 @@ namespace VatrogasnoDrustvo.Forme
 
             //Glavna forma nije zapravo glavna pa treba gasiti cijelu aplikaciju ručno
             this.FormClosed += GlavnaForma_FormClosed;
+            //na F1 otvara pomoć u aplikaciji
+            this.KeyDown += GlavnaForma_KeyDown;
             //Potrebno da se na početku prikaže panel s dobrodošlicom
             tlstrplblPocetna_Click(null, null); 
+        }
+
+        /// <summary>
+        /// Metoda za otvaranje help datoteke prilikom pritiska na F1 tipku
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void GlavnaForma_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                System.Diagnostics.Process.Start(Application.StartupPath + "\\help.chm");
+            }
         }
 
         /// <summary>

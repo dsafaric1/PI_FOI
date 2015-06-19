@@ -11,7 +11,8 @@ namespace VatrogasnoDrustvo.Bridge
     /// <summary>
     /// Klasa za slanje JSON objekata prema serverskoj skripti (PHP)
     /// </summary>
-    class Sender
+
+    public class Sender
     {
         WebClient webClient;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VatrogasnoDrustvo.Bridge;
 using VatrogasnoDrustvo.Core;
 using VatrogasnoDrustvo.Forms;
 
@@ -145,6 +147,70 @@ namespace VatrogasnoDrustvo.Forme
         {
             PodaciRegistracija frmReg = new PodaciRegistracija();
             if(!frmReg.IsDisposed) frmReg.ShowDialog();
+        }
+
+        private void tlstrplblIzvjestaji_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            pnlStatistics.BringToFront();
+        }
+
+        /// <summary>
+        /// Metoda za osvježavanje statističkih podataka u datagridview
+        /// </summary>
+        private void RefreshData(string keyword)
+        {
+            panel1.Visible = true;
+            try
+            {
+                //za read
+                //MessageBox.Show(new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
+                dgvStatistics.DataSource = JsonConvert.DeserializeObject<List<object>>
+                    (new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
+                //obriši sve pointove dosad
+                for (int i = chart.Series["Podaci"].Points.Count - 1; i >= 0 ; i--)
+                {
+                    chart.Series["Podaci"].Points.RemoveAt(i);
+                }
+                //dodaj nove podatke
+                foreach (DataGridViewRow row in dgvStatistics.Rows)
+                {
+                    chart.Series["Podaci"].Points.AddXY(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Pogreška u dohvaćanju podataka! " + Environment.NewLine + e);
+            }
+        }
+
+        private void lblOcjena_Click(object sender, EventArgs e)
+        {
+            chart.ChartAreas[0].Area3DStyle.Enable3D = true;
+            chart.Series["Podaci"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            RefreshData("ProsječnaOcjena");
+        }
+
+        private void lblRezultati_Click(object sender, EventArgs e)
+        {
+            chart.ChartAreas[0].Area3DStyle.Enable3D = false;
+            chart.Series["Podaci"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            RefreshData("Rezultati");
+        }
+
+        private void lblIntervencije_Click(object sender, EventArgs e)
+        {
+            chart.ChartAreas[0].Area3DStyle.Enable3D = true;
+            chart.Series["Podaci"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            RefreshData("MjesecIntervencija");
+        }
+
+        private void lblPotrosnja_Click(object sender, EventArgs e)
+        {
+            chart.ChartAreas[0].Area3DStyle.Enable3D = false;
+            chart.Series["Podaci"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart.Series["Podaci"].BorderWidth = 3;
+            RefreshData("MjesecPotrošnje");
         }
     }
 }

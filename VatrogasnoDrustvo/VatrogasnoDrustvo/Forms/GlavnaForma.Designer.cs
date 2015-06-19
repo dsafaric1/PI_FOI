@@ -32,6 +32,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlstrplblPocetna = new System.Windows.Forms.ToolStripLabel();
             this.tlstrpsprtPrvi = new System.Windows.Forms.ToolStripSeparator();
             this.tlstrplblIntervencije = new System.Windows.Forms.ToolStripLabel();
@@ -47,9 +53,21 @@
             this.tlstrpLabelRegistracija = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tlstrplblIzvjestaji = new System.Windows.Forms.ToolStripLabel();
+            this.pnlStatistics = new System.Windows.Forms.Panel();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblRezultati = new System.Windows.Forms.Label();
+            this.dgvStatistics = new System.Windows.Forms.DataGridView();
+            this.lblIntervencije = new System.Windows.Forms.Label();
+            this.lblPotrosnja = new System.Windows.Forms.Label();
+            this.lblOcjena = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlGlavna = new VatrogasnoDrustvo.Controls.MainPanel();
             this.pnlTable = new VatrogasnoDrustvo.TablePanel();
             this.tlstrpGlavnaForma.SuspendLayout();
+            this.pnlStatistics.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStatistics)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlstrplblPocetna
@@ -167,6 +185,156 @@
             this.tlstrplblIzvjestaji.Name = "tlstrplblIzvjestaji";
             this.tlstrplblIzvjestaji.Size = new System.Drawing.Size(51, 20);
             this.tlstrplblIzvjestaji.Text = "Izvještaji";
+            this.tlstrplblIzvjestaji.Click += new System.EventHandler(this.tlstrplblIzvjestaji_Click);
+            // 
+            // pnlStatistics
+            // 
+            this.pnlStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlStatistics.Controls.Add(this.panel1);
+            this.pnlStatistics.Controls.Add(this.lblRezultati);
+            this.pnlStatistics.Controls.Add(this.lblIntervencije);
+            this.pnlStatistics.Controls.Add(this.lblPotrosnja);
+            this.pnlStatistics.Controls.Add(this.lblOcjena);
+            this.pnlStatistics.Location = new System.Drawing.Point(0, 36);
+            this.pnlStatistics.Name = "pnlStatistics";
+            this.pnlStatistics.Size = new System.Drawing.Size(997, 441);
+            this.pnlStatistics.TabIndex = 4;
+            // 
+            // chart
+            // 
+            this.chart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart.BackColor = System.Drawing.Color.Black;
+            chartArea1.Area3DStyle.Enable3D = true;
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisX.LineWidth = 3;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisX2.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LineWidth = 3;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisY2.LineColor = System.Drawing.Color.White;
+            chartArea1.BackColor = System.Drawing.Color.Black;
+            chartArea1.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea1.BorderColor = System.Drawing.Color.White;
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(156, 3);
+            this.chart.Name = "chart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Podaci";
+            this.chart.Series.Add(series1);
+            this.chart.Size = new System.Drawing.Size(485, 248);
+            this.chart.TabIndex = 0;
+            this.chart.Text = "chart1";
+            // 
+            // lblRezultati
+            // 
+            this.lblRezultati.AutoSize = true;
+            this.lblRezultati.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblRezultati.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRezultati.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblRezultati.Location = new System.Drawing.Point(6, 77);
+            this.lblRezultati.Name = "lblRezultati";
+            this.lblRezultati.Size = new System.Drawing.Size(164, 22);
+            this.lblRezultati.TabIndex = 11;
+            this.lblRezultati.Text = "Rezultati vatrogasca";
+            this.lblRezultati.Click += new System.EventHandler(this.lblRezultati_Click);
+            // 
+            // dgvStatistics
+            // 
+            this.dgvStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvStatistics.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStatistics.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStatistics.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvStatistics.Location = new System.Drawing.Point(156, 257);
+            this.dgvStatistics.Name = "dgvStatistics";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStatistics.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvStatistics.Size = new System.Drawing.Size(485, 170);
+            this.dgvStatistics.TabIndex = 1;
+            // 
+            // lblIntervencije
+            // 
+            this.lblIntervencije.AutoSize = true;
+            this.lblIntervencije.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblIntervencije.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntervencije.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblIntervencije.Location = new System.Drawing.Point(6, 114);
+            this.lblIntervencije.Name = "lblIntervencije";
+            this.lblIntervencije.Size = new System.Drawing.Size(96, 22);
+            this.lblIntervencije.TabIndex = 10;
+            this.lblIntervencije.Text = "Intervencije";
+            this.lblIntervencije.Click += new System.EventHandler(this.lblIntervencije_Click);
+            // 
+            // lblPotrosnja
+            // 
+            this.lblPotrosnja.AutoSize = true;
+            this.lblPotrosnja.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblPotrosnja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPotrosnja.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblPotrosnja.Location = new System.Drawing.Point(6, 152);
+            this.lblPotrosnja.Name = "lblPotrosnja";
+            this.lblPotrosnja.Size = new System.Drawing.Size(157, 22);
+            this.lblPotrosnja.TabIndex = 9;
+            this.lblPotrosnja.Text = "Mjesečna potrošnja";
+            this.lblPotrosnja.Click += new System.EventHandler(this.lblPotrosnja_Click);
+            // 
+            // lblOcjena
+            // 
+            this.lblOcjena.AutoSize = true;
+            this.lblOcjena.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblOcjena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOcjena.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblOcjena.Location = new System.Drawing.Point(6, 42);
+            this.lblOcjena.Name = "lblOcjena";
+            this.lblOcjena.Size = new System.Drawing.Size(227, 22);
+            this.lblOcjena.TabIndex = 8;
+            this.lblOcjena.Text = "Prosječna ocjena vatrogasca";
+            this.lblOcjena.Click += new System.EventHandler(this.lblOcjena_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel1.Controls.Add(this.chart);
+            this.panel1.Controls.Add(this.dgvStatistics);
+            this.panel1.Location = new System.Drawing.Point(239, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(755, 430);
+            this.panel1.TabIndex = 12;
             // 
             // pnlGlavna
             // 
@@ -196,6 +364,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Firebrick;
             this.ClientSize = new System.Drawing.Size(997, 481);
+            this.Controls.Add(this.pnlStatistics);
             this.Controls.Add(this.tlstrpGlavnaForma);
             this.Controls.Add(this.pnlGlavna);
             this.Controls.Add(this.pnlTable);
@@ -203,6 +372,11 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tlstrpGlavnaForma.ResumeLayout(false);
             this.tlstrpGlavnaForma.PerformLayout();
+            this.pnlStatistics.ResumeLayout(false);
+            this.pnlStatistics.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStatistics)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,5 +403,13 @@
         private System.Windows.Forms.ToolStripLabel tlstrpLabelRegistracija;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel tlstrplblIzvjestaji;
+        private System.Windows.Forms.Panel pnlStatistics;
+        private System.Windows.Forms.Label lblRezultati;
+        private System.Windows.Forms.Label lblIntervencije;
+        private System.Windows.Forms.Label lblPotrosnja;
+        private System.Windows.Forms.Label lblOcjena;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private System.Windows.Forms.DataGridView dgvStatistics;
+        private System.Windows.Forms.Panel panel1;
     }
 }

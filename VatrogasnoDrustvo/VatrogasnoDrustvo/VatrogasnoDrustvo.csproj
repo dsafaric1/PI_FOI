@@ -76,12 +76,6 @@
     <Compile Include="Core\StavkaNarudzbe.cs" />
     <Compile Include="Core\Vatrogasac.cs" />
     <Compile Include="Core\Vozilo.cs" />
-    <Compile Include="Forms\GraphPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\GraphPanel.Designer.cs">
-      <DependentUpon>GraphPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MainPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -186,9 +180,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\GraphPanel.resx">
-      <DependentUpon>GraphPanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainPanel.resx">
       <DependentUpon>MainPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +251,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\vatrogasno_help.chm" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

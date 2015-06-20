@@ -113,19 +113,20 @@ if(isset($_GET['table'])) {
     
     //intervencije prema mjesecu
     elseif($table == "MjesecIntervencija") {
-        $query = "SELECT CASE MONTH(pocetno_vrijeme) WHEN 1 THEN 'Siječanj' WHEN 2 THEN 'Veljača' WHEN 3 THEN 'Ožujak'"
+        $query = "SELECT CONCAT(CASE MONTH(pocetno_vrijeme) WHEN 1 THEN 'Siječanj' WHEN 2 THEN 'Veljača' WHEN 3 THEN 'Ožujak'"
                 . " WHEN 4 THEN 'Travanj' WHEN 5 THEN 'Svibanj' WHEN 6 THEN 'Lipanj' WHEN 7 THEN 'Srpanj' WHEN 8 THEN"
                 . " 'Kolovoz' WHEN 9 THEN 'Rujan' WHEN 10 THEN 'Listopad' WHEN 11 THEN 'Studeni' WHEN 12 THEN 'Prosinac'"
-                . " END as 'Mjesec', COUNT(*) as 'Broj intervencija' FROM intervencije GROUP BY 1";
+                . " END,' ', YEAR(pocetno_vrijeme)) as 'Mjesec', COUNT(*) as 'Broj intervencija' FROM intervencije GROUP BY 1"
+                . " ORDER BY pocetno_vrijeme";
     }
     
     //potrošnja prema mjesecu
     elseif($table == "MjesecPotrošnje") {
-        $query = "SELECT CASE MONTH(datum_izrade) WHEN 1 THEN 'Siječanj' WHEN 2 THEN 'Veljača' WHEN 3 THEN 'Ožujak'"
+        $query = "SELECT CONCAT(CASE MONTH(datum_izrade) WHEN 1 THEN 'Siječanj' WHEN 2 THEN 'Veljača' WHEN 3 THEN 'Ožujak'"
                 . " WHEN 4 THEN 'Travanj' WHEN 5 THEN 'Svibanj' WHEN 6 THEN 'Lipanj' WHEN 7 THEN 'Srpanj' WHEN 8 THEN"
                 . " 'Kolovoz' WHEN 9 THEN 'Rujan' WHEN 10 THEN 'Listopad' WHEN 11 THEN 'Studeni' WHEN 12 THEN 'Prosinac'"
-                . " END as Mjesec, SUM(kolicina*cijena) as 'Potrošnja' FROM stavke_narudzbe"
-                . " JOIN narudzbe ON id_narudzbe = narudzba WHERE storno != 1 GROUP BY 1";
+                . " END,' ', YEAR(datum_izrade)) as Mjesec, SUM(kolicina*cijena) as 'Potrošnja' FROM stavke_narudzbe"
+                . " JOIN narudzbe ON id_narudzbe = narudzba WHERE storno != 1 GROUP BY 1 ORDER BY datum_izrade";
     }
     
     //izvrši upit

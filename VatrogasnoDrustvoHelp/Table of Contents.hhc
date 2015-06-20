@@ -16,29 +16,72 @@
 			<param name="Name" value="Prijavljivanje u aplikaciju">
 			<param name="Local" value="prijava.htm">
 			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Navigiranje">
+			<param name="Local" value="navigiranje.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Odjava">
+			<param name="Local" value="odjava.html">
+			</OBJECT>
 	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Intervencije">
 		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Rad s intervencijama">
+			<param name="Local" value="intervencije.html">
+			</OBJECT>
+	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Oprema">
 		</OBJECT>
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Rad s opremom">
+			<param name="Local" value="oprema.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Narudžbe">
 			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Rad s narudžbama">
+				<param name="Local" value="narudzbe.html">
+				</OBJECT>
+		</UL>
 	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Natjecanja">
 		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Rad s natjecanjima">
+			<param name="Local" value="natjecanja.html">
+			</OBJECT>
+	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="&Egrave;lanovi">
 		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Rad s &egrave;lanovima">
+			<param name="Local" value="clanovi.html">
+			</OBJECT>
+	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Registracija korisnika">
 		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Registracija u sustav">
+			<param name="Local" value="registracija.html">
+			</OBJECT>
+	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Izvještaji">
+		<param name="Local" value="statistika.html">
 		</OBJECT>
 </UL>
 </BODY></HTML>

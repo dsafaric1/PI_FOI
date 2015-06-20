@@ -31,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PodaciClana));
             this.lblPodaciClanaIme = new System.Windows.Forms.Label();
             this.lblPodaciClanaPrezime = new System.Windows.Forms.Label();
             this.lblPodaciClanaRoden = new System.Windows.Forms.Label();
@@ -268,6 +269,7 @@
             this.Controls.Add(this.lblPodaciClanaRoden);
             this.Controls.Add(this.lblPodaciClanaPrezime);
             this.Controls.Add(this.lblPodaciClanaIme);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PodaciClana";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;

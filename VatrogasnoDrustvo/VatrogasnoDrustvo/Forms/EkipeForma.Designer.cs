@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EkipeForma));
             this.tablePanel1 = new VatrogasnoDrustvo.TablePanel();
             this.lblInformacije = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -58,6 +59,7 @@
             this.ClientSize = new System.Drawing.Size(997, 488);
             this.Controls.Add(this.lblInformacije);
             this.Controls.Add(this.tablePanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EkipeForma";
             this.Text = "PodaciEkipe";
             this.ResumeLayout(false);

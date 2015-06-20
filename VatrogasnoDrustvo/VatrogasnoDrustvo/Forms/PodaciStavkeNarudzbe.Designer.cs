@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PodaciStavkeNarudzbe));
             this.btnDodajStavke = new System.Windows.Forms.Button();
             this.lblPodaciNarudzbeNaslov = new System.Windows.Forms.Label();
             this.clbPodaciStavkeNarudzbe = new System.Windows.Forms.CheckedListBox();
@@ -78,6 +79,7 @@
             this.Controls.Add(this.clbPodaciStavkeNarudzbe);
             this.Controls.Add(this.lblPodaciNarudzbeNaslov);
             this.Controls.Add(this.btnDodajStavke);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PodaciStavkeNarudzbe";
             this.Text = "PodaciStavkeNarudzbe";
             this.ResumeLayout(false);

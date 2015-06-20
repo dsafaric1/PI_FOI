@@ -31,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PodaciPrijava));
             this.chckClanoviEkipe = new System.Windows.Forms.CheckedListBox();
             this.lblClanoviEkipe = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
@@ -140,6 +141,7 @@
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.chckClanoviEkipe);
             this.Controls.Add(this.lblClanoviEkipe);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PodaciPrijava";
             this.Text = "PodaciPrijava";
             this.ResumeLayout(false);

@@ -31,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PodaciOpreme));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblVrsta = new System.Windows.Forms.Label();
             this.lblPodaciClanaNaslov = new System.Windows.Forms.Label();
@@ -381,6 +382,7 @@
             this.Controls.Add(this.lblPodaciClanaNaslov);
             this.Controls.Add(this.lblVrsta);
             this.Controls.Add(this.comboBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PodaciOpreme";
             this.Text = "PodaciOpreme";
             ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).EndInit();

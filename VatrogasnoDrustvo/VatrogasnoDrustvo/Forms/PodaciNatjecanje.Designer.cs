@@ -31,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PodaciNatjecanje));
             this.lblPodaciClanaNaslov = new System.Windows.Forms.Label();
             this.lblNaziv = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
@@ -207,6 +208,7 @@
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.lblNaziv);
             this.Controls.Add(this.lblPodaciClanaNaslov);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PodaciNatjecanje";
             this.Text = "PodaciNatjecanje";
             ((System.ComponentModel.ISupportInitialize)(this.numKotizacija)).EndInit();

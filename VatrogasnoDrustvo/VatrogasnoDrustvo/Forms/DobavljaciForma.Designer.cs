@@ -32,6 +32,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DobavljaciForma));
             this.pnlDobavljaci = new VatrogasnoDrustvo.TablePanel();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(986, 522);
             this.Controls.Add(this.pnlDobavljaci);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DobavljaciForma";
             this.Text = "DobavljaciForme";
             this.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PodaciNarudzbe));
             this.btnSalji = new System.Windows.Forms.Button();
             this.cmbDobavljac = new System.Windows.Forms.ComboBox();
             this.lblDobavljac = new System.Windows.Forms.Label();
@@ -160,6 +161,7 @@
             this.Controls.Add(this.txtNacinIsporuke);
             this.Controls.Add(this.lblNacinIsporuke);
             this.Controls.Add(this.lblPodaciNarudzbeNaslov);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PodaciNarudzbe";
             this.Text = "PodaciNarudzbe";
             ((System.ComponentModel.ISupportInitialize)(this.dgvStavke)).EndInit();

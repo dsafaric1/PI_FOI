@@ -32,6 +32,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NarudzbeForma));
             this.pnlNarudzbe = new VatrogasnoDrustvo.TablePanel();
             this.btnPDF = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -64,6 +65,7 @@
             this.ClientSize = new System.Drawing.Size(1021, 505);
             this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.pnlNarudzbe);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NarudzbeForma";
             this.Text = "NarudzbeForma";
             this.ResumeLayout(false);

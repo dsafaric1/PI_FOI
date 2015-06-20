@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PodaciEkipe));
             this.btnSalji = new System.Windows.Forms.Button();
             this.lblKotizacija = new System.Windows.Forms.Label();
             this.numRezultat = new System.Windows.Forms.NumericUpDown();
@@ -173,6 +174,7 @@
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.lblNaziv);
             this.Controls.Add(this.lblPodaciClanaNaslov);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PodaciEkipe";
             this.Text = "PodaciEkipe";
             ((System.ComponentModel.ISupportInitialize)(this.numRezultat)).EndInit();

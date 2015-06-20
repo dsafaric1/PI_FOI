@@ -31,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PodaciDobavljaca));
             this.lblUnesiteEkipu = new System.Windows.Forms.Label();
             this.lblNaziv = new System.Windows.Forms.Label();
             this.txtNazivDob = new System.Windows.Forms.TextBox();
@@ -162,6 +163,7 @@
             this.Controls.Add(this.lblNaziv);
             this.Controls.Add(this.txtNazivDob);
             this.Controls.Add(this.lblUnesiteEkipu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PodaciDobavljaca";
             this.Text = "PodaciDobavljaca";
             this.ResumeLayout(false);

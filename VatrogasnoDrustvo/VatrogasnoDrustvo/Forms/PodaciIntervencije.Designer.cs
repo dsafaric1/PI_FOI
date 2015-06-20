@@ -31,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PodaciIntervencije));
             this.lblPodaciIntervencijeNaslov = new System.Windows.Forms.Label();
             this.lblPodaciIntervencijeMjesto = new System.Windows.Forms.Label();
             this.lblPodaciIntervencijeAdresa = new System.Windows.Forms.Label();
@@ -248,6 +249,7 @@
             this.Controls.Add(this.lblPodaciIntervencijeAdresa);
             this.Controls.Add(this.lblPodaciIntervencijeMjesto);
             this.Controls.Add(this.lblPodaciIntervencijeNaslov);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PodaciIntervencije";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;

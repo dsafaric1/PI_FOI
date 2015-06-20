@@ -17,6 +17,14 @@ if(isset($_POST['obj'])){
     $zavrsnoVrijeme = $data["ZavrsnoVrijeme"];
     $vrstaIntervencije = "(SELECT id_vrste_intervencija FROM vrste_intervencija WHERE naziv = '{$data ['Vrsta']}')";
     
+    if(!isset($opis) || !isset($uzrok) || !isset($pocetnoVrijeme) || !isset($zavrsnoVrijeme) || !isset($vrstaIntervencije)
+            || $adresa[0] != strtoupper($adresa[0]) || $mjesto[0] != strtoupper($mjesto[0])) {
+        $response['passed'] = false;
+        $response['text'] = "Nisu ispravno uneseni podaci!";
+        echo json_encode($response);
+        exit;
+    }
+    
     $query = "INSERT INTO intervencije values (default, '$mjesto', '$adresa', '$pocetnoVrijeme', '$zavrsnoVrijeme', "
                 . "'$opis', '$uzrok', $vrstaIntervencije)";
     

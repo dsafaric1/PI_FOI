@@ -14,6 +14,14 @@ if(isset($_POST['obj'])){
     $adresa = $data["Adresa"];
     $email = $data["Email"];
     
+    if(!preg_match("#^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$#", $email)
+            || $adresa[0] != strtoupper($adresa[0])) {
+        $response['passed'] = false;
+        $response['text'] = "Nisu ispravno uneseni podaci!";
+        echo json_encode($response);
+        exit;
+    }
+    
     $upit = " insert into dobavljaci(naziv, adresa, kontakt, email) values ('$naziv', '$adresa', '$kontakt', '$email')";
     $Dbase = new DB();
     $Dbase->execute($upit);

@@ -20,6 +20,14 @@ if(isset($_POST['obj'])) {
     $vrsta = "(SELECT id_vrsta_clana FROM vrste_clanova WHERE naziv = '{$data['VrstaClana']}')";
     $zvanje = "(SELECT id_zvanja FROM zvanja WHERE naziv = '{$data['Zvanje']}')";
     
+    if(!isset($oib) || !isset($datum_rod) || !isset($datum_upis) || !isset($vrsta) || !isset($zvanje) || strlen($oib) != 11
+            || $adresa[0] != strtoupper($adresa[0]) || $ime[0] != strtoupper($ime[0]) || $prezime[0] != strtoupper($prezime[0])) {
+        $response['passed'] = false;
+        $response['text'] = "Nisu ispravno uneseni podaci!";
+        echo json_encode($response);
+        exit;
+    }
+    
     $query = "INSERT INTO vatrogasci VALUES (default, '$ime', '$prezime', '$oib',"
             . " '$korisnicko_ime', '$lozinka', '$adresa', '$datum_rod', '$datum_upis',"
             . " $vrsta, $zvanje)";

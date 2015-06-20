@@ -17,6 +17,13 @@ if(isset($_POST['obj'])) {
     $kotizacija = $data['Kotizacija'];
     $tip = "(SELECT id_tip_natjecanja FROM tip_natjecanja WHERE naziv = '{$data['Tip']}')";
     
+    if(!isset($naziv) || !isset($mjesto) || $kotizacija<0 || !isset($tip)) {
+        $response['passed'] = false;
+        $response['text'] = "Nisu ispravno uneseni podaci!";
+        echo json_encode($response);
+        exit;
+    }
+    
     $query = "INSERT INTO natjecanja VALUES (default, '$naziv', '$mjesto', '$vrijeme', '$kotizacija', $tip, $oib)";
 
     //izvrši

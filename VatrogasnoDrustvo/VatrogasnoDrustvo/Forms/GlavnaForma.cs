@@ -53,7 +53,7 @@ namespace VatrogasnoDrustvo.Forme
 
         void GlavnaForma_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            Help.ShowHelp(this, @"vatrogasno_help.chm");
+            Help.ShowHelp(this, @"Resources\vatrogasno_help.chm");
         }
 
         /// <summary>

@@ -103,6 +103,8 @@
             // dtpVrijeme
             // 
             this.dtpVrijeme.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpVrijeme.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dtpVrijeme.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpVrijeme.Location = new System.Drawing.Point(220, 209);
             this.dtpVrijeme.Name = "dtpVrijeme";
             this.dtpVrijeme.Size = new System.Drawing.Size(165, 20);

@@ -91,6 +91,11 @@ namespace VatrogasnoDrustvo
                     MessageBox.Show("Adresa i mjesto moraju imati velikim početnim slovom!");
                     return;
                 }
+                if (DateTime.Parse(dtpPocetnoVrijeme.Text) > DateTime.Parse(dtpZavrsnoVrijeme.Text))
+                {
+                    MessageBox.Show("Ne može završno vrijeme biti prije početnog!");
+                    return;
+                }
                 if (nova != null)
                 {
                     updateIntervencija(nova);

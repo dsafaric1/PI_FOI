@@ -11,7 +11,7 @@ using VatrogasnoDrustvo.Forme;
 
 namespace VatrogasnoDrustvo.Core
 {
-    class Narudzba
+    public class Narudzba
     {
         public int Rbr { get; set; }
         public List<StavkaNarudzbe> Stavke { get; set; }

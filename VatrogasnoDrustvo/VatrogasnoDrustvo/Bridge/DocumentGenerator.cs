@@ -4,6 +4,7 @@ using MigraDoc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -132,7 +133,7 @@ namespace VatrogasnoDrustvo.Bridge
                 row.Cells[i++].Format.Alignment = ParagraphAlignment.Left;
                 row.Cells[i++].AddParagraph(stavka.JedinicaMjera);
                 row.Cells[i++].AddParagraph(stavka.Kolicina.ToString());
-                row.Cells[i].AddParagraph(string.Format("{0:C}", stavka.Cijena));
+                row.Cells[i].AddParagraph(stavka.Cijena.ToString("C",CultureInfo.CreateSpecificCulture("hr-HR")));
                 row.Cells[i++].Format.Alignment = ParagraphAlignment.Right;
                 baseCostValue += stavka.GetUkupnaCijena();
                 i=0;
@@ -144,21 +145,21 @@ namespace VatrogasnoDrustvo.Bridge
             baseCost.Cells[0].AddParagraph("Osnovica");
             baseCost.Cells[0].MergeRight = 2;
             baseCost.Borders.Top.Width = 1;
-            baseCost.Cells[3].AddParagraph(string.Format("{0:C}", baseCostValue));         //nešto za izmjenu
+            baseCost.Cells[3].AddParagraph(baseCostValue.ToString("C",CultureInfo.CreateSpecificCulture("hr-HR")));         //nešto za izmjenu
 
             Row PDV = orderTable.AddRow();
             PDV.Format.Alignment = ParagraphAlignment.Right;
             PDV.Cells[0].AddParagraph("PDV (25.00%)");
             PDV.Cells[0].MergeRight = 2;
             PDV.Borders.Top.Width = 1;
-            PDV.Cells[3].AddParagraph(string.Format("{0:C}", (decimal.Parse((0.25).ToString()) * baseCostValue)));
+            PDV.Cells[3].AddParagraph((decimal.Parse((0.25).ToString()) * baseCostValue).ToString("C",CultureInfo.CreateSpecificCulture("hr-HR")));
 
             Row totalCost = orderTable.AddRow();
             totalCost.Format.Alignment = ParagraphAlignment.Right;
             totalCost.Cells[0].AddParagraph("Ukupna cijena");
             totalCost.Cells[0].MergeRight = 2;
             totalCost.Borders.Top.Width = 1;
-            totalCost.Cells[3].AddParagraph(string.Format("{0:C}", (decimal.Parse((1.25).ToString()) * baseCostValue)));      
+            totalCost.Cells[3].AddParagraph((decimal.Parse((1.25).ToString()) * baseCostValue).ToString("C",CultureInfo.CreateSpecificCulture("hr-HR")));      
 
             //donji dio narudžbe
             Paragraph orderDetails = section.AddParagraph();

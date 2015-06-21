@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace VatrogasnoDrustvo.Core
 {
-    class Dobavljac
+   public class Dobavljac
     {
         public string ID { get; set; }
         public string Naziv { get; set; }

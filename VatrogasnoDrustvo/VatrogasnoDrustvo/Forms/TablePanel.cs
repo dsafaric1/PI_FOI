@@ -177,6 +177,7 @@ namespace VatrogasnoDrustvo
                 //za read
                 dgvDBData.DataSource = JsonConvert.DeserializeObject<List<object>>
                     (new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
+                txtSearch.Text = "";
                 if (admin)
                 {
                     //za update i delete

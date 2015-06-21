@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VatrogasnoDrustvo", "Vatrog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JedinicnoTestiranje", "JedinicnoTestiranje\JedinicnoTestiranje.csproj", "{C48DE1A3-B754-4778-8843-8343DA19DA63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KodiraniUItestovi", "KodiraniUItestovi\KodiraniUItestovi.csproj", "{61853FFB-B8CF-4B91-A6FA-D11F6A9D6B9F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KodiraniUITestovi", "KodiraniUITestovi\KodiraniUITestovi.csproj", "{C4AA9B49-AEC0-497C-B276-EBB62549D087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,10 @@ Global
 		{C48DE1A3-B754-4778-8843-8343DA19DA63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C48DE1A3-B754-4778-8843-8343DA19DA63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C48DE1A3-B754-4778-8843-8343DA19DA63}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61853FFB-B8CF-4B91-A6FA-D11F6A9D6B9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61853FFB-B8CF-4B91-A6FA-D11F6A9D6B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61853FFB-B8CF-4B91-A6FA-D11F6A9D6B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61853FFB-B8CF-4B91-A6FA-D11F6A9D6B9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4AA9B49-AEC0-497C-B276-EBB62549D087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4AA9B49-AEC0-497C-B276-EBB62549D087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4AA9B49-AEC0-497C-B276-EBB62549D087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4AA9B49-AEC0-497C-B276-EBB62549D087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

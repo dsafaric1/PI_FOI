@@ -10,14 +10,14 @@ using VatrogasnoDrustvo.Bridge;
 
 namespace VatrogasnoDrustvo.Core
 {
-    enum VrstaIntervencije
+    public enum VrstaIntervencije
     {
         Pozar,
         Tehnicka,
         Ostalo
     }
 
-    class Intervencija
+   public class Intervencija
     {
         public int BrojDojave { get; set; }
         public List<Vatrogasac> prisutniVatrogasci { get; set; }

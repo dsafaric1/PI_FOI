@@ -55,6 +55,9 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tlstrplblIzvjestaji = new System.Windows.Forms.ToolStripLabel();
             this.pnlStatistics = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgvStatistics = new System.Windows.Forms.DataGridView();
@@ -62,9 +65,6 @@
             this.lblIntervencije = new System.Windows.Forms.Label();
             this.lblPotrosnja = new System.Windows.Forms.Label();
             this.lblOcjena = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnlGlavna = new VatrogasnoDrustvo.Controls.MainPanel();
             this.pnlTable = new VatrogasnoDrustvo.TablePanel();
             this.tlstrpGlavnaForma.SuspendLayout();
@@ -209,12 +209,42 @@
             this.pnlStatistics.Size = new System.Drawing.Size(997, 441);
             this.pnlStatistics.TabIndex = 4;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(4, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(229, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "_____________________________________";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(4, 169);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(229, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "_____________________________________";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(4, 241);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(229, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "_____________________________________";
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.BackColor = System.Drawing.Color.Firebrick;
             this.panel1.Controls.Add(this.chart);
             this.panel1.Controls.Add(this.dgvStatistics);
             this.panel1.Location = new System.Drawing.Point(280, 14);
@@ -227,7 +257,7 @@
             this.chart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.chart.BackColor = System.Drawing.Color.Black;
+            this.chart.BackColor = System.Drawing.Color.Firebrick;
             chartArea1.Area3DStyle.Enable3D = true;
             chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
             chartArea1.AxisX.LineColor = System.Drawing.Color.White;
@@ -239,10 +269,11 @@
             chartArea1.AxisY.LineWidth = 3;
             chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.White;
             chartArea1.AxisY2.LineColor = System.Drawing.Color.White;
-            chartArea1.BackColor = System.Drawing.Color.Black;
-            chartArea1.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea1.BackColor = System.Drawing.Color.Firebrick;
+            chartArea1.BackSecondaryColor = System.Drawing.Color.Firebrick;
             chartArea1.BorderColor = System.Drawing.Color.White;
             chartArea1.Name = "ChartArea1";
+            chartArea1.ShadowColor = System.Drawing.SystemColors.ControlDark;
             this.chart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart.Legends.Add(legend1);
@@ -261,7 +292,7 @@
             this.dgvStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvStatistics.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStatistics.BackgroundColor = System.Drawing.Color.Black;
+            this.dgvStatistics.BackgroundColor = System.Drawing.Color.Firebrick;
             this.dgvStatistics.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -340,36 +371,6 @@
             this.lblOcjena.TabIndex = 8;
             this.lblOcjena.Text = "Prosječna ocjena vatrogasca";
             this.lblOcjena.Click += new System.EventHandler(this.lblOcjena_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(4, 241);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(229, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "_____________________________________";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(4, 169);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "_____________________________________";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(4, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(229, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "_____________________________________";
             // 
             // pnlGlavna
             // 

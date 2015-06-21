@@ -121,4 +121,10 @@
   <data name="Vatrogasci1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vatrogasci1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="prva" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\prva.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="druga" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\druga.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

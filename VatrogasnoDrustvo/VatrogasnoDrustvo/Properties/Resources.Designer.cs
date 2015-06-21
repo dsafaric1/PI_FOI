@@ -63,6 +63,26 @@ namespace VatrogasnoDrustvo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap druga {
+            get {
+                object obj = ResourceManager.GetObject("druga", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap prva {
+            get {
+                object obj = ResourceManager.GetObject("prva", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Vatrogasci1 {
             get {
                 object obj = ResourceManager.GetObject("Vatrogasci1", resourceCulture);

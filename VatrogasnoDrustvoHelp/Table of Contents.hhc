@@ -9,6 +9,10 @@
 </OBJECT>
 <UL>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Po&egrave;etna">
+		<param name="Local" value="pocetna.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Korištenje i navigacija">
 		</OBJECT>
 	<UL>

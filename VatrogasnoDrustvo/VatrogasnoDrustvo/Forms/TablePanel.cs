@@ -33,20 +33,6 @@ namespace VatrogasnoDrustvo
         }
 
         /// <summary>
-        /// Metoda koja miče sve EventHandlere iz gumbića. Potrebno jer se svakim pozivom
-        /// metode initButton kači EventHandler i tada se otvara više istih prozora.
-        /// </summary>
-        /// <param name="btn">Gumb s kojeg se brišu Handleri</param>
-        private void RemoveAllHandlers(object btn, string eventType = "EventClick")
-        {
-            FieldInfo f1 = typeof(Control).GetField(eventType, BindingFlags.Static | BindingFlags.NonPublic);
-            object obj = f1.GetValue(btn);
-            PropertyInfo pi = btn.GetType().GetProperty("Events", BindingFlags.NonPublic | BindingFlags.Instance);
-            EventHandlerList list = (EventHandlerList)pi.GetValue(btn, null);
-            list.RemoveHandler(obj, list[obj]);
-        }
-
-        /// <summary>
         /// Metoda za brisanje svih handlera u ostalim kontrolama
         /// </summary>
         /// <param name="c">Kontrola iz kojeg se brišu handleri</param>
@@ -67,7 +53,7 @@ namespace VatrogasnoDrustvo
         {
             btn.Text = buttonName;
             btn.Visible = true;
-            RemoveAllHandlers(btn);
+            RemoveHandlerList(btn);
             btn.Click += method;
         }
 
@@ -326,7 +312,7 @@ namespace VatrogasnoDrustvo
         /// <param name="e"></param>
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            RemoveAllHandlers(btnDodaj);
+            RemoveHandlerList(btnDodaj);
             if (lblBase.Text == "Članovi")
             {
                 openForm(new PodaciClana());

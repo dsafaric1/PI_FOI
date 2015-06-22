@@ -209,7 +209,7 @@
             // 
             // dtpPocetnoVrijeme
             // 
-            this.dtpPocetnoVrijeme.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dtpPocetnoVrijeme.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dtpPocetnoVrijeme.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpPocetnoVrijeme.Location = new System.Drawing.Point(268, 238);
             this.dtpPocetnoVrijeme.Name = "dtpPocetnoVrijeme";
@@ -218,7 +218,7 @@
             // 
             // dtpZavrsnoVrijeme
             // 
-            this.dtpZavrsnoVrijeme.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dtpZavrsnoVrijeme.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dtpZavrsnoVrijeme.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpZavrsnoVrijeme.Location = new System.Drawing.Point(268, 279);
             this.dtpZavrsnoVrijeme.Name = "dtpZavrsnoVrijeme";

@@ -86,9 +86,9 @@ namespace VatrogasnoDrustvo
         {
             if (chcklPodaciIntevencijeVatrogasci.CheckedItems.Count != 0 && txtPodaciIntevencijeMjesto.Text != "" && txtPodaciIntevencijeAdresa.Text != "" && txtPodaciIntevencijeOpis.Text != "" && txtPodaciIntevencijeUzrok.Text != "" && dtpPocetnoVrijeme.Text != "" && dtpZavrsnoVrijeme.Text != "" && cmbPodaciIntevencijeVrsta.SelectedItem != null)
             {
-                if (!new Regex(@"[A-Z]").Match(txtPodaciIntevencijeAdresa.Text).Success || !new Regex(@"[A-Z]").Match(txtPodaciIntevencijeMjesto.Text).Success)
+                if (!new Regex(@"[A-Z]|[ČĆŠĐŽ]").Match(txtPodaciIntevencijeAdresa.Text).Success || !new Regex(@"[A-Z]|[ČĆŠĐŽ]").Match(txtPodaciIntevencijeMjesto.Text).Success)
                 {
-                    MessageBox.Show("Adresa i mjesto moraju imati velikim početnim slovom!");
+                    MessageBox.Show("Adresa i mjesto moraju početi velikim početnim slovom!");
                     return;
                 }
                 if (DateTime.Parse(dtpPocetnoVrijeme.Text) > DateTime.Parse(dtpZavrsnoVrijeme.Text))

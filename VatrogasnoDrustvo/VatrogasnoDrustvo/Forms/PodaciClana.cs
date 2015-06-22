@@ -84,8 +84,8 @@ namespace VatrogasnoDrustvo
                     return;
                 }
                 //ime, prezime i adresa veliko slovo
-                if (!new Regex(@"[A-Z]").Match(txtPodaciClanaIme.Text).Success || !new Regex(@"[A-Z]").Match(txtPodaciClanaPrezime.Text).Success
-                    || !new Regex(@"[A-Z]").Match(txtPodaciClanaAdresa.Text).Success)
+                if (!new Regex(@"[A-Z]|[ČĆŠĐŽ]").Match(txtPodaciClanaIme.Text).Success || !new Regex(@"[A-Z]|[ČĆŠĐŽ]").Match(txtPodaciClanaPrezime.Text).Success
+                    || !new Regex(@"[A-Z]|[ČĆŠĐŽ]").Match(txtPodaciClanaAdresa.Text).Success)
                 {
                     MessageBox.Show("Ime, prezime i adresa moraju imati veliko početno slovo!");
                     return;

@@ -50,7 +50,7 @@ namespace VatrogasnoDrustvo.InputForms
                     return;
                 }
                 //adresa veliko slovo
-                if (!new Regex(@"[A-Z]").Match(txtAdresa.Text).Success)
+                if (!new Regex(@"[A-Z]|[ČĆŠĐŽ]").Match(txtAdresa.Text).Success)
                 {
                     MessageBox.Show("Adresa mora započeti velikim slovom!");
                     return;

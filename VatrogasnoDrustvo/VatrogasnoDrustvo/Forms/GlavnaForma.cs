@@ -186,6 +186,8 @@ namespace VatrogasnoDrustvo.Forme
         private void lblOcjena_Click(object sender, EventArgs e)
         {
             chart.ChartAreas[0].Area3DStyle.Enable3D = true;
+            chart.ChartAreas[0].AxisX.Interval = 1;
+            chart.ChartAreas[0].AxisY.Interval = 1;
             chart.Series["Podaci"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             RefreshData("ProsječnaOcjena");
         }
@@ -193,6 +195,8 @@ namespace VatrogasnoDrustvo.Forme
         private void lblRezultati_Click(object sender, EventArgs e)
         {
             chart.ChartAreas[0].Area3DStyle.Enable3D = false;
+            chart.ChartAreas[0].AxisX.Interval = 1;
+            chart.ChartAreas[0].AxisY.Interval = 10;
             chart.Series["Podaci"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
             RefreshData("Rezultati");
         }
@@ -207,6 +211,7 @@ namespace VatrogasnoDrustvo.Forme
         private void lblPotrosnja_Click(object sender, EventArgs e)
         {
             chart.ChartAreas[0].Area3DStyle.Enable3D = false;
+            chart.ChartAreas[0].AxisY.Interval = 0;
             chart.Series["Podaci"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart.Series["Podaci"].BorderWidth = 3;
             RefreshData("MjesecPotrošnje");

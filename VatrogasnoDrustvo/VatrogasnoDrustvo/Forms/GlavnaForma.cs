@@ -34,7 +34,7 @@ namespace VatrogasnoDrustvo.Forme
             vatroIme.Text = TrenutniVatrogasac.Ime + " " + TrenutniVatrogasac.Prezime;
             vatroZvanje.Text = TrenutniVatrogasac.Zvanje.ToString();
 
-            //preuzmi status admina i sakrij Registraciju i Izvještaje, ako je admin
+            //preuzmi status admina i sakrij Registraciju i Izvještaje, ako nije admin
             this.Admin = admin;
             if (!this.Admin)
             {
@@ -117,7 +117,7 @@ namespace VatrogasnoDrustvo.Forme
         /// njihovih EventHandlera (u TablePanel kontroli). Kad je sve obavljeno poziva
         /// se metoda Refresh implementirana u klasi Control za osvježavanje kontrole.
         /// </summary>
-        /// <param name="keyword"></param>
+        /// <param name="keyword">Naziv tablice</param>
         private void exchange<T>(string keyword)
         {
             pnlTable.RefreshPanel<T>(keyword, Admin);
@@ -135,6 +135,13 @@ namespace VatrogasnoDrustvo.Forme
             exchange<Natjecanje>("Natjecanja");
         }
 
+        /// <summary>
+        /// Otvaranje forme za registraciju. Ako ne postoji korisnik za registriranje
+        /// forma se ne otvara pa postaje disposana, zato se stavlja if is disposed da
+        /// nebi došlo do iznimke.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tlstrpLabelRegistracija_Click(object sender, EventArgs e)
         {
             PodaciRegistracija frmReg = new PodaciRegistracija();

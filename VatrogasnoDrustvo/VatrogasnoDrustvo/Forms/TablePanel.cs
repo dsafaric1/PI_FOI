@@ -67,12 +67,11 @@ namespace VatrogasnoDrustvo
         }
 
         /// <summary>
-        /// Metoda koja ažurira tablicu kod pretrage. TBI
+        /// Metoda koja ažurira tablicu kod pretrage.
         /// </summary>
         /// <param name="searchTerm">Ključna riječ za pretraživanje</param>
         public void UpdateDataGridView(String searchTerm) 
         {
-            this.dgvDBData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             try
             {
                 foreach (DataGridViewRow row in dgvDBData.Rows)
@@ -113,7 +112,7 @@ namespace VatrogasnoDrustvo
             hideDegrees();
             if (admin)
             {
-                //ovisno o tablici, sakrij gumbiće
+                //ovisno o tablici, pokaži gumbiće
                 if (keyword == "Oprema")
                 {
                     initButton(btnFirstDegree, "Ispis narudžbi", IspisNarudzbi_Click);
@@ -143,7 +142,7 @@ namespace VatrogasnoDrustvo
         }
 
         /// <summary>
-        /// Specijalnih handler za onclick kod registriranog korisnika
+        /// Specijalni handler za onclick kod registriranog korisnika
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -290,7 +289,6 @@ namespace VatrogasnoDrustvo
 
         /// <summary>
         /// Otvori prijavu na natjecanje kada klikne na gumb prijavi se u formi za natjecanja.
-        /// Treba dodati da mora natjecanje biti odabrano prethodno.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

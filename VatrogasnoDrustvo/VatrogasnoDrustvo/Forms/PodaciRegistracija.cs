@@ -68,7 +68,7 @@ namespace VatrogasnoDrustvo.Forms
                         {"username", username}, {"password", password}, { "user", oib }
                     };
 
-                    //šalji što se briše
+                    //šalji tko se registira
                     var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
                         (new Sender().Send(dict, "https://testerinho.com/vatrogasci/addUser.php"));
 

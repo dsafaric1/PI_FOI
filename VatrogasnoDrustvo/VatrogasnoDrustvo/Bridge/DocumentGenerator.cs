@@ -176,11 +176,6 @@ namespace VatrogasnoDrustvo.Bridge
             orderDetails.AddFormattedText("Sastavio: " + narudzba.Upisao.Ime + " " + narudzba.Upisao.Prezime);
         }
 
-        private void generateFooter() 
-        {
-            
-        }
-
         private bool writeToPdf() 
         {
             PdfDocumentRenderer render = new PdfDocumentRenderer(true);
@@ -203,7 +198,6 @@ namespace VatrogasnoDrustvo.Bridge
         {
             generateHeader();
             generateBody(narudzba);
-            generateFooter();
             return writeToPdf();
         }
     }

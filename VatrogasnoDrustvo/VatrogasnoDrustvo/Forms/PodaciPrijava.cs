@@ -33,7 +33,7 @@ namespace VatrogasnoDrustvo.InputForms
         private void fillCheckbox()
         {
             persons = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>
-                        (new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=Competitors&natjecanje=" + odabrano.ID.ToString()));
+                        (new Sender().Receive("http://testerinho.com/vatrogasci/gettable.php?table=Competitors&natjecanje=" + odabrano.ID.ToString()));
 
             //provjeri da li je trenutni vatrogasac već zapisan
             bool zapisan = true;
@@ -78,9 +78,9 @@ namespace VatrogasnoDrustvo.InputForms
 
             try
             {
-                //MessageBox.Show(new Sender().Send(nova, "https://testerinho.com/vatrogasci/prijaviNaNatjecanje.php", odabrano));
+                //MessageBox.Show(new Sender().Send(nova, "http://testerinho.com/vatrogasci/prijaviNaNatjecanje.php", odabrano));
                 var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                    (new Sender().Send(nova, "https://testerinho.com/vatrogasci/prijaviNaNatjecanje.php", odabrano));
+                    (new Sender().Send(nova, "http://testerinho.com/vatrogasci/prijaviNaNatjecanje.php", odabrano));
 
                 if (bool.Parse(response["passed"].ToString()))
                 {

@@ -60,9 +60,9 @@ namespace VatrogasnoDrustvo.Forms
             //create
             try
             {
-                //MessageBox.Show(new Sender().Send(json, "https://testerinho.com/vatrogasci/ocijeniEkipu.php", trenutna));
+                //MessageBox.Show(new Sender().Send(json, "http://testerinho.com/vatrogasci/ocijeniEkipu.php", trenutna));
                 var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                    (new Sender().Send(json, "https://testerinho.com/vatrogasci/ocijeniEkipu.php", trenutna));
+                    (new Sender().Send(json, "http://testerinho.com/vatrogasci/ocijeniEkipu.php", trenutna));
 
                 if (bool.Parse(response["passed"].ToString()))
                 {

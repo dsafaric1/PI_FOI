@@ -89,8 +89,8 @@ namespace VatrogasnoDrustvo.InputForms
             
             try
             {
-                //MessageBox.Show(new Sender().Send(tvrtka, "https://testerinho.com/vatrogasci/updateDobavljac.php"));
-                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(tvrtka, "https://testerinho.com/vatrogasci/updateDobavljac.php"));
+                //MessageBox.Show(new Sender().Send(tvrtka, "http://testerinho.com/vatrogasci/updateDobavljac.php"));
+                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(tvrtka, "http://testerinho.com/vatrogasci/updateDobavljac.php"));
                 if (bool.Parse(response["passed"].ToString()))
                 {
                     MessageBox.Show("Dobavljač je ažuriran!");
@@ -130,7 +130,7 @@ namespace VatrogasnoDrustvo.InputForms
 
             try
             {
-                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(tvrtka, "https://testerinho.com/vatrogasci/insertDobavljac.php"));
+                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(tvrtka, "http://testerinho.com/vatrogasci/insertDobavljac.php"));
                 if (bool.Parse(response["passed"].ToString()))
                 {
                     MessageBox.Show("Novi dobavljač je uspješno unesen!");

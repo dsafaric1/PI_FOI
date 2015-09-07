@@ -161,7 +161,7 @@ namespace VatrogasnoDrustvo
             {
                 //za read
                 dgvDBData.DataSource = JsonConvert.DeserializeObject<List<object>>
-                    (new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
+                    (new Sender().Receive("http://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
                 txtSearch.Text = "";
                 if (admin)
                 {
@@ -200,10 +200,10 @@ namespace VatrogasnoDrustvo
 
                     try
                     {
-                        //MessageBox.Show(new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
+                        //MessageBox.Show(new Sender().Send(toDelete, "http://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
                         //šalji što se briše
                         var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                            (new Sender().Send(toDelete, "https://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
+                            (new Sender().Send(toDelete, "http://testerinho.com/vatrogasci/delete.php", typeof(T).ToString()));
 
                         //obradi odgovor
                         if (bool.Parse(response["passed"].ToString()))

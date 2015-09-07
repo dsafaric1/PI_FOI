@@ -58,7 +58,7 @@ namespace VatrogasnoDrustvo
                 }; 
 
                 //šalji json i parsaj odgovor
-                var response = JsonConvert.DeserializeObject<Dictionary<string,object>>(new Sender().Send(userInfo, "https://testerinho.com/vatrogasci/login.php"));
+                var response = JsonConvert.DeserializeObject<Dictionary<string,object>>(new Sender().Send(userInfo, "http://testerinho.com/vatrogasci/login.php"));
                 if (bool.Parse(response["valid"].ToString()))
                 {
                     this.Visible = false;

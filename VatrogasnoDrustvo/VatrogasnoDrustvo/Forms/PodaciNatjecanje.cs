@@ -108,7 +108,7 @@ namespace VatrogasnoDrustvo.InputForms
             try
             {
                 var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                    (new Sender().Send(natjecanje, "https://testerinho.com/vatrogasci/insertNatjecanja.php", GlavnaForma.TrenutniVatrogasac));
+                    (new Sender().Send(natjecanje, "http://testerinho.com/vatrogasci/insertNatjecanja.php", GlavnaForma.TrenutniVatrogasac));
 
                 if (bool.Parse(response["passed"].ToString()))
                 {
@@ -133,9 +133,9 @@ namespace VatrogasnoDrustvo.InputForms
             natjecanje = getData(natjecanje);
             try
             {
-                //MessageBox.Show(new Sender().Send(natjecanje, "https://testerinho.com/vatrogasci/updateNatjecanje.php"));
+                //MessageBox.Show(new Sender().Send(natjecanje, "http://testerinho.com/vatrogasci/updateNatjecanje.php"));
                 var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                    (new Sender().Send(natjecanje, "https://testerinho.com/vatrogasci/updateNatjecanje.php"));
+                    (new Sender().Send(natjecanje, "http://testerinho.com/vatrogasci/updateNatjecanje.php"));
 
                 if (bool.Parse(response["passed"].ToString()))
                 {

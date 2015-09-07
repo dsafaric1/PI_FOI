@@ -194,11 +194,11 @@ namespace VatrogasnoDrustvo.InputForms
                 //opremu povučeno iz retka
                 if (oprema == null && vozilo == null && pumpa ==null)
                 {
-                    executeOprema("https://testerinho.com/vatrogasci/insertOprema.php");
+                    executeOprema("http://testerinho.com/vatrogasci/insertOprema.php");
                 }
                 else
                 {
-                    executeOprema("https://testerinho.com/vatrogasci/updateOprema.php");
+                    executeOprema("http://testerinho.com/vatrogasci/updateOprema.php");
                 }
                 this.Close();
             }

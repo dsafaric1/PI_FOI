@@ -25,7 +25,7 @@ namespace VatrogasnoDrustvo.Forms
         private void FillCheckbox()
         {
             var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>
-                        (new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=Oprema"));
+                        (new Sender().Receive("http://testerinho.com/vatrogasci/gettable.php?table=Oprema"));
            
             stavke = new List<Oprema>();
             //uzima se naziv opreme i sprema u stavke

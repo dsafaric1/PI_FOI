@@ -33,7 +33,7 @@ namespace VatrogasnoDrustvo.Forms
             try
             {
                 cmbDobavljac.DataSource = JsonConvert.DeserializeObject<List<Dobavljac>>(new Sender().Receive
-                    ("https://testerinho.com/vatrogasci/gettable.php?table=Dobavljači"));
+                    ("http://testerinho.com/vatrogasci/gettable.php?table=Dobavljači"));
             }
             catch (Exception e)
             {
@@ -50,7 +50,7 @@ namespace VatrogasnoDrustvo.Forms
             /*try
             {
                 dgvStavke.DataSource = JsonConvert.DeserializeObject<List<object>>(new Sender().Receive
-                    ("https://testerinho.com/vatrogasci/gettable.php?table=StavkeNarudžbe&narudzba=" + narudzba.Rbr));
+                    ("http://testerinho.com/vatrogasci/gettable.php?table=StavkeNarudžbe&narudzba=" + narudzba.Rbr));
             }
             catch (Exception e)
             {
@@ -143,9 +143,9 @@ namespace VatrogasnoDrustvo.Forms
             narudzba = getData(narudzba);
             try
             {
-                //MessageBox.Show(new Sender().Send(narudzba, "https://testerinho.com/vatrogasci/insertNarudzbe.php", GlavnaForma.TrenutniVatrogasac));
+                //MessageBox.Show(new Sender().Send(narudzba, "http://testerinho.com/vatrogasci/insertNarudzbe.php", GlavnaForma.TrenutniVatrogasac));
                 var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                    (new Sender().Send(narudzba, "https://testerinho.com/vatrogasci/insertNarudzbe.php", GlavnaForma.TrenutniVatrogasac));
+                    (new Sender().Send(narudzba, "http://testerinho.com/vatrogasci/insertNarudzbe.php", GlavnaForma.TrenutniVatrogasac));
 
                 if (bool.Parse(response["passed"].ToString()))
                 {

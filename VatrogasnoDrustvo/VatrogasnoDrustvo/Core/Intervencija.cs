@@ -47,7 +47,7 @@ namespace VatrogasnoDrustvo.Core
             this.ZavrsnoVrijeme = intervencija.Cells["Završno vrijeme"].Value.ToString();
             this.Vrsta = (VrstaIntervencije)Enum.Parse(typeof(VrstaIntervencije), intervencija.Cells["Vrsta intervencije"].Value.ToString());
             this.prisutniVatrogasci = JsonConvert.DeserializeObject<List<Vatrogasac>>
-                        (new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=Prisutni&intervencija=" + BrojDojave));
+                        (new Sender().Receive("http://testerinho.com/vatrogasci/gettable.php?table=Prisutni&intervencija=" + BrojDojave));
 
         }
 

@@ -134,7 +134,7 @@ namespace VatrogasnoDrustvo
             //create
             try
             {
-                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(mirko, "https://testerinho.com/vatrogasci/insertVatrogasac.php"));
+                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(mirko, "http://testerinho.com/vatrogasci/insertVatrogasac.php"));
 
                 if (bool.Parse(response["passed"].ToString()))
                 {
@@ -162,7 +162,7 @@ namespace VatrogasnoDrustvo
             //update
             try
             {
-                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(mirko, "https://testerinho.com/vatrogasci/updateVatrogasac.php"));
+                var response = JsonConvert.DeserializeObject<Dictionary<string, object>>(new Sender().Send(mirko, "http://testerinho.com/vatrogasci/updateVatrogasac.php"));
 
                 if (bool.Parse(response["passed"].ToString()))
                 {

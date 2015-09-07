@@ -163,9 +163,9 @@ namespace VatrogasnoDrustvo.Forme
             try
             {
                 //za read
-                //MessageBox.Show(new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
+                //MessageBox.Show(new Sender().Receive("http://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
                 dgvStatistics.DataSource = JsonConvert.DeserializeObject<List<object>>
-                    (new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
+                    (new Sender().Receive("http://testerinho.com/vatrogasci/gettable.php?table=" + keyword));
                 //obriši sve pointove dosad
                 for (int i = chart.Series["Podaci"].Points.Count - 1; i >= 0 ; i--)
                 {

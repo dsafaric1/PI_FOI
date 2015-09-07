@@ -27,7 +27,7 @@ namespace VatrogasnoDrustvo.Forms
         {
             //dohvati osobe koje nisu korisnici
             persons = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>
-                    (new Sender().Receive("https://testerinho.com/vatrogasci/gettable.php?table=NonUsers"));
+                    (new Sender().Receive("http://testerinho.com/vatrogasci/gettable.php?table=NonUsers"));
 
             //učitaj ime + prezime osobe u padajuću listu
             List<string> vals = new List<string>();
@@ -70,7 +70,7 @@ namespace VatrogasnoDrustvo.Forms
 
                     //šalji tko se registira
                     var response = JsonConvert.DeserializeObject<Dictionary<string, object>>
-                        (new Sender().Send(dict, "https://testerinho.com/vatrogasci/addUser.php"));
+                        (new Sender().Send(dict, "http://testerinho.com/vatrogasci/addUser.php"));
 
                     //obradi odgovor
                     if (bool.Parse(response["passed"].ToString()))

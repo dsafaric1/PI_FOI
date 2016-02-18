@@ -40,7 +40,7 @@ namespace VatrogasnoDrustvo.Core
             this.Naziv = row.Cells["Naziv"].Value.ToString();
             this.Kategorija = (KategorijaEkipe)Enum.Parse(typeof(KategorijaEkipe), row.Cells["Kategorija"].Value.ToString());
             this.Clanovi = JsonConvert.DeserializeObject<List<Vatrogasac>>(
-                new Sender().Receive("http://testerinho.com/vatrogasci/gettable.php?table=ČlanoviEkipe&ekipa=" + this.ID));
+                new Sender().Receive("http://46.101.122.250/gettable.php?table=ČlanoviEkipe&ekipa=" + this.ID));
             this.Ocjena = int.Parse(row.Cells["Ocjena"].Value.ToString());
             this.Rezultat = int.Parse(row.Cells["Rezultat"].Value.ToString());
         }

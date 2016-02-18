@@ -37,7 +37,7 @@ namespace VatrogasnoDrustvo.Core
             try
             {
                 var stavke = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(new Sender().Receive
-                    ("http://testerinho.com/vatrogasci/gettable.php?table=StavkeNarudžbe&narudzba=" + Rbr));
+                    ("http://46.101.122.250/gettable.php?table=StavkeNarudžbe&narudzba=" + Rbr));
                 stavke.ForEach(
                     s => Stavke.Add(new StavkaNarudzbe
                     {

@@ -45,7 +45,7 @@ namespace VatrogasnoDrustvo.Forms
             {
                 //za read
                 dgv.DataSource = JsonConvert.DeserializeObject<List<object>>
-                    (new Sender().Receive("http://testerinho.com/vatrogasci/gettable.php?table=Ekipe&natjecanje=" + kliknuto.ID));
+                    (new Sender().Receive("http://46.101.122.250/gettable.php?table=Ekipe&natjecanje=" + kliknuto.ID));
                 dgv.CellDoubleClick -= dgv_CellDoubleClick;
                 dgv.CellDoubleClick += dgv_CellDoubleClick;
             }
